@@ -1,0 +1,109 @@
+/* ==========================================================================
+   Versance Coworker — design tokens · style v10 — notes
+   Variables only. They are grouped by whether this style's screens actually show them:
+   1. colours rendered on the screens   2. interaction-state colours   3. type / shape / spacing / motion
+   4. carried over from earlier styles (referenced by overridden base rules, not visible)
+   Base component rules: components.css · this style's overrides: ../screens/screens.css
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.vc-ext {
+  /* ── Colours rendered on this style's screens ── */
+  --accent: #6F7F1E;
+  --accent-hover: #586619;
+  --accent-on: #FFFFFF;
+  --accent-tint-25: #D5DCA6;
+  --bg: #FFFFFF;
+  --faint: #9A9C8B;
+  --hover: #F1F2E8;
+  --ink: #24261C;
+  --line: #E4E5DA;
+  --line-soft: #EDEEE4;
+  --muted: #6E7060;
+  --panel: #FFFFFF;
+  --risk-high: #DC2927;
+  --risk-medium: #F59D0A;
+  --risk-on: #FFFFFF;
+  --text-info: #3E4A12;
+  --text-selected: #3E4A12;
+
+  /* ── Colours for interaction states (hover, pressed, focus, disabled) ── */
+  /* Referenced by hover / active / disabled rules; not visible in the static screens. */
+  --accent-pressed: #455113;
+  --accent-tint-15: #E4EBBE;
+  --accent-tint-8: #F0F4DC;
+  --amber-tint: #F4E4B8;
+  --green-tint: #CFE0DE;
+
+  /* ── Type ── */
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --fs-body: 14px;
+  --fs-caps: 11px;
+  --fs-help-h1: 18px;
+  --fs-help-h2: 14px;
+  --fs-small: 12px;
+  --fw-bold: 700;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --lh-body: 1.5;
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+
+  /* ── Radius ── */
+  --r-box: 10px;
+  --r-btn: 8px;
+  --r-cite: 4px;
+  --r-panel: 12px;
+  --r-pill: 999px;
+  --r-tag: 6px;
+
+  /* ── Spacing ── */
+  --pad-btn: 7px 13px;
+  --pad-pill: 6px 12px;
+
+  /* ── Elevation (shadows) ── */
+  --amber-glow: 0 4px 12px rgba(226,165,43,.45);
+  --bd: 1px solid rgba(19,38,47,.07);
+  --coral-glow: 0 2px 8px rgba(240,68,94,.45);
+  --glow: 0 6px 16px rgba(20,20,30,.28);
+  --green-glow: 0 3px 10px rgba(45,107,106,.35);
+  --sh-1: 0 1px 2px rgba(50,55,20,.06), 0 2px 8px rgba(50,55,20,.05);
+  --sh-2: 0 1px 3px rgba(50,55,20,.06), 0 10px 26px rgba(50,55,20,.10);
+  --sh-3: 0 2px 4px rgba(19,38,47,.06), 0 16px 40px rgba(19,38,47,.14);
+
+  /* ── Layout ── */
+  --rail-w: 40px;
+
+  /* ── Motion ── */
+  --dur: .15s;
+  --dur-fast: .12s;
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+
+  /* ── Other ── */
+  --focus-ring: 2px solid #6F7F1E;
+
+  /* ── Carried over from earlier styles ── */
+  /* Still referenced by base rules that this style overrides; not visible on any screen. Kept so those rules stay valid. */
+  --accent-grad: linear-gradient(180deg, #3C3B37 0%, #23221F 100%);
+  --accent-grad-diag: linear-gradient(145deg, #4A4944 0%, #23221F 100%);
+  --accent-wash: linear-gradient(180deg, #F6F6F3 0%, #EFEFEB 100%);
+  --amber-grad: linear-gradient(135deg, #F8CF68 0%, #E2A52B 100%);
+  --amber-ink: #0A1922;
+  --coral-grad: linear-gradient(135deg, #FF8294 0%, #F0445E 100%);
+  --exception-dark: #0A1922;
+  --green-grad: linear-gradient(180deg, #3A9187 0%, #2D6B6A 100%);
+  --mark: #FFF04D;
+  --pane: transparent;
+  --soft-wash: linear-gradient(180deg, #F6F6F3 0%, #EFEFEB 100%);
+  --tag-filing: #324EFE;
+  --tag-news: #E2B43D;
+  --tag-transcript: #FF5D73;
+  --tag-web: #1FB5A8;
+  --teal-grad: linear-gradient(145deg, #EAF3F2, #D3E5E2);
+  --teal-ink: #0E8F84;
+  --teal-tint: #E4EFEE;
+  --violet-grad: linear-gradient(135deg,#ECE4FF,#DACCFF);
+  --violet-ink: #6D3FD6;
+  --violet-tint: #EFE9FF;
+}
