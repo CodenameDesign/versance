@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Versance — Talk to Edgar</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgdmlld0JveD0iMCAwIDg0IDg0Ij4KICA8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMjguNy4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogMS4yLjAgQnVpbGQgMTM2KSAgLS0+CiAgPGc+CiAgICA8ZyBpZD0iTGF5ZXJfMSI+CiAgICAgIDxwYXRoIGQ9Ik04NCw0MmMwLDIzLjE5Ni0xOC44MDQsNDItNDIsNDJTMCw2NS4xOTYsMCw0MiwxOC44MDQsMCw0MiwwczQyLDE4LjgwNCw0Miw0MlpNMjEuODU2LDMyLjUxM2MwLS45ODEtLjgtMS43NzctMS43ODgtMS43NzdzLTEuNzg4Ljc5Ni0xLjc4OCwxLjc3N3YxNy45NTZjMCwuOTgxLjgsMS43NzcsMS43ODgsMS43NzdzMS43ODgtLjc5NiwxLjc4OC0xLjc3N3YtMTcuOTU2Wk0zMC44OSwyNy45M2MwLS45ODEtLjgtMS43NzctMS43ODgtMS43NzdzLTEuNzg4Ljc5Ni0xLjc4OCwxLjc3N3YyNy4xMjJjMCwuOTgxLjgsMS43NzcsMS43ODgsMS43NzdzMS43ODgtLjc5NiwxLjc4OC0xLjc3N3YtMjcuMTIyWk0zOS45MjQsMzEuNzY1YzAtLjk4MS0uOC0xLjc3Ny0xLjc4OC0xLjc3N3MtMS43ODguNzk2LTEuNzg4LDEuNzc3djE5LjQ1M2MwLC45ODEuOCwxLjc3NywxLjc4OCwxLjc3N3MxLjc4OC0uNzk2LDEuNzg4LTEuNzc3di0xOS40NTNaTTQ3LjQwMywzMy4zNTVoLS40NjdjLS44NTksMC0xLjU1NS42OTItMS41NTUsMS41NDV2MTMuMTgzYzAsLjg1My42OTYsMS41NDUsMS41NTUsMS41NDVoLjQ2N2MuODU5LDAsMS41NTUtLjY5MiwxLjU1NS0xLjU0NXYtMTMuMTgzYzAtLjg1My0uNjk2LTEuNTQ1LTEuNTU1LTEuNTQ1Wk01Ny45OTIsMjYuNzE0YzAtLjk4MS0uOC0xLjc3Ny0xLjc4OC0xLjc3N3MtMS43ODguNzk2LTEuNzg4LDEuNzc3djI5Ljc0YzAsLjk4MS44LDEuNzc3LDEuNzg4LDEuNzc3czEuNzg4LS43OTYsMS43ODgtMS43Nzd2LTI5Ljc0Wk02Ny4wMjUsMzAuNjQyYzAtLjk4MS0uOC0xLjc3Ny0xLjc4OC0xLjc3N3MtMS43ODguNzk2LTEuNzg4LDEuNzc3djIxLjY5N2MwLC45ODEuOCwxLjc3NywxLjc4OCwxLjc3N3MxLjc4OC0uNzk2LDEuNzg4LTEuNzc3di0yMS42OTdaIi8+CiAgICA8L2c+CiAgPC9nPgo8L3N2Zz4=">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ── Tokens ── */
+  /* Figma palette: Night #000, Midnight Teal #0A1922, Vibrant Indigo #334EFE,
+     Vibrant Indigo 2 #2B40C5, Soft Cloud #F3F5F9, Soft Cloud 2 #D9DDE5,
+     Cool Slate #8D96AA, Cool Slate 2 #65728E, Green #5AC47E, Green 2 #DEF3E5,
+     Yellow #E2B43D */
+  :root {
+    --bg:           #FFFFFF;
+    --sidebar-bg:   #FFFFFF;
+    --sidebar-bd:   #D9DDE5;
+    --sidebar-hover: #F3F5F9;
+    --panel:        #FFFFFF;
+    --ink:          #000000;
+    --muted:        #65728E;
+    --faint:        #8D96AA;
+    --line:         #D9DDE5;
+    --line2:        #F3F5F9;
+    --accent:       #5AC47E;
+    --accent-d:     #3DA865;
+    --accent-bg:    #DEF3E5;
+    --accent-text:  #1C6B38;
+    --amber:        #E2B43D;
+    --green:        #5AC47E;
+    --chip:         #F3F5F9;
+    --new-btn:      #000000;
+    --new-btn-h:    #0A1922;
+    --shadow-sm:    0 1px 2px rgba(0,0,0,.05), 0 3px 10px rgba(0,0,0,.06);
+    --shadow:       0 1px 3px rgba(0,0,0,.06), 0 6px 20px rgba(0,0,0,.08);
+
+    /* source type colors */
+    --col-filing:    #2B40C5;
+    --col-news:      #E2B43D;
+    --col-transcript:#334EFE;
+    --col-web:       #65728E;
+    --col-ask:       #5AC47E;
+    --col-compare:   #5AC47E;
+    --col-create:    #E2B43D;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:           #0A1922;
+      --sidebar-bg:   #0D2030;
+      --sidebar-bd:   #1A3040;
+      --sidebar-hover: #152838;
+      --panel:        #0D2030;
+      --ink:          #F3F5F9;
+      --muted:        #8D96AA;
+      --faint:        #65728E;
+      --line:         #1A3040;
+      --line2:        #152838;
+      --accent:       #5AC47E;
+      --accent-d:     #7DD498;
+      --accent-bg:    #0D2A18;
+      --accent-text:  #7DD498;
+      --chip:         #152838;
+      --new-btn:      #F3F5F9;
+      --new-btn-h:    #FFFFFF;
+      --shadow-sm:    0 1px 2px rgba(0,0,0,.3), 0 3px 10px rgba(0,0,0,.4);
+      --shadow:       0 1px 3px rgba(0,0,0,.35), 0 6px 20px rgba(0,0,0,.5);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg:           #0A1922;
+    --sidebar-bg:   #0D2030;
+    --sidebar-bd:   #1A3040;
+    --sidebar-hover: #152838;
+    --panel:        #0D2030;
+    --ink:          #F3F5F9;
+    --muted:        #8D96AA;
+    --faint:        #65728E;
+    --line:         #1A3040;
+    --line2:        #152838;
+    --accent:       #5AC47E;
+    --accent-d:     #7DD498;
+    --accent-bg:    #0D2A18;
+    --accent-text:  #7DD498;
+    --chip:         #152838;
+    --new-btn:      #F3F5F9;
+    --new-btn-h:    #FFFFFF;
+    --shadow-sm:    0 1px 2px rgba(0,0,0,.3), 0 3px 10px rgba(0,0,0,.4);
+    --shadow:       0 1px 3px rgba(0,0,0,.35), 0 6px 20px rgba(0,0,0,.5);
+  }
+
+  :root[data-theme="light"] {
+    --bg:           #FFFFFF;
+    --sidebar-bg:   #FFFFFF;
+    --sidebar-bd:   #D9DDE5;
+    --sidebar-hover: #F3F5F9;
+    --panel:        #FFFFFF;
+    --ink:          #000000;
+    --muted:        #65728E;
+    --faint:        #8D96AA;
+    --line:         #D9DDE5;
+    --line2:        #F3F5F9;
+    --accent:       #5AC47E;
+    --accent-d:     #3DA865;
+    --accent-bg:    #DEF3E5;
+    --accent-text:  #1C6B38;
+    --chip:         #F3F5F9;
+    --new-btn:      #000000;
+    --new-btn-h:    #0A1922;
+    --shadow-sm:    0 1px 2px rgba(0,0,0,.05), 0 3px 10px rgba(0,0,0,.06);
+    --shadow:       0 1px 3px rgba(0,0,0,.06), 0 6px 20px rgba(0,0,0,.08);
+  }
+
+  /* ── Reset ── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 13.5px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; outline: none; }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+  input, textarea { font-family: inherit; }
+  input:focus, textarea:focus { outline: none; }
+
+  /* ── App shell ── */
+  .app { display: flex; height: 100vh; overflow: hidden; }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 230px; flex: 0 0 230px;
+    background: var(--sidebar-bg);
+    display: flex; flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .logo {
+    display: block;
+    padding: 0px 0px 30px; cursor: pointer;
+  }
+  .logo-svg { display: block; height: 38px; width: auto; }
+  @media (prefers-color-scheme: dark) { .logo-svg { filter: invert(1); } }
+  :root[data-theme="dark"] .logo-svg { filter: invert(1); }
+  :root[data-theme="light"] .logo-svg { filter: none; }
+
+  /* New button */
+  .new-btn {
+    display: flex; align-items: center; gap: 10px;
+    padding: 7.5px 12px 7.5px 8px;
+    border-radius: 999px;
+    background: var(--sidebar-hover);
+    color: var(--ink);
+    font-size: 13px; font-weight: 500;
+    width: 100%; text-align: left;
+    margin-bottom: 6px;
+    transition: background .15s;
+  }
+  .new-btn:hover { background: var(--sidebar-bd); }
+  .new-btn .new-icon {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--new-btn);
+    color: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    flex: 0 0 20px;
+  }
+  .new-btn .new-icon svg { width: 10px; height: 10px; }
+
+  /* Nav items */
+  .navbtn {
+    display: flex; align-items: center; gap: 9px;
+    padding: 7.5px 10px;
+    border-radius: 999px;
+    color: var(--muted);
+    font-size: 14px;
+    width: 100%; text-align: left;
+    margin-bottom: 6px;
+    transition: background .12s, color .12s;
+  }
+  .navbtn:hover { background: var(--sidebar-hover); color: var(--ink); }
+  .navbtn.active { background: #C7E2F0; color: #000000; font-weight: 600; border-radius: 999px; }
+  .navbtn .ic { width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex: 0 0 20px; }
+  .navbtn .ic svg { width: 17px; height: 17px; }
+
+  .nav-divider { border: none; border-top: 1px dashed var(--line); margin: 7px 6px; }
+  .spacer { flex: 1; }
+
+  /* Context chip */
+  .ctxchip {
+    display: flex; align-items: center; gap: 9px;
+    padding: 7.5px 10px; border-radius: 999px;
+    font-size: 14px; font-weight: 600;
+    background: var(--accent-bg); color: var(--accent-text);
+    margin: 0 0 6px;
+  }
+  .ctxchip.empty {
+    background: transparent; color: var(--faint);
+    font-weight: 400; border: 1px dashed var(--line);
+  }
+  .ctxchip .x { margin-left: auto; cursor: pointer; opacity: .55; font-size: 12px; }
+  .ctxchip .x:hover { opacity: 1; }
+  .ctxbtn {
+    display: flex; align-items: center; gap: 9px;
+    padding: 7.5px 10px; border-radius: 999px;
+    font-size: 14px; color: var(--muted); width: 100%;
+    transition: background .12s;
+  }
+  .ctxbtn:hover { background: var(--sidebar-hover); color: var(--ink); }
+  .ctxbtn .ic { flex: 0 0 20px; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; }
+  .ctxbtn .ic svg { width: 17px; height: 17px; }
+
+  /* ── Main ── */
+  .main {
+    flex: 1; min-width: 0;
+    overflow-y: auto;
+    background: var(--bg);
+    position: relative;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 40px 32px 32px; }
+  .sticky-composer { position: sticky; bottom: 0; background: var(--bg); padding: 12px 0 24px; }
+  .wrap.wide { max-width: 1020px; }
+
+  /* ── Composer ── */
+  .composer {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 16px 16px 13px;
+    position: relative;
+  }
+  .composer textarea {
+    width: 100%; border: none; resize: none;
+    font-family: "Roboto Mono", monospace;
+    font-size: 15px; line-height: 1.55;
+    outline: none; background: transparent;
+    min-height: 26px; color: var(--ink);
+  }
+  .composer textarea::placeholder { color: var(--faint); }
+  .cbar {
+    display: flex; align-items: center; gap: 6px;
+    flex-wrap: nowrap; margin-top: 12px;
+    padding-right: 46px;
+  }
+  /* pill controls */
+  .cpill {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12.5px; color: var(--muted);
+    background: var(--sidebar-hover);
+    border: none;
+    white-space: nowrap;
+    transition: color .12s, background .12s;
+    cursor: pointer;
+  }
+  .cpill:hover { background: var(--line); color: var(--ink); }
+  .cpill.on { background: var(--accent-bg); color: var(--accent-text); font-weight: 600; }
+
+  /* iOS toggle inside pill */
+  .tog {
+    display: inline-block; position: relative;
+    width: 26px; height: 15px; border-radius: 999px;
+    background: var(--line); flex: 0 0 26px;
+    transition: background .2s;
+  }
+  .tog::after {
+    content: ''; position: absolute;
+    top: 2px; left: 2px;
+    width: 11px; height: 11px; border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,.2);
+    transition: left .18s;
+  }
+  .tog.on { background: #5AC47E; }
+  .tog.on::after { left: 13px; }
+
+  .send-btn {
+    position: absolute; bottom: 13px; right: 14px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: var(--accent-bg); color: var(--accent-text);
+    display: flex; align-items: center; justify-content: center;
+    flex: none;
+    transition: background .15s, color .15s;
+  }
+  .send-btn:hover { background: var(--accent); color: #fff; }
+  .send-btn svg { width: 15px; height: 15px; }
+
+  .srcnote { font-size: 12px; color: var(--faint); margin-top: 8px; padding-left: 2px; }
+  .srcnote b { color: var(--accent-text); font-weight: 600; }
+  .content-divider { border: none; border-top: 1px dashed var(--line); margin: 24px 0 24px; }
+
+  /* ── Home ── */
+  .page-eyebrow { font-size: 11.5px; color: var(--faint); font-weight: 500; letter-spacing: .3px; margin-bottom: 7px; }
+  .hero { margin: 6vh 0 28px; }
+  .hero h1 {
+    font-size: 28px; font-weight: 700;
+    letter-spacing: -.5px; margin-bottom: 8px;
+    text-wrap: balance; color: var(--ink);
+  }
+  .hero p { color: var(--muted); font-size: 14px; line-height: 1.65; white-space: nowrap; }
+
+  .homestrip { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 28px; }
+  .card {
+    background: var(--sidebar-hover);
+    border-radius: 16px; padding: 18px 20px;
+  }
+  .card h4 {
+    margin-bottom: 12px;
+    font-size: 13px; color: var(--muted); font-weight: 600;
+  }
+  .rowlink {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 4px; border-radius: 8px;
+    font-size: 14px; cursor: pointer;
+    transition: background .1s;
+    color: var(--ink);
+  }
+  .rowlink:hover { background: var(--line2); }
+  .rowlink span.label { flex: 1; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  /* tags */
+  .tg {
+    font-size: 10px; padding: 3px 8px; border-radius: 6px;
+    font-weight: 700; color: #fff; letter-spacing: .4px;
+    flex: 0 0 auto; display: inline-block; white-space: nowrap;
+  }
+  .tg.filing    { background: #2B40C5; }
+  .tg.news      { background: var(--col-news); }
+  .tg.transcript{ background: #EA5B5B; }
+  .tg.web       { background: var(--col-web); }
+  .tg.ask       { background: #65728E; }
+  .tg.ask-amber { background: #E2B43D; }
+  .tg.create    { background: #E2B43D; }
+  .tg.cmp       { background: #5AC47E; }
+
+  /* ── Disambiguation ── */
+  .disamb {
+    background: #FFFBF0; border: 1px solid #ECD98A;
+    border-radius: 12px; padding: 14px 16px; margin-top: 14px;
+  }
+  .disamb .q { font-size: 13.5px; margin-bottom: 10px; }
+  .disamb .q b { color: var(--amber); }
+  .disamb .opts { display: flex; gap: 8px; flex-wrap: wrap; }
+  .disamb .opt {
+    padding: 7px 13px; border: 1px solid var(--line);
+    border-radius: 9px; background: var(--panel); font-size: 13px;
+    cursor: pointer; transition: border-color .12s, color .12s;
+  }
+  .disamb .opt:hover { border-color: var(--accent); color: var(--accent-text); }
+
+  /* ── Answer ── */
+  .answer-topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .answer-topbar-inner {
+    max-width: 760px; margin: 0 auto;
+    padding: 14px 32px;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 14px; color: var(--muted);
+  }
+  .answer-topbar-inner.wide { max-width: 1020px; }
+  .answer-topbar-inner.flush { max-width: none; margin: 0; }
+  .answer-ctx-pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: var(--accent-bg); color: var(--accent-text);
+    padding: 4px 10px; border-radius: 999px;
+    font-size: 13px; font-weight: 500;
+  }
+  .answer-ctx-pill .xbtn { cursor: pointer; opacity: .55; font-size: 13px; }
+  .answer-ctx-pill .xbtn:hover { opacity: 1; }
+  .back-link { font-size: 13px; color: var(--muted); cursor: pointer; }
+  .back-link:hover { color: var(--ink); }
+  .qhead { font-size: 21px; font-weight: 700; letter-spacing: -.3px; margin: 0 0 6px; text-wrap: balance; }
+  .detect { font-size: 12px; color: var(--faint); margin-bottom: 18px; }
+  .detect b { color: var(--accent-text); }
+  .srchead {
+    display: flex; align-items: center; gap: 7px;
+    font-size: 10.5px; letter-spacing: .5px; text-transform: uppercase;
+    color: var(--faint); font-weight: 700; margin: 2px 0 10px;
+    cursor: pointer; user-select: none;
+  }
+  .srchead:hover { color: var(--muted); }
+  .src-chevron { display: flex; align-items: center; transition: transform .2s; }
+  .src-chevron.open { transform: rotate(90deg); }
+  .src-body { overflow: hidden; transition: opacity .2s; }
+  .src-body.collapsed { display: none; }
+  .sources { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 22px; }
+  .src {
+    background: var(--panel); border: 1px solid var(--line);
+    border-radius: 10px; padding: 10px; font-size: 11.5px; cursor: pointer;
+    transition: border-color .12s, transform .12s;
+  }
+  .src:hover { border-color: var(--faint); transform: translateY(-1px); }
+  .src .st { color: var(--ink); line-height: 1.35; font-weight: 500; margin-top: 6px; }
+  .src .sm { color: var(--faint); margin-top: 4px; }
+  .answer { font-size: 14.5px; line-height: 1.72; }
+  .answer h3 { font-size: 14px; margin: 20px 0 7px; font-weight: 700; color: var(--ink); }
+  .answer p  { margin: 0 0 12px; color: var(--ink); }
+  .cite {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 16px; height: 16px; padding: 0 4px;
+    background: var(--accent-bg); color: var(--accent-text);
+    border-radius: 4px; font-size: 10px; font-weight: 700;
+    vertical-align: top; margin: 0 1px; cursor: pointer;
+    font-variant-numeric: tabular-nums;
+  }
+  .progress { display: flex; flex-direction: column; gap: 6px; margin: 6px 0 20px; }
+  .pstep { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); }
+  .pstep .pk {
+    width: 15px; height: 15px; border-radius: 50%;
+    background: var(--accent); color: #fff; font-size: 8px;
+    display: flex; align-items: center; justify-content: center; flex: 0 0 15px;
+  }
+  .followups { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .followups h4 { margin: 0 0 6px; font-size: 10.5px; letter-spacing: .5px; text-transform: uppercase; color: var(--faint); font-weight: 600; }
+  .fu {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 11px 4px; border-bottom: 1px solid var(--line2);
+    font-size: 13.5px; cursor: pointer; transition: color .12s;
+  }
+  .fu:hover { color: var(--accent-text); }
+  .fu .pl { color: var(--accent); font-size: 18px; }
+  .aacts { display: flex; gap: 8px; margin: 18px 0 24px; }
+
+  /* ── Company / Browse ── */
+  .cover { margin-bottom: 8px; }
+  .cover h1 { font-size: 22px; font-weight: 700; margin: 0 0 3px; }
+  .cover .tick { color: var(--muted); font-size: 12px; }
+  .cdesc { color: var(--muted); margin: 12px 0 16px; line-height: 1.65; font-size: 14px; }
+  .metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 18px; }
+  .metric { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 11px 13px; }
+  .metric .mv { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .metric .ml { font-size: 10.5px; color: var(--faint); text-transform: uppercase; letter-spacing: .3px; margin-top: 3px; }
+  .co-page-layout {
+    display: flex;
+    height: calc(100vh - 49px);
+    overflow: hidden;
+  }
+  .co-left {
+    flex: 1; overflow-y: auto;
+    padding: 40px 40px 40px 32px;
+  }
+  .co-right {
+    flex: 0 0 50%;
+    display: flex; flex-direction: column;
+    border-left: 1px solid var(--line);
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .co-right .chatlog { flex: 1; overflow-y: auto; padding: 24px 32px 8px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .co-right .sticky-composer { flex: 0 0 auto; padding: 0 32px 24px; background: var(--bg); }
+  .co-prompts { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+  .co-prompt {
+    padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px;
+    font-size: 13px; color: var(--muted); background: var(--panel);
+    text-align: left; cursor: pointer; transition: border-color .12s, color .12s;
+    align-self: flex-start;
+  }
+  .co-prompt:hover { border-color: var(--accent); color: var(--ink); }
+  .co-lhd { font-size: 10.5px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; color: var(--faint); margin-bottom: 10px; }
+
+  .pagehd { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  .pagehd h1 { font-size: 20px; font-weight: 700; margin: 0; display: flex; align-items: center; gap: 10px; }
+  .scopetoggle {
+    display: inline-flex; background: var(--chip); border-radius: 9px; padding: 2px;
+  }
+  .scopetoggle button {
+    padding: 5px 12px; border-radius: 7px; font-size: 12px; font-weight: 600; color: var(--muted);
+    transition: background .12s, color .12s;
+  }
+  .scopetoggle button.on {
+    background: var(--panel); color: var(--accent-text);
+    box-shadow: 0 1px 3px rgba(0,0,0,.07);
+  }
+  .browsesearch {
+    width: 100%; padding: 10px 14px; border: 1px solid var(--line);
+    border-radius: 10px; font-size: 13.5px; margin-bottom: 14px;
+    background: var(--panel); color: var(--ink);
+    transition: border-color .15s;
+  }
+  .browsesearch:focus { border-color: var(--accent); }
+  .doc {
+    display: flex; align-items: center; gap: 10px;
+    padding: 11px 12px; border: 1px solid var(--line);
+    border-radius: 10px; cursor: pointer; margin-bottom: 7px;
+    background: var(--panel); transition: border-color .12s;
+  }
+  .doc:hover { border-color: var(--accent); }
+  .doc .dt { flex: 1; font-size: 13px; color: var(--ink); }
+  .doc .co { color: var(--faint); font-size: 11px; margin-top: 2px; }
+  .doc .dd { color: var(--faint); font-size: 12px; flex: 0 0 90px; text-align: right; font-variant-numeric: tabular-nums; }
+  .directory .comp {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px; border: 1px solid var(--line);
+    border-radius: 10px; cursor: pointer; margin-bottom: 7px;
+    background: var(--panel); transition: border-color .12s;
+  }
+  .directory .comp:hover { border-color: var(--accent); }
+  .directory .cb {
+    width: 36px; height: 36px; border-radius: 9px;
+    background: linear-gradient(135deg, #5AC47E, #CEEBE5); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 15px; flex: 0 0 36px;
+  }
+
+  /* ── Document split ── */
+  .split { display: grid; grid-template-columns: 1fr 1fr; height: 100vh; }
+  .viewer { border-right: 1px solid var(--line); background: var(--sidebar-bg); overflow-y: auto; padding: 24px; }
+  .co-left h2 { font-size: 22px; font-weight: 700; margin: 0 0 4px; color: var(--ink); letter-spacing: -.2px; }
+  .co-left .sub { color: var(--muted); font-size: 12px; margin-bottom: 18px; }
+  .co-left p { font-size: 14px; line-height: 1.7; color: var(--muted); margin: 0 0 12px; }
+  .co-left b { color: var(--ink); font-weight: 600; }
+  .chatside { display: flex; flex-direction: column; height: 100vh; }
+  .crumb {
+    display: flex; align-items: center; gap: 7px;
+    padding: 12px 18px; border-bottom: 1px solid var(--line);
+    font-size: 12px; color: var(--faint); flex: 0 0 auto;
+  }
+  .crumb a { color: var(--muted); cursor: pointer; transition: color .1s; }
+  .crumb a:hover { color: var(--accent-text); }
+  .crumb .cur { color: var(--ink); font-weight: 600; }
+  .chatlog { flex: 1; overflow-y: auto; padding: 18px; }
+  .msg { margin-bottom: 14px; }
+  .msg.u { text-align: right; }
+  .bubble {
+    display: inline-block; max-width: 88%;
+    padding: 9px 13px; border-radius: 12px;
+    font-size: 13.5px; line-height: 1.6; text-align: left;
+  }
+  .msg.u .bubble { background: var(--accent-bg); color: var(--accent-text); }
+  .msg.a .bubble { background: var(--sidebar-bg); color: var(--ink); }
+  .chatcompose {
+    border-top: 1px solid var(--line);
+    padding: 12px 16px 16px; flex: 0 0 auto; background: var(--bg);
+  }
+  .preprompts { display: flex; flex-direction: column; align-items: flex-end; gap: 7px; margin-bottom: 9px; }
+  .pp {
+    padding: 7px 13px; border: 1px solid var(--line);
+    border-radius: 20px; font-size: 12.5px;
+    background: var(--panel); color: var(--muted);
+    transition: border-color .12s, color .12s;
+  }
+  .pp:hover { border-color: var(--accent); color: var(--accent-text); }
+  .pp.wide { min-width: 180px; text-align: center; }
+  .pp.act { background: var(--accent-bg); border-color: transparent; color: var(--accent-text); font-weight: 600; }
+  .cinput { display: flex; gap: 8px; align-items: center; }
+  .cinput input {
+    flex: 1; padding: 10px 13px; border: 1px solid var(--line);
+    border-radius: 10px; font-size: 13.5px;
+    background: var(--panel); color: var(--ink);
+    transition: border-color .15s;
+  }
+  .cinput input:focus { border-color: var(--accent); }
+
+  /* ── Compare ── */
+  .cmpbar { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin-bottom: 14px; }
+  .cmpchip {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 6px 12px; border-radius: 8px;
+    background: var(--accent-bg); color: var(--accent-text);
+    font-size: 13px; font-weight: 600;
+  }
+  .cmpchip .x { cursor: pointer; opacity: .6; transition: opacity .1s; }
+  .cmpchip .x:hover { opacity: 1; }
+  .addcmp {
+    padding: 6px 12px; border: 1px dashed var(--line);
+    border-radius: 8px; font-size: 13px; color: var(--muted);
+    transition: border-color .12s, color .12s;
+  }
+  .addcmp:hover { border-color: var(--accent); color: var(--accent-text); }
+  .cmp-wrap { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  table.cmp {
+    width: 100%; border-collapse: collapse; font-size: 13.5px;
+  }
+  table.cmp th, table.cmp td {
+    padding: 14px 18px; text-align: left;
+    border-bottom: 1px solid var(--line); vertical-align: top;
+  }
+  table.cmp tbody tr:last-child td { border-bottom: none; }
+  table.cmp th { font-size: 13.5px; font-weight: 700; color: var(--ink); background: #F3F5F9; }
+  table.cmp td { background: var(--panel); color: var(--ink); }
+  table.cmp td:first-child { color: var(--muted); font-weight: 400; width: 160px; background: #F9FAFC; }
+  .dimchips { display: flex; gap: 7px; flex-wrap: wrap; margin: 12px 0; }
+  .dimchip {
+    padding: 5px 11px; border: 1px solid var(--line);
+    border-radius: 20px; font-size: 12px;
+    background: var(--panel); cursor: pointer;
+    color: var(--muted); transition: background .12s, border-color .12s, color .12s;
+  }
+  .dimchip.on { background: var(--accent-bg); border-color: transparent; color: var(--accent-text); font-weight: 600; }
+
+  /* ── Report ── */
+  .reportwrap { display: grid; grid-template-columns: 252px 1fr; height: 100vh; }
+  .outline {
+    background: var(--sidebar-bg); border-right: 1px solid var(--line);
+    padding: 18px 14px; overflow-y: auto;
+  }
+  .outline h4 { margin: 0 0 4px; font-size: 10.5px; letter-spacing: .5px; text-transform: uppercase; color: var(--faint); font-weight: 700; }
+  .outline .hint { font-size: 11.5px; color: var(--faint); margin-bottom: 14px; line-height: 1.5; }
+  .secrow {
+    display: flex; align-items: center; gap: 9px;
+    padding: 8px 10px; border-radius: 8px; font-size: 13px;
+    margin-bottom: 4px; cursor: pointer;
+    background: var(--panel); border: 1px solid var(--line);
+    transition: border-color .12s;
+  }
+  .secrow.off { opacity: .5; background: transparent; }
+  .secrow .cx {
+    width: 15px; height: 15px; border-radius: 4px;
+    border: 1.5px solid var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: #fff; background: var(--accent);
+    flex: 0 0 15px;
+  }
+  .secrow.off .cx { background: transparent; color: transparent; border-color: var(--faint); }
+  .secrow .drag { margin-left: auto; color: var(--faint); font-size: 14px; }
+  .addsec {
+    width: 100%; padding: 9px; border: 1px dashed var(--line);
+    border-radius: 8px; font-size: 12px; color: var(--muted); margin-top: 6px;
+    transition: border-color .12s, color .12s;
+  }
+  .addsec:hover { border-color: var(--accent); color: var(--accent-text); }
+  .reportview { overflow-y: auto; }
+  .rvtop {
+    display: flex; align-items: center; gap: 10px;
+    padding: 13px 22px; border-bottom: 1px solid var(--line);
+    position: sticky; top: 0; background: var(--bg); z-index: 5;
+    font-size: 13.5px; font-weight: 700; color: var(--ink);
+  }
+  .rvtop .v {
+    font-size: 10px; background: var(--chip);
+    padding: 2px 8px; border-radius: 20px; color: var(--muted);
+    font-weight: 700; letter-spacing: .3px;
+  }
+  .rvbody { padding: 26px 34px; max-width: 680px; }
+  .rvbody h1 { font-size: 20px; margin: 0 0 4px; font-weight: 700; }
+  .rvbody .sub { color: var(--faint); font-size: 12px; margin-bottom: 20px; }
+  .rvsec { margin-bottom: 20px; }
+  .rvsec h3 { font-size: 14px; margin: 0 0 6px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .rvsec p { margin: 0 0 8px; font-size: 13.5px; line-height: 1.65; color: var(--muted); }
+  .compliance {
+    margin: 8px 0 0; background: #EFF7ED; border: 1px solid #D0E8CB;
+    border-radius: 9px; padding: 11px 13px; font-size: 12.5px;
+  }
+  .compliance .ph {
+    display: flex; align-items: center; gap: 7px;
+    font-weight: 700; color: var(--green); margin-bottom: 4px;
+  }
+  .compliance .ph .badge {
+    font-size: 9.5px; padding: 2px 7px; border-radius: 20px;
+    background: var(--green); color: #fff; font-weight: 700;
+  }
+  .reportchat {
+    border-top: 1px solid var(--line); padding: 11px 22px;
+    position: sticky; bottom: 0; background: var(--bg);
+  }
+
+  /* ── Utility ── */
+  .btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 13px; border: 1px solid var(--line);
+    border-radius: 8px; font-size: 12.5px;
+    background: var(--panel); color: var(--muted);
+    transition: border-color .12s, color .12s;
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent-text); }
+  .btn.p {
+    background: var(--accent); color: #fff; border-color: var(--accent);
+  }
+  .btn.p:hover { background: var(--accent-d); border-color: var(--accent-d); }
+  .note {
+    font-size: 11.5px; color: var(--faint); text-align: left;
+    padding: 10px 0; border-top: 1px dashed var(--line); margin-top: 28px;
+    line-height: 1.6;
+  }
+  .hidden { display: none !important; }
+
+  select {
+    font-family: inherit; font-size: 13px; padding: 8px;
+    border: 1px solid var(--line); border-radius: 8px;
+    background: var(--panel); color: var(--ink);
+    width: 100%; cursor: pointer;
+  }
+  select:focus { outline: 2px solid var(--accent); }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+
+    <div class="logo" onclick="go('home')">
+      <svg class="logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 269 84">
+        <path d="M84,42c0,23.196-18.804,42-42,42S0,65.196,0,42,18.804,0,42,0s42,18.804,42,42ZM21.856,32.513c0-.981-.8-1.777-1.788-1.777s-1.788.796-1.788,1.777v17.956c0,.981.8,1.777,1.788,1.777s1.788-.796,1.788-1.777v-17.956ZM30.89,27.93c0-.981-.8-1.777-1.788-1.777s-1.788.796-1.788,1.777v27.122c0,.981.8,1.777,1.788,1.777s1.788-.796,1.788-1.777v-27.122ZM39.924,31.765c0-.981-.8-1.777-1.788-1.777s-1.788.796-1.788,1.777v19.453c0,.981.8,1.777,1.788,1.777s1.788-.796,1.788-1.777v-19.453ZM47.403,33.355h-.467c-.859,0-1.555.692-1.555,1.545v13.183c0,.853.696,1.545,1.555,1.545h.467c.859,0,1.555-.692,1.555-1.545v-13.183c0-.853-.696-1.545-1.555-1.545ZM57.992,26.714c0-.981-.8-1.777-1.788-1.777s-1.788.796-1.788,1.777v29.74c0,.981.8,1.777,1.788,1.777s1.788-.796,1.788-1.777v-29.74ZM67.025,30.642c0-.981-.8-1.777-1.788-1.777s-1.788.796-1.788,1.777v21.697c0,.981.8,1.777,1.788,1.777s1.788-.796,1.788-1.777v-21.697Z"/>
+        <polygon points="124.661 16.188 115.458 38.067 113.29 38.067 104.087 16.188 106.461 16.188 114.418 35.189 122.433 16.188 124.661 16.188"/>
+        <polygon points="142.355 36.066 142.355 38.067 127.658 38.067 127.658 16.188 141.909 16.188 141.909 18.189 129.856 18.189 129.856 25.97 140.603 25.97 140.603 27.941 129.856 27.941 129.856 36.066 142.355 36.066"/>
+        <path d="M159.958,27.721c1.088-.958,1.634-2.302,1.634-4.031s-.546-3.13-1.634-4.079c-1.088-.949-2.662-1.422-4.72-1.422h-5.523v10.969h5.523c2.058,0,3.632-.479,4.72-1.437ZM161.711,38.067l-4.75-7.032c-.534.063-1.088.093-1.661.093h-5.581v6.938h-2.198v-21.878h7.779c2.652,0,4.729.666,6.236,2,1.504,1.335,2.255,3.166,2.255,5.501,0,1.708-.412,3.151-1.231,4.329-.822,1.178-1.995,2.028-3.519,2.549l5.078,7.502h-2.404l-.003-.003h-.001Z"/>
+        <path d="M170.278,37.473c-1.416-.521-2.51-1.208-3.28-2.064l.861-1.781c.752.792,1.752,1.434,2.998,1.922,1.246.491,2.534.735,3.859.735,1.861,0,3.256-.358,4.186-1.079.931-.72,1.394-1.651,1.394-2.799,0-.874-.252-1.573-.758-2.094-.503-.521-1.125-.922-1.855-1.202-.734-.28-1.752-.588-3.059-.922-1.564-.416-2.81-.816-3.741-1.202-.931-.386-1.728-.973-2.389-1.765-.664-.792-.994-1.865-.994-3.221,0-1.106.276-2.109.831-3.016s1.407-1.63,2.552-2.172c1.149-.542,2.574-.813,4.274-.813,1.188,0,2.349.172,3.489.515,1.137.343,2.122.819,2.953,1.422l-.743,1.844c-.87-.606-1.801-1.058-2.792-1.359-.991-.301-1.958-.452-2.91-.452-1.822,0-3.192.371-4.111,1.109-.922.741-1.379,1.693-1.379,2.859,0,.874.252,1.579.758,2.109s1.137.937,1.901,1.22c.761.28,1.785.59,3.074.922,1.525.395,2.756.786,3.695,1.172.94.386,1.737.97,2.389,1.75.652.78.979,1.838.979,3.172,0,1.106-.282,2.109-.846,3.016-.564.907-1.431,1.624-2.598,2.157-1.167.53-2.604.798-4.305.798-1.543,0-3.022-.259-4.438-.78l.003-.003.002.002Z"/>
+        <path d="M199.476,30.348l-4.987-11.753-4.987,11.753h9.976-.003.001ZM200.277,32.222h-11.577l-2.495,5.845h-2.286l9.5-21.878h2.167l9.5,21.878h-2.316l-2.495-5.845h.002Z"/>
+        <polygon points="225.897 16.188 225.897 38.067 224.088 38.067 210.728 20.313 210.728 38.067 208.531 38.067 208.531 16.188 210.34 16.188 223.73 33.942 223.73 16.188 225.897 16.188"/>
+        <path d="M236.126,36.816c-1.652-.958-2.95-2.287-3.889-3.986-.94-1.699-1.41-3.6-1.41-5.703s.47-4.007,1.41-5.703c.94-1.699,2.24-3.025,3.904-3.986,1.661-.958,3.522-1.437,5.581-1.437,1.543,0,2.968.271,4.274.813,1.307.542,2.416,1.335,3.325,2.374l-1.394,1.47c-1.622-1.729-3.671-2.594-6.145-2.594-1.643,0-3.137.395-4.483,1.187-1.346.792-2.401,1.874-3.162,3.251-.761,1.374-1.143,2.916-1.143,4.625s.382,3.251,1.143,4.625,1.816,2.458,3.162,3.251c1.346.792,2.84,1.187,4.483,1.187,2.495,0,4.541-.874,6.145-2.624l1.394,1.47c-.909,1.042-2.025,1.838-3.341,2.392-1.316.551-2.746.829-4.289.829-2.058,0-3.914-.479-5.566-1.437v-.003h.001Z"/>
+        <polygon points="268.707 36.066 268.707 38.067 254.011 38.067 254.011 16.188 268.261 16.188 268.261 18.189 256.209 18.189 256.209 25.97 266.955 25.97 266.955 27.941 256.209 27.941 256.209 36.066 268.707 36.066"/>
+        <g fill="#7f7f7f">
+          <polygon points="117.648 49.784 104.087 49.784 104.087 51.753 109.792 51.753 109.792 67.693 111.942 67.693 111.942 51.753 117.648 51.753 117.648 49.784"/>
+          <path d="M125.618,55.297c-.777-.469-1.761-.703-2.955-.703-.785,0-1.484.115-2.098.345-.614.231-1.152.564-1.612.998-.461.435-.854.951-1.177,1.548l1.842.716c.323-.614.737-1.062,1.241-1.343s1.105-.422,1.804-.422c.768,0,1.39.17,1.868.512.478.341.827.84,1.049,1.496.154.455.251,1.001.298,1.624h-3.573c-1.552,0-2.759.346-3.62,1.036-.862.691-1.292,1.685-1.292,2.981,0,1.228.422,2.187,1.267,2.878.844.692,2.016,1.036,3.517,1.036s2.644-.516,3.429-1.547c.123-.162.22-.349.324-.528l.086,1.769h1.894l.025-6.934c.017-1.347-.171-2.477-.563-3.389-.393-.912-.977-1.603-1.753-2.073ZM125.464,64.38c-.299.588-.721,1.04-1.266,1.356-.547.315-1.186.474-1.919.474-.887,0-1.578-.192-2.073-.576-.494-.384-.741-.907-.741-1.574,0-.733.251-1.295.754-1.688.503-.393,1.352-.589,2.547-.589h3.147v.512c0,.802-.15,1.496-.448,2.085Z"/>
+          <rect x="131.183" y="49.784" width="2.046" height="17.91"/>
+          <polygon points="146.892 54.9 144.308 54.9 138.858 60.719 138.858 49.784 136.812 49.784 136.812 67.693 138.858 67.693 138.858 63.52 140.758 61.481 144.871 67.693 147.404 67.693 142.11 60.031 146.892 54.9"/>
+          <path d="M161.08,66.017c-.196.061-.397.09-.602.09-.631,0-1.121-.175-1.471-.525s-.525-.848-.525-1.496v-7.369h3.838v-1.817h-3.838v-3.991h-2.047v3.991h-2.226v1.817h2.226v7.573c0,1.177.341,2.09,1.024,2.738.682.649,1.646.972,2.891.972.375,0,.742-.056,1.1-.166.358-.111.759-.311,1.202-.601l-.793-1.664c-.323.239-.584.388-.779.447Z"/>
+          <path d="M174.077,55.45c-.963-.571-2.077-.857-3.339-.857-1.228,0-2.325.285-3.288.857-.964.571-1.714,1.361-2.251,2.367-.537,1.007-.806,2.167-.806,3.48s.273,2.473.819,3.479c.546,1.006,1.301,1.795,2.264,2.367.964.571,2.069.857,3.313.857s2.345-.285,3.301-.857c.955-.571,1.702-1.361,2.239-2.367s.807-2.167.807-3.479-.27-2.473-.807-3.48c-.537-1.006-1.287-1.795-2.252-2.367ZM174.513,63.805c-.367.716-.866,1.279-1.497,1.688-.631.409-1.373.614-2.226.614-.835,0-1.581-.205-2.239-.614-.656-.409-1.168-.976-1.535-1.702-.367-.725-.55-1.556-.55-2.494,0-.955.183-1.791.55-2.507.366-.717.869-1.28,1.509-1.689.64-.409,1.377-.614,2.213-.614.853,0,1.603.205,2.252.614.649.409,1.156.972,1.523,1.689.366.716.55,1.552.55,2.507s-.184,1.79-.55,2.507Z"/>
+          <polygon points="189.058 59.48 196.734 59.48 196.734 57.536 189.058 57.536 189.058 51.753 197.475 51.753 197.475 49.784 186.883 49.784 186.883 67.693 197.527 67.693 197.527 65.723 189.058 65.723 189.058 59.48"/>
+          <path d="M211.943,50.922c-1.288-.759-2.776-1.138-4.465-1.138h-5.45v17.91h5.45c1.689,0,3.177-.384,4.465-1.152,1.287-.768,2.298-1.825,3.032-3.173.734-1.347,1.1-2.891,1.1-4.631,0-1.756-.366-3.308-1.1-4.656-.734-1.347-1.745-2.401-3.032-3.16ZM213.402,61.438c-.332.844-.793,1.59-1.381,2.239-.589.648-1.267,1.147-2.035,1.496-.767.35-1.603.525-2.507.525h-3.274v-13.918h3.274c.904,0,1.741.175,2.507.525.768.35,1.446.848,2.035,1.496.588.649,1.049,1.394,1.381,2.239.333.844.499,1.744.499,2.699s-.166,1.855-.499,2.7Z"/>
+          <path d="M229.304,60.427h4.395c-.016,1.083-.266,2.044-.762,2.879-.512.862-1.215,1.535-2.111,2.021-.896.486-1.923.73-3.083.73-1.382,0-2.615-.315-3.698-.948-1.083-.63-1.927-1.496-2.533-2.596-.606-1.101-.908-2.35-.908-3.749,0-1.45.308-2.72.921-3.812.614-1.091,1.458-1.948,2.534-2.571,1.074-.622,2.302-.934,3.684-.934.698,0,1.394.119,2.084.358.692.239,1.326.575,1.907,1.01.579.436,1.04.926,1.381,1.471l1.714-1.177c-.46-.698-1.066-1.321-1.817-1.867-.75-.546-1.578-.977-2.481-1.292-.905-.315-1.834-.474-2.789-.474-1.826,0-3.437.397-4.836,1.19-1.399.793-2.495,1.885-3.288,3.275-.793,1.39-1.19,2.998-1.19,4.822,0,1.791.397,3.382,1.19,4.772.793,1.391,1.889,2.482,3.288,3.275,1.399.793,3.01,1.19,4.836,1.19,1.569,0,2.959-.328,4.17-.985,1.211-.656,2.158-1.57,2.841-2.738.67-1.148,1.007-2.492,1.018-4.029h.004v-1.69h-6.473v1.868Z"/>
+          <path d="M246.243,49.784h-2.201l-7.292,17.91h2.302l2.044-5.092h8.168l2.044,5.092h2.277l-7.292-17.91h-.051ZM241.877,60.657l3.304-8.229,3.303,8.229h-6.607Z"/>
+          <path d="M268.707,67.693l-4.382-7.476c.211-.079.42-.163.621-.264.938-.469,1.68-1.113,2.226-1.931.546-.82.819-1.757.819-2.815s-.252-1.996-.754-2.814c-.504-.819-1.203-1.458-2.098-1.918-.896-.461-1.923-.691-3.084-.691h-5.833v17.91h2.175v-7.036h3.377c.145,0,.282-.015.423-.022l4.131,7.057h2.38ZM258.396,58.662v-6.909h3.607c1.125,0,2.042.32,2.751.959.707.64,1.062,1.472,1.062,2.495,0,.665-.158,1.258-.474,1.779-.316.521-.729.93-1.241,1.228-.512.299-1.092.448-1.74.448h-3.966Z"/>
+        </g>
+      </svg>
+    </div>
+
+    <button class="new-btn" onclick="go('home')">
+      <span class="new-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+      </span>
+      New
+    </button>
+
+    <!-- ask → message-circle-question -->
+    <button class="navbtn active" id="nav-home" onclick="go('home')">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <path d="M12 17h.01"/>
+        </svg>
+      </span>
+      Ask
+    </button>
+
+    <!-- companies → building-2 -->
+    <button class="navbtn" id="nav-companies" onclick="go('companies')">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/>
+          <path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/>
+          <path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/>
+          <path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/>
+        </svg>
+      </span>
+      Companies
+    </button>
+
+    <!-- compare → fold-vertical -->
+    <button class="navbtn" id="nav-compare" onclick="go('compare')">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22v-6"/>
+          <path d="M12 2v6"/>
+          <path d="m15 19-3-3-3 3"/>
+          <path d="m9 5 3 3 3-3"/>
+          <path d="M4 12H2"/>
+          <path d="M10 12H8"/>
+          <path d="M16 12h-2"/>
+          <path d="M22 12h-2"/>
+        </svg>
+      </span>
+      Compare
+    </button>
+
+    <!-- filings → folder -->
+    <button class="navbtn" id="nav-filings" onclick="openBrowse('filing')">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>
+        </svg>
+      </span>
+      Filings
+    </button>
+
+    <!-- news → newspaper -->
+    <button class="navbtn" id="nav-news" onclick="openBrowse('news')">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 0-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/>
+          <path d="M18 14h-8"/><path d="M15 18h-5"/>
+          <path d="M10 6h8v4h-8V6Z"/>
+        </svg>
+      </span>
+      News
+    </button>
+
+    <!-- transcripts → message-square-text -->
+    <button class="navbtn" id="nav-transcripts" onclick="openBrowse('transcript')">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          <path d="M13 8H7"/>
+          <path d="M17 12H7"/>
+        </svg>
+      </span>
+      Earnings Transcripts
+    </button>
+
+    <!-- history → history -->
+    <button class="navbtn" id="nav-library" onclick="go('library')">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+          <path d="M3 3v5h5"/>
+          <path d="M12 7v5l4 2"/>
+        </svg>
+      </span>
+      History
+    </button>
+
+    <!-- output centre → file-output -->
+    <button class="navbtn" onclick="alert('Output Center: every generated report and download, searchable.')">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 22h14a2 2 0 0 0 2-2V7.5L14.5 2H6a2 2 0 0 0-2 2v4"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <path d="M2 15h10"/><path d="m9 18 3-3-3-3"/>
+        </svg>
+      </span>
+      Output Centre
+    </button>
+
+    <div class="spacer"></div>
+    <div id="ctxSlot"></div>
+
+    <!-- settings → settings-2 -->
+    <button class="ctxbtn">
+      <span class="ic">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </span>
+      Settings · Account
+    </button>
+
+  </aside>
+
+  <main class="main" id="main"></main>
+</div>
+
+<script>
+/* ──────────────── Data ──────────────── */
+const companies = [
+  {id:'medx', name:'Med-X Inc.',         tick:'TSXV: MDX',  sector:'Medical Technology'},
+  {id:'nano', name:'Nano One Materials', tick:'TSX: NANO',  sector:'Battery Materials'},
+  {id:'lrc',  name:'Lithium Royalty',    tick:'TSX: LIRC',  sector:'Mining Royalties'},
+  {id:'well', name:'WELL Health',        tick:'TSX: WELL',  sector:'Digital Health'},
+  {id:'aura', name:'Aura Minerals',      tick:'TSX: ORA',   sector:'Gold Mining'},
+];
+const docs = {
+  medx:{
+    filing:[
+      {t:'Management Discussion & Analysis — Q2 2026',d:'Jul 8, 2026'},
+      {t:'Condensed Interim Financial Statements — Q2 2026',d:'Jul 8, 2026'},
+      {t:'Material Change Report — EU Distribution Agreement',d:'Jun 19, 2026'},
+      {t:'Annual Information Form — FY2025',d:'Mar 27, 2026'},
+    ],
+    news:[
+      {t:'News Release — Q2 2026 Financial Results',d:'Jul 8, 2026'},
+      {t:'News Release — Med-X Signs EU Distribution Agreement',d:'Jun 18, 2026'},
+      {t:'News Release — New Chief Medical Officer Appointed',d:'May 2, 2026'},
+    ],
+    transcript:[
+      {t:'Q2 2026 Earnings Call Transcript',d:'Jul 9, 2026'},
+      {t:'Q1 2026 Earnings Call Transcript',d:'Apr 11, 2026'},
+    ],
+  },
+  nano:{
+    filing:[{t:'MD&A — Q2 2026',d:'Jul 12, 2026'},{t:'Interim Financials — Q2 2026',d:'Jul 12, 2026'}],
+    news:[{t:'News Release — Pilot Plant Milestone',d:'Jun 30, 2026'}],
+    transcript:[{t:'Q2 2026 Earnings Call Transcript',d:'Jul 13, 2026'}],
+  },
+  well:{
+    filing:[{t:'MD&A — Q2 2026',d:'Jul 10, 2026'}],
+    news:[{t:'News Release — Clinic Acquisition',d:'Jul 1, 2026'}],
+    transcript:[{t:'Q2 2026 Earnings Call Transcript',d:'Jul 11, 2026'}],
+  },
+};
+const tagName = {filing:'FILING', news:'NEWS', transcript:'TRANSCRIPT', web:'WEB'};
+function coName(id){ return (companies.find(c=>c.id===id)||{}).name||''; }
+
+/* ──────────────── State ──────────────── */
+let ctx = {company:null, web:false};
+let currentView='home', browseType='filing', browseGlobal=false;
+let cmp = {companies:['medx','nano'], dims:['Revenue','Gross margin','Key risks']};
+let report = {type:'Research report', sections:[
+  {id:'overview',name:'Overview',on:true},
+  {id:'metrics',name:'Financial highlights',on:true},
+  {id:'devel',name:'Recent developments',on:true},
+  {id:'risks',name:'Key risks',on:true},
+  {id:'outlook',name:'Outlook',on:true},
+  {id:'esg',name:'ESG disclosure',on:false},
+  {id:'debt',name:'Debt & liquidity',on:false},
+]};
+
+/* ──────────────── Context chip ──────────────── */
+function renderCtx(){
+  const s = document.getElementById('ctxSlot');
+  if(ctx.company){
+    s.innerHTML=`<div class="ctxchip">◐ ${coName(ctx.company)} <span class="x" onclick="clearCtx()">✕</span></div>`;
+  } else {
+    s.innerHTML=`<div class="ctxchip empty">◌ No company selected</div>`;
+  }
+}
+function clearCtx(){ ctx.company=null; renderCtx(); if(['home','answer'].includes(currentView)) go(currentView); }
+
+/* ──────────────── Composer ──────────────── */
+function sendIcon(){
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>`;
+}
+function composer(placeholder){
+  const c = ctx.company;
+  const coLabel = c
+    ? `<button class="cpill on" onclick="clearCtx()">${coName(c)} ✕</button>`
+    : `<button class="cpill" onclick="alert('Company is auto-detected from your question. Name one to lock it in.')"><span class="tog on"></span>Company auto-detect: On</button>`;
+  return `
+  <div class="composer">
+    <textarea id="askbox" rows="1" placeholder="${placeholder}"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();submitAsk()}"
+      oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'"></textarea>
+    <div class="cbar">
+      <button class="cpill" onclick="alert('Attach files or paste URLs to bring outside material into the thread.')">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+        Attach
+      </button>
+      <button class="cpill" onclick="toggleWeb()">
+        <span class="tog ${ctx.web?'on':''}"></span>Web: ${ctx.web?'On':'Off'}
+      </button>
+      ${coLabel}
+    </div>
+    <button class="send-btn" onclick="submitAsk()" title="Send">${sendIcon()}</button>
+  </div>
+  <div class="srcnote">Grounded in ${c?coName(c)+"'s":'the'} filings, news &amp; transcripts${ctx.web?' <b>+ the web</b>':' — disclosed record only'}.</div>`;
+}
+function toggleWeb(){ ctx.web=!ctx.web; if(['home','answer'].includes(currentView)) go(currentView); }
+function toggleSources(){
+  const body=document.getElementById('srcBody');
+  const chev=document.getElementById('srcChevron');
+  if(!body||!chev) return;
+  const collapsed=body.classList.toggle('collapsed');
+  chev.classList.toggle('open', !collapsed);
+}
+
+/* Company inference */
+function detectCompany(q){
+  const s = q.toLowerCase();
+  for(const c of companies){
+    const first = c.name.toLowerCase().split(' ')[0].replace(/[^a-z]/g,'');
+    if(s.includes(first)||s.includes(c.tick.split(':')[1].trim().toLowerCase())) return {status:'match',id:c.id};
+  }
+  if(/\b(they|their|them|it|its|this company|the company)\b/.test(s)&&!ctx.company) return {status:'ambiguous'};
+  if(/\b(csa|regulation|market|sector|industry|guidance|peers)\b/.test(s)&&!ctx.company) return {status:'none'};
+  return {status: ctx.company?'context':'none'};
+}
+let pendingQuery='';
+function coChatSend(presetQ){
+  const box = document.getElementById('askbox');
+  const q = presetQ || (box?.value||'').trim();
+  if(!q) return;
+  const log = document.getElementById('coChat');
+  if(!log) return;
+  const prompts = document.getElementById('coPrompts');
+  if(prompts) prompts.remove();
+  log.innerHTML += `<div class="msg u"><span class="bubble">${escapeHtml(q)}</span></div>`;
+  const c = ctx.company||'medx';
+  const ans = q.toLowerCase().includes('earnings') || q.toLowerCase().includes('management')
+    ? `On the Q2 2026 earnings call, the CFO reported revenue of $18.4M (up 12% QoQ) and guided to continued double-digit sequential growth into Q3, contingent on EU regulatory clearances. Gross margin expanded to 61%.`
+    : `${coName(c)} reported Q2 2026 revenue of $18.4M, up 12% from $16.4M in Q1, driven by the new EU distribution agreement signed in June. The MD&A flags FX exposure on EUR receivables as a newly material risk. Gross margin improved to 61% on improved yield.`;
+  log.innerHTML += `<div class="msg a"><span class="bubble">${ans}</span></div>`;
+  if(box) box.value = '';
+  log.scrollTop = log.scrollHeight;
+}
+function submitAsk(){
+  if(currentView==='company'){ coChatSend(); return; }
+  if(currentView==='doc'){ ppSend((document.getElementById('askbox')?.value||'').trim()); return; }
+  const q = (document.getElementById('askbox').value||'').trim() || 'Summarize the latest MD&A and how Q2 revenue compares to Q1';
+  pendingQuery = q;
+  const det = detectCompany(q);
+  if(det.status==='match')    { ctx.company=det.id; renderCtx(); showAnswer(q,'detected'); }
+  else if(det.status==='context') { showAnswer(q,'context'); }
+  else if(det.status==='ambiguous') { showDisambig(q); }
+  else { ctx.company=null; renderCtx(); showAnswer(q,'general'); }
+}
+
+/* ──────────────── Router ──────────────── */
+function setActiveNav(id){
+  document.querySelectorAll('.sidebar .navbtn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id)?.classList.add('active');
+}
+function go(view){
+  currentView = view;
+  const m = document.getElementById('main');
+  m.scrollTop = 0;
+  renderCtx();
+  if(view==='home')      { setActiveNav('nav-home');       m.innerHTML = viewHome(); }
+  else if(view==='answer')    { setActiveNav('nav-home');       m.innerHTML = viewAnswer(lastAnswer.q, lastAnswer.how); }
+  else if(view==='companies') { setActiveNav('nav-companies');  m.innerHTML = viewCompanies(); }
+  else if(view==='company')   { setActiveNav('nav-companies');  m.innerHTML = viewCompanyOverview(); }
+  else if(view==='compare')   { setActiveNav('nav-compare');    m.innerHTML = viewCompare(); }
+  else if(view==='browse')    {
+    setActiveNav('nav-'+(browseType==='filing'?'filings':browseType==='news'?'news':'transcripts'));
+    m.innerHTML = viewBrowse();
+  }
+  else if(view==='doc')    { m.innerHTML = viewDoc(); }
+  else if(view==='report') { m.innerHTML = viewReport(); }
+  else if(view==='library'){ setActiveNav('nav-library'); m.innerHTML = viewLibrary(); }
+}
+
+/* ──────────────── Home ──────────────── */
+function viewHome(){
+  return `<div class="wrap">
+    <div class="hero">
+      <p class="page-eyebrow">Search Filings</p>
+      <h1>Ask the disclosure record.</h1>
+      <p>Just ask — we'll find the company. Filings, news &amp; earnings transcripts, plus the web when you want it.</p>
+    </div>
+    ${composer('Ask Anything…')}
+    <hr class="content-divider">
+    <div class="homestrip">
+      <div class="card"><h4>Recent threads</h4>
+        <div class="rowlink" onclick="quick('Summarize the latest MD&amp;A and Q2 vs Q1 revenue')">
+          <span class="tg ask">ASK</span><span class="label">MD&amp;A summary · Q2 vs Q1 revenue</span>
+        </div>
+        <div class="rowlink" onclick="go('compare')">
+          <span class="tg cmp">COMPARE</span><span class="label">Med-X vs Nano One · margins</span>
+        </div>
+        <div class="rowlink" onclick="go('report')">
+          <span class="tg create">REPORT</span><span class="label">Research report · Med-X</span>
+        </div>
+      </div>
+      <div class="card"><h4>Recently viewed</h4>
+        <div class="rowlink" onclick="openDoc('medx','filing','Management Discussion &amp; Analysis — Q2 2026','Jul 8, 2026')">
+          <span class="tg filing">FILING</span><span class="label">Med-X MD&amp;A — Q2 2026</span>
+        </div>
+        <div class="rowlink" onclick="openDoc('medx','transcript','Q2 2026 Earnings Call Transcript','Jul 9, 2026')">
+          <span class="tg transcript">TRANSCRIPT</span><span class="label">Med-X Q2 call</span>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+function quick(q){ go('home'); setTimeout(()=>{ const b=document.getElementById('askbox'); if(b){b.value=q;} submitAsk(); }, 0); }
+
+/* ──────────────── Disambiguation ──────────────── */
+function showDisambig(q){
+  setActiveNav('nav-home'); currentView='home';
+  document.getElementById('main').innerHTML=`<div class="wrap">
+    <h2 class="qhead">${escapeHtml(q)}</h2>
+    <div class="disamb">
+      <div class="q">🔎 That question refers to a company, but I'm not sure <b>which one</b>. Which did you mean?</div>
+      <div class="opts">
+        ${companies.slice(0,4).map(c=>`<button class="opt" onclick="pickDisambig('${c.id}')">${c.name} <span style="color:var(--faint)">· ${c.tick}</span></button>`).join('')}
+      </div>
+    </div>
+    <div style="margin-top:20px">${composer('Refine your question…')}</div>
+    <div class="note">Ambiguity path: the system detected a company reference ("their/they/this company") with no active company set, so it asks rather than guessing.</div>
+  </div>`;
+}
+function pickDisambig(id){ ctx.company=id; renderCtx(); showAnswer(pendingQuery,'detected'); }
+
+/* ──────────────── Answer ──────────────── */
+function openSrc(tag,co,title){ if(tag==='web'){alert('Opens the web source in a new tab.');} else {openDoc(co,tag,title,'Jul 2026');} }
+let lastAnswer={q:'',how:''};
+function showAnswer(q,how){ lastAnswer={q,how}; currentView='answer'; setActiveNav('nav-home'); document.getElementById('main').innerHTML=viewAnswer(q,how); document.getElementById('main').scrollTop=0; }
+function viewAnswer(q,how){
+  const web=ctx.web; const c=ctx.company;
+  const detLine = how==='detected'
+    ? `✓ Detected company from your question — <b>${coName(c)}</b> is now the active context.`
+    : how==='context'
+    ? `◐ Answered in the context of <b>${coName(c)}</b>.`
+    : how==='general'
+    ? `◌ No specific company — answered from ${web?'the web':'regulatory / market'} sources.`
+    : `◐ <b>${coName(c)}</b>`;
+  let srcCards, answerBody;
+  if(how==='general'){
+    srcCards=[
+      {tag:'web',t:'CSA Staff Notice 51-XXX',m:'securities-administrators.ca'},
+      {tag:'web',t:'Continuous disclosure update — Jul 2026',m:'regulatory-brief.com'},
+      {tag:'web',t:'CSA news release',m:'osc.ca'},
+    ];
+    answerBody=`<p>This month the CSA published updated staff guidance on continuous disclosure obligations, focused on climate-related risk reporting and non-GAAP measures<a class="cite">1</a><a class="cite">2</a>. Key changes include tighter expectations around forward-looking-information cautionary language<a class="cite">3</a>.</p>
+      <p style="color:var(--faint);font-size:13px">No company context was needed for this question. Name a company any time to scope future answers to its record.</p>`;
+  } else {
+    srcCards=[
+      {tag:'filing',    t:'MD&A — Q2 2026',          m:coName(c)+' · p.14'},
+      {tag:'transcript',t:'Q2 2026 Earnings Call',   m:coName(c)+' · CFO'},
+      {tag:'news',      t:'Q2 2026 Financial Results',m:coName(c)+' · release'},
+      web
+        ? {tag:'web',t:'Med-tech sector outlook 2026',m:'industry-analyst.com'}
+        : {tag:'filing',t:'Interim Financials Q2 2026',m:coName(c)+' · Note 4'},
+    ];
+    answerBody=`<p>${coName(c)} reported <b>Q2 2026 revenue of $18.4M</b>, up <b>12%</b> from <b>$16.4M in Q1</b><a class="cite">1</a><a class="cite">3</a>, driven mainly by the new EU distribution agreement signed in June<a class="cite">2</a>.</p>
+      <h3>What the MD&amp;A emphasizes</h3>
+      <p>Gross margin expanded to <b>61%</b> (from 58%) on improved yield; management flags FX exposure on EUR receivables as newly material<a class="cite">1</a>.</p>
+      <h3>On the earnings call</h3>
+      <p>The CFO guided to continued double-digit sequential growth into Q3, contingent on EU regulatory clearances<a class="cite">2</a>.</p>
+      ${web?`<h3>Market context <span style="font-size:11px;color:var(--faint)">(web)</span></h3><p>Analysts expect mid-teens revenue growth across comparable med-tech names in 2026, putting ${coName(c)} slightly ahead of peer pace<a class="cite">4</a>.</p>`:''}`;
+  }
+  const ctxPill = c
+    ? `<span class="answer-ctx-pill">${coName(c)} <span class="xbtn" onclick="clearCtx()">×</span></span>`
+    : '';
+  return `<div class="answer-topbar"><div class="answer-topbar-inner">Ask about ${ctxPill}</div></div>
+  <div class="wrap">
+    <h2 class="qhead">${escapeHtml(q)}</h2>
+    <div class="detect">${detLine}</div>
+    <div class="answer">${answerBody}</div>
+    <hr class="content-divider">
+    <div class="srchead" onclick="toggleSources()" id="srchead">
+      <span class="src-chevron open" id="srcChevron">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+      </span>
+      Sources · ${srcCards.length} · ${web?'disclosed record + web':(how==='general'?'web':'disclosed record only')}
+    </div>
+    <div class="src-body" id="srcBody">
+      <div class="sources">
+        ${srcCards.map(s=>`<div class="src" onclick="openSrc('${s.tag}','${c}','${esc(s.t)}')">
+          <span class="tg ${s.tag}">${tagName[s.tag]}</span>
+          <div class="st">${s.t}</div>
+          <div class="sm">${s.m}</div>
+        </div>`).join('')}
+      </div>
+      <div class="progress">
+        ${how!=='general'?`<div class="pstep"><span class="pk">✓</span> Searching ${coName(c)}'s filings, news &amp; transcripts</div>`:''}
+        ${web||how==='general'?'<div class="pstep"><span class="pk">✓</span> Searching the web</div>':''}
+        <div class="pstep"><span class="pk">✓</span> Verifying figures against sources</div>
+      </div>
+    </div>
+    <div class="followups"><h4>Follow-up</h4>
+      <div class="fu" onclick="quick('How did the FX risk language change vs the FY2025 AIF?')"><span>How has the FX risk language changed vs. the AIF?</span><span class="pl">＋</span></div>
+      <div class="fu" onclick="go('compare')"><span>Compare this to peers</span><span class="pl">＋</span></div>
+      <div class="fu" onclick="go('report')"><span>Turn this into a research report</span><span class="pl">＋</span></div>
+    </div>
+    <div class="aacts">
+      <button class="btn" onclick="alert('Share link created.')">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><polyline points="15 17 20 12 15 7"/><path d="M4 18v-2a4 4 0 0 1 4-4h12"/></svg>
+        Share
+      </button>
+      <button class="btn" onclick="alert('Branded PDF downloaded.')">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg>
+        Download Report
+      </button>
+    </div>
+    <div class="sticky-composer">${composer('Ask a follow-up…')}</div>
+  </div>`;
+}
+
+/* ──────────────── Companies directory ──────────────── */
+function viewCompanies(){
+  return `<div class="wrap">
+    <div class="pagehd"><h1>Companies</h1></div>
+    <input class="browsesearch" placeholder="Filter companies…" oninput="filterDir(this.value)">
+    <div class="directory" id="dir">${companies.map(dirRow).join('')}</div>
+    <div class="note">Optional — you never have to start here. Picking a company sets it as your active context.</div>
+  </div>`;
+}
+function dirRow(c){
+  return `<div class="comp" onclick="pickCompany('${c.id}')">
+    <div>
+      <div style="font-weight:600;color:var(--ink)">${c.name}</div>
+      <div style="color:var(--faint);font-size:11.5px">${c.tick} · ${c.sector}</div>
+    </div>
+  </div>`;
+}
+function filterDir(q){ q=q.toLowerCase(); document.getElementById('dir').innerHTML=companies.filter(c=>c.name.toLowerCase().includes(q)).map(dirRow).join(''); }
+function pickCompany(id){ ctx.company=id; renderCtx(); go('company'); }
+
+function viewCompanyOverview(){
+  const c=ctx.company||'medx'; const nm=coName(c);
+  const co=companies.find(x=>x.id===c)||{};
+  const recent=[docs[c]?.filing?.[0], docs[c]?.news?.[0], docs[c]?.transcript?.[0]].filter(Boolean);
+  return `<div class="answer-topbar"><div class="answer-topbar-inner flush"><span class="back-link" onclick="go('companies')">‹ All Companies</span></div></div>
+  <div class="co-page-layout">
+    <div class="co-left">
+      <div class="cover">
+        <h1>${nm}</h1>
+        <div class="tick">${co.tick} · ${co.sector} · Vancouver, BC</div>
+      </div>
+      <div class="cdesc">${nm} is a public company on the Versance platform. <span style="color:var(--faint)">(Auto-generated description.)</span></div>
+      <div class="metrics">
+        <div class="metric"><div class="mv">$18.4M</div><div class="ml">Q2 Revenue</div></div>
+        <div class="metric"><div class="mv">61%</div><div class="ml">Gross Margin</div></div>
+        <div class="metric"><div class="mv">$142M</div><div class="ml">Market Cap</div></div>
+        <div class="metric"><div class="mv">11</div><div class="ml">Filings YTD</div></div>
+      </div>
+      <div class="homestrip" style="margin-top:22px">
+        <div class="card"><h4>Most recent — all types</h4>
+          ${recent.map(d=>{
+            const ty=docs[c].filing.includes(d)?'filing':docs[c].news.includes(d)?'news':'transcript';
+            return `<div class="rowlink" onclick="openDoc('${c}','${ty}','${esc(d.t)}','${d.d}')">
+              <span class="tg ${ty}">${tagName[ty]}</span><span class="label">${d.t}</span>
+            </div>`;
+          }).join('')}
+          <div class="rowlink" style="color:var(--accent-text);font-weight:600" onclick="openBrowse('filing')">View all filings →</div>
+        </div>
+        <div class="card"><h4>Conversation history</h4>
+          <div class="rowlink" onclick="quick('Summarize the latest MD&A')"><span class="label">MD&amp;A summary</span></div>
+          <div class="rowlink" onclick="quick('What are the key risks?')"><span class="label">Key risks</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="co-right">
+      <div class="chatlog" id="coChat">
+        <div id="coPrompts" class="co-prompts">
+          <button class="co-prompt" onclick="coChatSend('Summarize the latest MD&A and key risks')">Summarize the latest MD&A and key risks</button>
+          <button class="co-prompt" onclick="coChatSend('What did management say on their last earnings call?')">What did management say on their last earnings call?</button>
+        </div>
+      </div>
+      <div class="sticky-composer">${composer('Ask anything about '+nm+'…')}</div>
+    </div>
+  </div>`;
+}
+
+/* ──────────────── Browse ──────────────── */
+function openBrowse(type){ browseType=type; go('browse'); }
+function viewBrowse(){
+  const label = browseType==='filing'?'Filings':browseType==='news'?'News':'Earnings Call Transcripts';
+  const c = ctx.company;
+  let rows=[];
+  if(browseGlobal||!c){ Object.keys(docs).forEach(cid=>{ (docs[cid][browseType]||[]).forEach(d=>rows.push({...d,co:cid})); }); }
+  else { (docs[c]?.[browseType]||[]).forEach(d=>rows.push({...d,co:c})); }
+  rows.sort((a,b)=>new Date(b.d)-new Date(a.d));
+  return `<div class="wrap">
+    <div class="pagehd">
+      <h1>${label}</h1>
+      <div class="scopetoggle">
+        <button class="${(!browseGlobal&&c)?'on':''}" onclick="setBrowseScope(false)" ${!c?'disabled style="opacity:.4"':''}>${c?coName(c):'(no company)'}</button>
+        <button class="${(browseGlobal||!c)?'on':''}" onclick="setBrowseScope(true)">All companies</button>
+      </div>
+    </div>
+    <input class="browsesearch" id="bsearch" placeholder="Search ${label.toLowerCase()} by name…" oninput="renderBrowseRows()">
+    <div id="browserows">${rows.map(browseRow).join('')}</div>
+    <div class="note">Search · retrieve · view. ${c?'Defaults to '+coName(c)+'; toggle to search every company.':'No active company — showing all. Set a company to scope it.'} Click any document to chat with it.</div>
+  </div>`;
+}
+function setBrowseScope(g){ browseGlobal=g; go('browse'); }
+function browseRow(d){
+  return `<div class="doc" onclick="openDoc('${d.co}','${browseType}','${esc(d.t)}','${d.d}')">
+    <span class="tg ${browseType}">${tagName[browseType]}</span>
+    <div style="flex:1"><div class="dt">${d.t}</div><div class="co">${coName(d.co)}</div></div>
+    <span class="dd">${d.d}</span>
+  </div>`;
+}
+function renderBrowseRows(){
+  const q=(document.getElementById('bsearch').value||'').toLowerCase();
+  const c=ctx.company; let rows=[];
+  if(browseGlobal||!c){ Object.keys(docs).forEach(cid=>{ (docs[cid][browseType]||[]).forEach(d=>rows.push({...d,co:cid})); }); }
+  else { (docs[c]?.[browseType]||[]).forEach(d=>rows.push({...d,co:c})); }
+  rows = rows.filter(d=>d.t.toLowerCase().includes(q)).sort((a,b)=>new Date(b.d)-new Date(a.d));
+  document.getElementById('browserows').innerHTML = rows.map(browseRow).join('')||'<div style="padding:14px;color:var(--faint)">No matches.</div>';
+}
+
+/* ──────────────── Document chat ──────────────── */
+let curDoc={};
+function openDoc(co,type,t,d){ curDoc={co,type,t,d,started:false}; ctx.company=co; renderCtx(); currentView='doc'; document.getElementById('main').innerHTML=viewDoc(); }
+function viewDoc(){
+  const isT = curDoc.type==='transcript';
+  const p1 = isT?'Summarize the call':'Summarize this document';
+  const p2 = isT?'What did analysts ask?':'Highlight key points';
+  const typeLabel = curDoc.type==='filing'?'Filings':curDoc.type==='news'?'News':'Earnings Transcripts';
+  const body = isT
+    ?`<h2>${curDoc.t}</h2><div class="sub">${coName(curDoc.co)} · ${curDoc.d} · Earnings Call Transcript</div>
+      <p><b>Operator:</b> Good morning, and welcome to the ${coName(curDoc.co)} Q2 2026 earnings call…</p>
+      <p><b>CEO:</b> Q2 was strong — revenue of $18.4M, up 12% sequentially, driven by our new EU distribution agreement…</p>
+      <p><b>CFO:</b> Gross margin expanded to 61%. We expect double-digit sequential growth into Q3, contingent on EU clearances…</p>
+      <p><b>Analyst (Q):</b> Can you quantify the EU agreement's contribution this quarter?</p>`
+    :`<h2>${curDoc.t}</h2><div class="sub">${coName(curDoc.co)} · ${curDoc.d} · via EDGAR</div>
+      <p>This Management's Discussion and Analysis should be read with the condensed interim financial statements for the three months ended June 30, 2026…</p>
+      <p><b>Results of Operations.</b> Revenue was $18.4M, up 12% from $16.4M in the prior quarter, primarily attributable to the new European distribution agreement…</p>
+      <p><b>Liquidity.</b> The Company maintains FX exposure on EUR-denominated receivables, now considered a material risk…</p>`;
+  return `<div class="answer-topbar"><div class="answer-topbar-inner flush">
+    <span class="back-link" onclick="openBrowse('${curDoc.type}')">‹ ${typeLabel}</span>
+    <span style="color:var(--line)">·</span>
+    <span class="back-link" onclick="go('company')">${coName(curDoc.co)}</span>
+    <span style="color:var(--line)">·</span>
+    <span style="color:var(--ink);font-size:13px">${trunc(curDoc.t,40)}</span>
+  </div></div>
+  <div class="co-page-layout">
+    <div class="co-left" style="padding:40px 40px 40px 32px;">
+      ${body}
+    </div>
+    <div class="co-right">
+      <div class="chatlog" id="chatlog">
+        <div id="pp" class="co-prompts">
+          <button class="co-prompt" onclick="ppSend('${p2}')">${p2}</button>
+          <button class="co-prompt" onclick="ppSend('${p1}')">${p1}</button>
+        </div>
+      </div>
+      <div class="sticky-composer">${composer('Ask about this '+(isT?'transcript':curDoc.type)+'…')}</div>
+    </div>
+  </div>`;
+}
+function ppSend(text){
+  if(!text) return;
+  const log = document.getElementById('chatlog');
+  if(!curDoc.started){ log.innerHTML=''; curDoc.started=true; }
+  log.innerHTML+=`<div class="msg u"><span class="bubble">${escapeHtml(text)}</span></div>`;
+  const ans = curDoc.type==='transcript'
+    ? 'On the call, management reported Q2 revenue of $18.4M (up 12% QoQ) and guided to continued double-digit growth into Q3, contingent on EU clearances. Gross margin expanded to 61%.'
+    : 'Key points: revenue $18.4M (+12% QoQ) on the new EU distribution agreement; gross margin 61%; FX exposure on EUR receivables now flagged as material. Every figure traces to the passages at left.';
+  log.innerHTML+=`<div class="msg a"><span class="bubble">${ans}</span></div>`;
+  const box = document.getElementById('askbox'); if(box) box.value='';
+  log.scrollTop = log.scrollHeight;
+}
+
+/* ──────────────── Compare ──────────────── */
+const allDims=['Revenue','Gross margin','Key risks','ESG disclosure','Guidance','R&D spend','Debt & liquidity'];
+const cmpData={
+  medx:{'Revenue':'$18.4M (+12% QoQ)','Gross margin':'61%','Key risks':'FX on EUR receivables (new)','ESG disclosure':'Limited; no separate report','Guidance':'Double-digit growth into Q3','R&D spend':'$3.1M','Debt & liquidity':'$22M cash, no LT debt'},
+  nano:{'Revenue':'$4.2M (+3% QoQ)','Gross margin':'34%','Key risks':'Pilot-plant scale-up timing','ESG disclosure':'Dedicated sustainability report','Guidance':'Commercial output H2','R&D spend':'$6.8M','Debt & liquidity':'$41M cash, no LT debt'},
+  well:{'Revenue':'$61M (+9% QoQ)','Gross margin':'52%','Key risks':'Integration of acquisitions','ESG disclosure':'ESG section in AIF','Guidance':'Raised FY revenue outlook','R&D spend':'$9.4M','Debt & liquidity':'$180M debt facility'},
+};
+function viewCompare(){
+  return `<div class="wrap wide">
+    <div class="pagehd"><h1>Compare</h1>
+      <button class="btn p" onclick="report.type='Comparison report';go('report')"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg> Export as report</button>
+    </div>
+    <div class="cmpbar">
+      ${cmp.companies.map(id=>`<span class="cmpchip">${coName(id)} <span class="x" onclick="rmCmp('${id}')">✕</span></span>`).join('')}
+      ${cmp.companies.length<4?`<button class="addcmp" onclick="addCmp()">＋ Add company</button>`:''}
+    </div>
+    <div style="font-size:10.5px;color:var(--faint);text-transform:uppercase;letter-spacing:.5px;font-weight:700">Dimensions</div>
+    <div class="dimchips">${allDims.map(d=>`<button class="dimchip ${cmp.dims.includes(d)?'on':''}" onclick="toggleDim('${d}')">${d}${cmp.dims.includes(d)?' ✓':''}</button>`).join('')}</div>
+    <div style="overflow-x:auto">
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead><tr><th>Dimension</th>${cmp.companies.map(id=>`<th>${coName(id)}</th>`).join('')}</tr></thead>
+          <tbody>${cmp.dims.map(dim=>`<tr><td>${dim}</td>${cmp.companies.map(id=>`<td>${(cmpData[id]||{})[dim]||'—'} <span class="cite" style="cursor:default">${id==='medx'?'1':id==='nano'?'2':'3'}</span></td>`).join('')}</tr>`).join('')}</tbody>
+        </table>
+      </div>
+    </div>
+    <div class="note">Add/remove companies and toggle dimensions; or ask in plain language ("compare their R&amp;D spend"). Every cell is cited.</div>
+  </div>`;
+}
+function rmCmp(id){ cmp.companies=cmp.companies.filter(x=>x!==id); go('compare'); }
+function addCmp(){ const avail=companies.map(c=>c.id).filter(id=>!cmp.companies.includes(id)&&cmpData[id]); if(avail.length){cmp.companies.push(avail[0]);go('compare');}else alert('Add more companies with data in a real build.'); }
+function toggleDim(d){ if(cmp.dims.includes(d)) cmp.dims=cmp.dims.filter(x=>x!==d); else cmp.dims.push(d); go('compare'); }
+
+/* ──────────────── Report builder ──────────────── */
+const secBody={
+  overview: ['Overview',          'Med-X Inc. is a Vancouver-based medical technology company. Q2 2026 marked a step-change in revenue on the back of a new EU distribution agreement.'],
+  metrics:  ['Financial highlights','Revenue $18.4M (Q1: $16.4M, +12%); gross margin 61% (Q1: 58%); operating expenses +6% on sales expansion.'],
+  devel:    ['Recent developments','Signed EU distribution agreement (Jun 2026); appointed new Chief Medical Officer (May 2026).'],
+  risks:    ['Key risks',          'FX exposure on EUR-denominated receivables now flagged as material; EU regulatory clearance timing is the key Q3 variable.'],
+  outlook:  ['Outlook',            'CFO guided to continued double-digit sequential growth into Q3, contingent on EU clearances.'],
+  esg:      ['ESG disclosure',     'Limited standalone ESG disclosure; no separate sustainability report as of Q2 2026.'],
+  debt:     ['Debt & liquidity',   '$22M cash on hand, no long-term debt; funded through at least the next four quarters.'],
+};
+function viewReport(){
+  const on = report.sections.filter(s=>s.on);
+  return `<div class="reportwrap">
+    <div class="outline">
+      <h4>Report sections</h4>
+      <div class="hint">Generated complete by default. Toggle sections on/off or tell the chat what to change.</div>
+      ${report.sections.map(s=>`<div class="secrow ${s.on?'':'off'}" onclick="toggleSec('${s.id}')">
+        <span class="cx">✓</span> ${s.name} <span class="drag">≡</span>
+      </div>`).join('')}
+      <button class="addsec" onclick="alert('Add a custom section — or type it in the chat.')">＋ Add section</button>
+      <div style="margin-top:18px"><h4 style="margin-bottom:8px">Report type</h4>
+        <select onchange="report.type=this.value;go('report')">
+          <option${report.type==='Research report'?' selected':''}>Research report</option>
+          <option${report.type==='Comparison report'?' selected':''}>Comparison report</option>
+          <option${report.type==='Company brief'?' selected':''}>Company brief</option>
+        </select>
+      </div>
+    </div>
+    <div class="reportview">
+      <div class="rvtop">
+        <span>${report.type} — ${coName(ctx.company||'medx')}</span>
+        <span class="v">v1</span>
+        <div style="margin-left:auto;display:flex;gap:8px">
+          <button class="btn" onclick="alert('Regenerated v2.')">↻ Regenerate</button>
+          <button class="btn p" onclick="alert('Downloaded cited PDF.')">⭳ Download</button>
+        </div>
+      </div>
+      <div class="rvbody">
+        <h1>${report.type} — Med-X Inc.</h1>
+        <div class="sub">Generated from filings, news &amp; transcripts · ${on.length} sections · Jul 21, 2026</div>
+        ${on.map(s=>`<div class="rvsec">
+          <h3>${secBody[s.id][0]}</h3>
+          <p>${secBody[s.id][1]} <span class="cite" style="cursor:default">1</span></p>
+        </div>`).join('')}
+        <div class="compliance">
+          <div class="ph"><span class="badge">PASS</span> Compliance assessment</div>
+          Figures match filed sources. No selective-disclosure or forward-looking-statement issues. Recommend attaching source releases for external distribution.
+        </div>
+      </div>
+      <div class="reportchat">
+        <div class="cinput">
+          <input placeholder="Tell me what to change — e.g. 'add a competitors section' or 'shorten the outlook'…">
+          <button class="send-btn" onclick="alert('Updated the report.')">${sendIcon()}</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+function toggleSec(id){ const s=report.sections.find(x=>x.id===id); s.on=!s.on; go('report'); }
+
+/* ──────────────── Library / History ──────────────── */
+function viewLibrary(){
+  return `<div class="wrap">
+    <div class="pagehd"><h1>History</h1></div>
+    <div class="doc" onclick="quick('Summarize the latest MD&amp;A and Q2 vs Q1 revenue')">
+      <span class="tg ask">ASK</span>
+      <div style="flex:1"><div class="dt">Summarize the latest MD&amp;A · Q2 vs Q1 revenue</div><div class="co">Med-X · today</div></div>
+    </div>
+    <div class="doc" onclick="go('compare')">
+      <span class="tg cmp">COMPARE</span>
+      <div style="flex:1"><div class="dt">Med-X vs Nano One · margins &amp; risks</div><div class="co">today</div></div>
+    </div>
+    <div class="doc" onclick="go('report')">
+      <span class="tg create">REPORT</span>
+      <div style="flex:1"><div class="dt">Research report — Med-X Inc.</div><div class="co">today</div></div>
+    </div>
+    <div class="doc" onclick="openDoc('medx','transcript','Q1 2026 Earnings Call Transcript','Apr 11, 2026')">
+      <span class="tg transcript">DOC</span>
+      <div style="flex:1"><div class="dt">Chat · Q1 2026 Earnings Call Transcript</div><div class="co">Jul 12</div></div>
+    </div>
+    <div class="note">Context carries forward when you reopen a thread.</div>
+  </div>`;
+}
+
+/* ──────────────── Helpers ──────────────── */
+function esc(s){ return String(s).replace(/'/g,"\\'").replace(/&amp;/g,'&'); }
+function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function trunc(s,n){ n=n||40; return s.length>n?s.slice(0,n)+'…':s; }
+
+renderCtx();
+go('home');
+</script>
+</body>
+</html>

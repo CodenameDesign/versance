@@ -1,0 +1,128 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>style v4 · tokens.css</title>
+<style id="dsbar-css">
+html body .dsbar{position:sticky;top:0;z-index:2147483000;display:flex;align-items:center;gap:6px;padding:8px 14px;background:#fff;border-bottom:1px solid #D4D4D4;font:13px/1.2 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;color:#111;text-transform:none;letter-spacing:0;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+html body .dsbar a,html body .dsbar button{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border:0;border-radius:7px;background:transparent;color:#111;text-decoration:none;font:inherit;cursor:pointer}
+html body .dsbar a:hover,html body .dsbar button:hover{background:#F0F0F0}
+html body .dsbar .back{font-weight:600;margin:0 6px 0 0;border:1px solid #D4D4D4}
+html body .dsbar .sep{width:1px;height:18px;background:#D4D4D4;margin:0 6px}
+html body .dsbar a.cur{background:#111;color:#fff}
+html body .dsbar .ttl{margin-left:auto;color:#777;font-size:12px}
+</style><style>
+html,body{margin:0;background:#fff;color:#111}
+.vw{max-width:1100px;margin:0 auto;padding:26px 20px 60px;font:15px/1.6 -apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif}
+.vw h1{font-size:24px;margin:0 0 14px} .vw h2{font-size:18px;margin:30px 0 10px;padding-top:12px;border-top:1px solid #E4E4E4} .vw h3{font-size:15px;margin:22px 0 8px}
+.vw p{margin:0 0 12px} .vw ul{margin:0 0 12px;padding-left:22px} .vw li{margin:3px 0}
+.vw code{font:12.5px/1.4 ui-monospace,Menlo,Consolas,monospace;background:#F3F3F3;padding:1px 5px;border-radius:4px}
+.vw table{border-collapse:collapse;width:100%;margin:6px 0 18px;font-size:13.5px} .vw th,.vw td{border-bottom:1px solid #E4E4E4;padding:6px 10px;text-align:left;vertical-align:top} .vw th{background:#FAFAFA;font-weight:600}
+.vw pre{margin:0;font:12.5px/1.55 ui-monospace,Menlo,Consolas,monospace;white-space:pre;overflow:auto;tab-size:2}
+</style></head><body><div class="dsbar" role="navigation" aria-label="Design system pages"><a class="back" id="dsback" href="../screens/VBE-101-Coworker.html" data-fallback="../screens/VBE-101-Coworker.html" aria-label="Back"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>Back</a><span class="sep"></span><a href="specimen.html">Specimen</a><a href="view-design-system.html">design-system.md</a><a href="view-tokens.html" class="cur">tokens.css</a><a href="view-components.html">components.css</a><span class="ttl">style v4 · design system</span></div><main class="vw"><pre>/* ==========================================================================
+   Versance Coworker — design tokens · style v4 — soft monochrome
+   Variables only. They are grouped by whether this style&#x27;s screens actually show them:
+   1. colours rendered on the screens   2. interaction-state colours   3. type / shape / spacing / motion
+   4. carried over from earlier styles (referenced by overridden base rules, not visible)
+   Base component rules: components.css · this style&#x27;s overrides: ../screens/screens.css
+   ========================================================================== */
+
+@import url(&quot;https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap&quot;);
+
+.vc-ext {
+  /* ── Colours rendered on this style&#x27;s screens ── */
+  --accent: #1C1C1E;
+  --accent-grad: linear-gradient(180deg, #3A3A3D 0%, #1C1C1E 100%);
+  --accent-grad-diag: linear-gradient(145deg, #48484B 0%, #1C1C1E 100%);
+  --accent-hover: #000000;
+  --accent-on: #FFFFFF;
+  --accent-pressed: #000000;
+  --accent-tint-15: #E6E6EA;
+  --accent-tint-25: #D3D3D8;
+  --bg: #FFFFFF;
+  --faint: #9A9AA0;
+  --green-grad: linear-gradient(180deg, #17B27C 0%, #08925F 100%);
+  --hover: #F1F1F4;
+  --ink: #1C1C1E;
+  --line: #E6E6EA;
+  --line-soft: #EEEEF1;
+  --mark: #FFF04D;
+  --muted: #6E6E73;
+  --panel: #FFFFFF;
+  --risk-high: #DC2927;
+  --risk-medium: #F59D0A;
+  --risk-on: #FFFFFF;
+  --soft-wash: linear-gradient(180deg, #F6F6F8 0%, #F1F1F4 100%);
+  --text-info: #2C2C2E;
+  --text-selected: #1C1C1E;
+
+  /* ── Colours for interaction states (hover, pressed, focus, disabled) ── */
+  /* Referenced by hover / active / disabled rules; not visible in the static screens. */
+  --accent-tint-8: #F2F2F5;
+  --amber-tint: #F4E4B8;
+  --green-tint: #CFE8DD;
+
+  /* ── Type ── */
+  --font: &quot;Inter&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;
+  --fs-body: 14px;
+  --fs-caps: 11px;
+  --fs-help-h1: 18px;
+  --fs-help-h2: 14px;
+  --fs-small: 12px;
+  --fw-bold: 700;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --lh-body: 1.5;
+
+  /* ── Radius ── */
+  --r-box: 10px;
+  --r-btn: 8px;
+  --r-cite: 4px;
+  --r-panel: 12px;
+  --r-pill: 999px;
+  --r-tag: 6px;
+
+  /* ── Spacing ── */
+  --pad-btn: 7px 13px;
+  --pad-pill: 6px 12px;
+
+  /* ── Elevation (shadows) ── */
+  --amber-glow: 0 4px 12px rgba(226,165,43,.45);
+  --bd: 1px solid rgba(20,20,30,.06);
+  --coral-glow: 0 2px 8px rgba(240,68,94,.45);
+  --glow: 0 6px 16px rgba(20,20,30,.28);
+  --green-glow: 0 3px 10px rgba(11,159,106,.35);
+  --sh-1: 0 1px 2px rgba(20,20,30,.05), 0 2px 8px rgba(20,20,30,.04);
+  --sh-2: 0 1px 2px rgba(20,20,30,.05), 0 8px 24px rgba(20,20,30,.08);
+  --sh-3: 0 2px 4px rgba(20,20,30,.06), 0 16px 40px rgba(20,20,30,.14);
+
+  /* ── Layout ── */
+  --rail-w: 40px;
+
+  /* ── Motion ── */
+  --dur: .15s;
+  --dur-fast: .12s;
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+
+  /* ── Other ── */
+  --focus-ring: 2px solid #1C1C1E;
+
+  /* ── Carried over from earlier styles ── */
+  /* Still referenced by base rules that this style overrides; not visible on any screen. Kept so those rules stay valid. */
+  --accent-wash: linear-gradient(180deg, #F6F6F8 0%, #F0F0F3 100%);
+  --amber-grad: linear-gradient(135deg, #F8CF68 0%, #E2A52B 100%);
+  --amber-ink: #0A1922;
+  --coral-grad: linear-gradient(135deg, #FF8294 0%, #F0445E 100%);
+  --exception-dark: #0A1922;
+  --pane: transparent;
+  --tag-filing: #324EFE;
+  --tag-news: #E2B43D;
+  --tag-transcript: #FF5D73;
+  --tag-web: #1FB5A8;
+  --teal-grad: linear-gradient(135deg,#D8F5F1,#BDEDE6);
+  --teal-ink: #0E8F84;
+  --teal-tint: #DDF6F2;
+  --violet-grad: linear-gradient(135deg,#ECE4FF,#DACCFF);
+  --violet-ink: #6D3FD6;
+  --violet-tint: #EFE9FF;
+}
+</pre></main><script id="dsbar-js">(function(){var b=document.getElementById('dsback');if(!b)return;
+var came=false;try{came=sessionStorage.getItem('dsReturn')==='1'}catch(e){came=history.length>1}
+b.addEventListener('click',function(e){e.preventDefault();if(came&&history.length>1){history.back()}else{location.href=b.getAttribute('data-fallback')}});
+[].forEach.call(document.querySelectorAll('.dsbar a:not(.back)'),function(a){a.addEventListener('click',function(e){e.preventDefault();location.replace(a.href)})})})()</script></body></html>

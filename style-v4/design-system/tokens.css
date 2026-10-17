@@ -1,0 +1,107 @@
+/* ==========================================================================
+   Versance Coworker — design tokens · style v4 — soft monochrome
+   Variables only. They are grouped by whether this style's screens actually show them:
+   1. colours rendered on the screens   2. interaction-state colours   3. type / shape / spacing / motion
+   4. carried over from earlier styles (referenced by overridden base rules, not visible)
+   Base component rules: components.css · this style's overrides: ../screens/screens.css
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.vc-ext {
+  /* ── Colours rendered on this style's screens ── */
+  --accent: #1C1C1E;
+  --accent-grad: linear-gradient(180deg, #3A3A3D 0%, #1C1C1E 100%);
+  --accent-grad-diag: linear-gradient(145deg, #48484B 0%, #1C1C1E 100%);
+  --accent-hover: #000000;
+  --accent-on: #FFFFFF;
+  --accent-pressed: #000000;
+  --accent-tint-15: #E6E6EA;
+  --accent-tint-25: #D3D3D8;
+  --bg: #FFFFFF;
+  --faint: #9A9AA0;
+  --green-grad: linear-gradient(180deg, #17B27C 0%, #08925F 100%);
+  --hover: #F1F1F4;
+  --ink: #1C1C1E;
+  --line: #E6E6EA;
+  --line-soft: #EEEEF1;
+  --mark: #FFF04D;
+  --muted: #6E6E73;
+  --panel: #FFFFFF;
+  --risk-high: #DC2927;
+  --risk-medium: #F59D0A;
+  --risk-on: #FFFFFF;
+  --soft-wash: linear-gradient(180deg, #F6F6F8 0%, #F1F1F4 100%);
+  --text-info: #2C2C2E;
+  --text-selected: #1C1C1E;
+
+  /* ── Colours for interaction states (hover, pressed, focus, disabled) ── */
+  /* Referenced by hover / active / disabled rules; not visible in the static screens. */
+  --accent-tint-8: #F2F2F5;
+  --amber-tint: #F4E4B8;
+  --green-tint: #CFE8DD;
+
+  /* ── Type ── */
+  --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --fs-body: 14px;
+  --fs-caps: 11px;
+  --fs-help-h1: 18px;
+  --fs-help-h2: 14px;
+  --fs-small: 12px;
+  --fw-bold: 700;
+  --fw-regular: 400;
+  --fw-semibold: 600;
+  --lh-body: 1.5;
+
+  /* ── Radius ── */
+  --r-box: 10px;
+  --r-btn: 8px;
+  --r-cite: 4px;
+  --r-panel: 12px;
+  --r-pill: 999px;
+  --r-tag: 6px;
+
+  /* ── Spacing ── */
+  --pad-btn: 7px 13px;
+  --pad-pill: 6px 12px;
+
+  /* ── Elevation (shadows) ── */
+  --amber-glow: 0 4px 12px rgba(226,165,43,.45);
+  --bd: 1px solid rgba(20,20,30,.06);
+  --coral-glow: 0 2px 8px rgba(240,68,94,.45);
+  --glow: 0 6px 16px rgba(20,20,30,.28);
+  --green-glow: 0 3px 10px rgba(11,159,106,.35);
+  --sh-1: 0 1px 2px rgba(20,20,30,.05), 0 2px 8px rgba(20,20,30,.04);
+  --sh-2: 0 1px 2px rgba(20,20,30,.05), 0 8px 24px rgba(20,20,30,.08);
+  --sh-3: 0 2px 4px rgba(20,20,30,.06), 0 16px 40px rgba(20,20,30,.14);
+
+  /* ── Layout ── */
+  --rail-w: 40px;
+
+  /* ── Motion ── */
+  --dur: .15s;
+  --dur-fast: .12s;
+  --ease-spring: cubic-bezier(.34, 1.56, .64, 1);
+
+  /* ── Other ── */
+  --focus-ring: 2px solid #1C1C1E;
+
+  /* ── Carried over from earlier styles ── */
+  /* Still referenced by base rules that this style overrides; not visible on any screen. Kept so those rules stay valid. */
+  --accent-wash: linear-gradient(180deg, #F6F6F8 0%, #F0F0F3 100%);
+  --amber-grad: linear-gradient(135deg, #F8CF68 0%, #E2A52B 100%);
+  --amber-ink: #0A1922;
+  --coral-grad: linear-gradient(135deg, #FF8294 0%, #F0445E 100%);
+  --exception-dark: #0A1922;
+  --pane: transparent;
+  --tag-filing: #324EFE;
+  --tag-news: #E2B43D;
+  --tag-transcript: #FF5D73;
+  --tag-web: #1FB5A8;
+  --teal-grad: linear-gradient(135deg,#D8F5F1,#BDEDE6);
+  --teal-ink: #0E8F84;
+  --teal-tint: #DDF6F2;
+  --violet-grad: linear-gradient(135deg,#ECE4FF,#DACCFF);
+  --violet-ink: #6D3FD6;
+  --violet-tint: #EFE9FF;
+}
