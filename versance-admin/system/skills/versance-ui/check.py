@@ -9,7 +9,7 @@ Exit code 1 if anything is flagged. Skips tokens.css.
 import re, sys
 from pathlib import Path
 
-COLOURS = ['#000', '#000000', '#0a1922', '#0d2030', '#0d2a18', '#152838', '#1a3040', '#1c6b38', '#263bc1', '#2b40c5', '#2c45e0', '#324efe', '#3da865', '#5ac47e', '#65728e', '#7dd498', '#8d96aa', '#a51d1b', '#c7e2f0', '#ccd3ff', '#d9dde5', '#dc2927', '#def3e5', '#e0e4ff', '#e2b43d', '#e6e6e6', '#ea5b5b', '#eff1ff', '#f3f5f9', '#f59d0a', '#f9f9f9', '#fce8e8', '#fef2db', '#fff', '#ffffff']
+COLOURS = ['#000', '#000000', '#0a1922', '#0d2030', '#0d2a18', '#152838', '#1a3040', '#1c6b38', '#263bc1', '#2b40c5', '#2c45e0', '#324efe', '#334efe', '#3da865', '#5ac47e', '#65728e', '#7dd498', '#8d96aa', '#a51d1b', '#c7e2f0', '#ccd3ff', '#d9dde5', '#dc2927', '#def3e5', '#e0e4ff', '#e2b43d', '#e6e6e6', '#ea5b5b', '#eff1ff', '#f3f5f9', '#f59d0a', '#f9f9f9', '#fce8e8', '#fef2db', '#fff', '#ffffff']
 ALPHAS = ['rgba(10,25,34,0.5)', 'rgba(50,78,254,0.4)']
 SIZES = [9.0, 10.0, 11.0, 12.0, 12.5, 13.0, 14.0, 15.0, 16.0, 18.0, 28.0]
 RADII = [0.0, 4.0, 6.0, 8.0, 10.0, 12.0, 16.0, 20.0, 999.0]

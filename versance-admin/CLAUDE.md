@@ -7,8 +7,8 @@ When you change how the admin (or a new page) looks or behaves, update the syste
 3. Run `python3 tools/build_admin.py` if the Public list changed, then `python3 tools/audit.py` and fix every FAIL.
 4. Commit page and system changes together. Push and deploy only when asked.
 
-## Tokens come from two sources
-Values come from `versance.html` (the web app) and `browser-extension/style-v1/`. Search them before inventing a value; mark anything neither defines as `[ours]`. If a source changes, `audit.py` flags the drift.
+## One token set
+`design-tokens/tokens.css` is the only place token values are written (each value once; other names are `var()` aliases). It is based on `versance.html` and `browser-extension/style-v1/`; mark anything neither defines as `[ours]`. The `:root` blocks of `versance.html` / `edgar/versance.html` and style-v1's `tokens.css` are generated from it (`tools/build_tokens.py`, names in `design-tokens/map.json`): never edit them by hand. A new source variable needs an entry in `map.json`. Styles v2 to v13 and `medicus-01.html` are design examples with their own CSS: do not touch them or fold them into the set.
 
 ## Data
 Made-up company, filing and user data only. Never commit real data.

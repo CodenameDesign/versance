@@ -66,8 +66,8 @@
   --rail-w: 40px;
 
   /* ── Motion ── */
-  --dur: .15s;
-  --dur-fast: .12s;
+  --dur: 0.15s;
+  --dur-fast: 0.12s;
 
   /* ── Other ── */
   --focus-ring: 2px solid #324EFE;

@@ -49,24 +49,24 @@ GROUPS = {}   # gid -> dict(title, sub, open)
 PAGES = []
 
 # ---- web app and reference pages
-GROUPS["web"] = dict(title="Web app and reference pages", sub="versance.html (Talk to Edgar) and the saved Medicus page", open=True)
+GROUPS["web"] = dict(title="Web app and Medicus design example", sub="versance.html (Talk to Edgar) and the saved Medicus page", open=True)
 APP_SPEC = [
     ("About this page", [
         "The Versance web app mock-up (\"Talk to Edgar\"): a white 230px sidebar with a New button and pill nav items, a main area with the hero, the composer and cards",
         "Single self-contained file: one <style> block, inline SVG logo and favicon, one script; Figtree and Roboto Mono load from Google Fonts",
         "The :root block holds the light palette (white, #D9DDE5 lines, green #5AC47E accent, amber #E2B43D); a second :root holds the dark theme"]),
     ("Tokens", [
-        "The admin's tokens are based on this file and on browser-extension/style-v1: values taken from here are tagged [app] (or [both]) in design-tokens/tokens.css",
+        "Part of the Versance token set: the :root blocks of this file (light, dark media query, data-theme dark and light) are generated from design-tokens/tokens.css through design-tokens/map.json (python3 tools/build_tokens.py); edit values in tokens.css, not here",
         "Source type colours: filing #2B40C5, news #E2B43D, transcript #334EFE, web #65728E, ask/compare #5AC47E, create #E2B43D"]),
 ]
 PAGES += [
     P("Web app: Talk to Edgar", "web-app", "versance.html", "The Versance web app mock-up: sidebar, hero, composer, answer pages and source cards.", [TYPE, COLOUR, APPNAV, COMP, PILLS, TAGS],
-      ["The page the Versance tokens are based on, together with style-v1", "Served unchanged from the repo"], spec=APP_SPEC, group="web"),
+      ["Part of the Versance token set (with style-v1): its :root blocks are generated from design-tokens/tokens.css", "Served from the repo as is"], spec=APP_SPEC, group="web"),
     P("Web app (copy in edgar/)", "edgar-web-app", "edgar/versance.html", "Byte-identical copy of versance.html kept in the edgar/ folder.", [TYPE, COLOUR, APPNAV, COMP],
       ["Identical to versance.html (verified); listed so every file in the repo has an entry"], spec=APP_SPEC, group="web"),
-    P("Medicus Pharma home page (reference)", "medicus", "medicus-01.html", "A saved copy of the Medicus Pharma home page (WordPress), kept as a reference design.", [TYPE, COLOUR],
-      ["Not styled by the Versance tokens: it is another company's site", "Third-party scripts and assets are referenced as saved"],
-      spec=[("About this page", ["A saved WordPress page (Medicus Pharma) used as a content reference for the Versance work", "Its fonts, colours and scripts are the site's own and are not part of the Versance system"])], group="web"),
+    P("Medicus Pharma home page (design example)", "medicus", "medicus-01.html", "A saved copy of the Medicus Pharma home page (WordPress), kept as a design example.", [],
+      ["A design example: its CSS is only for this page and is not part of the Versance token set", "Third-party scripts and assets are referenced as saved"],
+      spec=[("About this page", ["A saved WordPress page (Medicus Pharma) kept as a design example", "Its fonts, colours and scripts are the site's own; it is not styled by, and not part of, the Versance token set"])], group="web"),
 ]
 
 # ---- the extension styles
@@ -84,27 +84,31 @@ for sdir in STYLES:
     md = rd(f"{base}/design-system/design-system.md").splitlines()
     name = (md[0].split("style v%d:" % n)[-1].strip() if md else sid)
     summary = next((l for l in md[1:6] if l.strip()), "")
-    GROUPS[sid] = dict(title=f"Style v{n}: {name}", sub=(summary if len(summary) <= 100 else summary[:summary.rfind(" ", 0, 100)] + "…"), open=(n == 1))
+    short = summary if len(summary) <= 90 else summary[:summary.rfind(" ", 0, 90)] + "…"
+    GROUPS[sid] = dict(title=f"Style v{n}: {name}" + ("" if n == 1 else " (design example)"), sub=(short if n == 1 else "Design example. " + short), open=(n == 1))
     docs = [(f"Style v{n} tokens", f"/public/extension/{sid}/design-system/view-tokens.html"), (f"Style v{n} components", f"/public/extension/{sid}/design-system/view-components.html"),
             (f"Style v{n} document", f"/public/extension/{sid}/design-system/view-design-system.html")]
     style_files = [f"{base}/design-system/design-system.md", f"{base}/design-system/tokens.css", f"{base}/design-system/components.css"]
-    style_spec = ("About this style", [summary, f"Tokens, components and screens for this style live in {base}/ (design-system/, screens/, tools/)",
-                                       "The admin's own System section documents style v1 (the baseline); other styles are explorations with their own documents linked here"])
+    if n == 1:
+        role = ["Style v1 is the baseline and part of the Versance token set: its design-system/tokens.css is generated from versance-admin/design-tokens/tokens.css (python3 versance-admin/tools/build_tokens.py); edit values there, not here"]
+    else:
+        role = ["A design example / alternative: its CSS (tokens.css, components.css, screens.css) is only for its own pages and is not part of the Versance token set"]
+    style_spec = ("About this style", [summary, f"Tokens, components and screens for this style live in {base}/ (design-system/, screens/, tools/)"] + role)
     for fname, label, desc in DS_PAGES:
         f = f"{base}/design-system/{fname}"
         PAGES.append(P(f"Style v{n}: {label}", f"extension/{sid}/design-system/{fname}", f, desc, docs + (EXT_COMPONENTS if n == 1 else []),
-                       [f"Style v{n} ({name}) of the Versance browser-extension designs", "Served in place from browser-extension/ so its relative links keep working"],
+                       [f"Style v{n} ({name}) of the Versance browser-extension designs" + ("" if n == 1 else " (a design example, not part of the token set)"), "Served in place from browser-extension/ so its relative links keep working"],
                        files=[x for x in style_files if x != f], spec=[("About this page", [desc]), style_spec], group=sid))
     for sf in sorted((sdir / "screens").glob("VBE-*.html")):
         f = f"{base}/screens/{sf.name}"; ttl = title_of(f); states = states_of(f)
         label = re.sub(r"^VBE-(\d+[a-z]*)-(.*)\.html$", lambda m: f"VBE-{m.group(1)} " + m.group(2).replace("-", " "), sf.name)
         PAGES.append(P(f"Style v{n}: {label}", f"extension/{sid}/screens/{sf.name}", f,
                        f"{ttl}. Holds {len(states)} screen state{'s' if len(states) != 1 else ''}.", docs + (EXT_COMPONENTS if n == 1 else []),
-                       [f"Style v{n} ({name}); title: {ttl}", "Served in place from browser-extension/ so its relative CSS keeps working"],
+                       [f"Style v{n} ({name}); title: {ttl}" + ("" if n == 1 else " (a design example, not part of the token set)"), "Served in place from browser-extension/ so its relative CSS keeps working"],
                        files=[f"{base}/screens/screens.css"] + style_files[1:], spec=[
                            ("Screens on this page", [f"{ttl}"] + [f"State: {s}" for s in states]),
                            ("Styling", ["Loads screens.css (this style's overrides) on top of the style's tokens.css and components.css (scoped to .vc-ext)",
-                                        "The tokens here are the style's own and may differ from the admin's; see the linked tokens page"]), style_spec], group=sid))
+                                        ("Style v1's tokens.css is generated from the Versance token set" if n == 1 else "This style's tokens are its own and may differ from the Versance token set; see the linked tokens page")]), style_spec], group=sid))
 
 COMMON = dict(
     tokens=[("tokens.css", "/design-tokens/tokens.css"), ("fonts.css", "/design-tokens/fonts.css"), ("tokens.json", "/design-tokens/tokens.json"), ("DESIGN-TOKENS.md", "/design-tokens/DESIGN-TOKENS.md"), ("Token reference", "/admin/system/tokens/")],

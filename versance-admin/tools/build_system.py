@@ -7,15 +7,18 @@ Writes system/**/index.html, system/ai/*.md, system/ai/Versance-AI-Files.zip, sy
 design-tokens/tokens.json and design-tokens/DESIGN-TOKENS.md. Nothing in system/ except system.css and logo-white.svg is hand-written.
 Edit tokens.css or the data below, run the script, commit.
 """
-import json, html, re, zipfile
+import json, html, re, subprocess, sys, zipfile
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import tokens_lib as T
 
 ROOT = Path(__file__).resolve().parent.parent
 SYS = ROOT / "system"
 SITE = ""          # set to the deployed origin (no trailing slash) to make the skill's links absolute; empty = same-origin paths
 VERSION = "1.0"
 CSS_TOKENS = (ROOT / "design-tokens/tokens.css").read_text()
-SOURCES = {"both": "Web app and extension", "ext": "Extension style-v1", "app": "Web app", "ours": "Ours (admin tool)"}
+SOURCES = T.SOURCES
 E = html.escape
 
 # ---------------------------------------------------------------- data (tokens come from tokens.css)
@@ -134,19 +137,10 @@ COMPONENTS = [
 
 # ---------------------------------------------------------------- tokens.css parsing
 def parse_tokens():
-    out, group = [], ""
-    for line in CSS_TOKENS.splitlines():
-        m = re.match(r"\s*/\*\s*((?:Color|Typography|Radius|Spacing|Elevation|Motion|Layout)[^*]*?)\s*\*/\s*$", line)
-        if m:
-            group = m.group(1)
-            continue
-        c = re.search(r"/\*\s*(.+?)\s*\*/\s*$", line)
-        note = c.group(1) if c else ""
-        src = re.match(r"\[(both|ext|app|ours)\]\s*", note)
-        note, src = (note[src.end():], SOURCES[src.group(1)]) if src else (note, "")
-        for n, v in re.findall(r"(--[a-z0-9-]+)\s*:\s*([^;]+);", re.sub(r"/\*.*?\*/", "", line)):
-            out.append((group, n, v.strip(), note, src))
-    return out
+    """tokens.css through tokens_lib: (group, name, value, note, source). Values are resolved (var() aliases replaced by the value they stand for)."""
+    raw = T.read()
+    res = T.resolved(raw)
+    return [(g, n, res[n], note, SOURCES.get(tag, "")) for g, n, _, note, tag in raw]
 
 TOKENS = parse_tokens()
 TV = {n: v for _, n, v, _, _ in TOKENS}
@@ -266,14 +260,16 @@ def write(path, text):
 def p_overview():
     body = row("What this is", "", rules([
         "One reference for building Versance admin tools and prototypes in the Versance look",
-        "The tokens are based on two sources: the web app (<code>versance.html</code>) and the browser-extension design <code>browser-extension/style-v1/</code>. Every token says which one it comes from; values neither defines are tagged <b>Ours</b>",
+        "One set of tokens, based on the web app (<code>versance.html</code>) and the browser-extension baseline <code>browser-extension/style-v1/</code>. Every token says which one it comes from; values neither defines are tagged <b>Ours</b>",
         "Use the tokens, not hard-coded values. The same data produces these pages, the CSS and JSON tokens, and the AI files",
     ]))
-    body += row("The two sources", "Where the tokens come from", spec_table([
-        ("Web app", "<code>versance.html</code> (Talk to Edgar): white sidebar 230px, green accent #5AC47E, light-blue active nav #C7E2F0, Figtree and Roboto Mono, a dark theme"),
-        ("Extension style-v1", "<code>browser-extension/style-v1/</code>: one indigo accent #324EFE with tints, 14px body, 8px buttons, 10px inputs, 12px cards, severity colours"),
-        ("This admin", "Indigo accent and style-v1 type and shapes; the web app's sidebar width, shadows and green for success; a near-black #0A1922 sidebar"),
-    ], ("Source", "What it supplies")))
+    body += row("One set", "How the tokens are kept", spec_table([
+        ("Source of truth", "<code>design-tokens/tokens.css</code>: every value is written once; other names for the same value are <code>var()</code> aliases"),
+        ("Based on", "the web app (<code>versance.html</code>) and the extension baseline (<code>browser-extension/style-v1/</code>); each token says which one it comes from, and values neither defines are tagged <b>Ours</b>"),
+        ("Generated copies", "style-v1's <code>tokens.css</code> and viewer page, the <code>:root</code> blocks of <code>versance.html</code> and <code>edgar/versance.html</code> (through <code>design-tokens/map.json</code>), <code>tokens.json</code>, <code>DESIGN-TOKENS.md</code>, the AI files and the skill's <code>tokens.css</code>"),
+        ("Change a value", "edit <code>tokens.css</code>, run <code>python3 tools/build_system.py</code>, then <code>python3 tools/audit.py</code>"),
+        ("Not part of the set", "styles v2 to v13 and the Medicus page are design examples: they stay viewable in the Public list and their CSS is only for their own pages"),
+    ], ("Topic", "Detail")))
     body += row("Principles", "", rules([
         "<b>One accent.</b> Indigo #324EFE for links, actions, focus and selected states; pale tints for hover and disabled",
         "<b>Light surfaces, hairlines.</b> White cards, #F9F9F9 panes, #D9DDE5 borders",
@@ -343,6 +339,11 @@ def p_components():
 def p_tokens():
     body = row("Naming", "", rules(["Colours are <code>--color-&lt;name&gt;</code>", "Type is <code>--font-size-&lt;name&gt;</code>, <code>--line-height-&lt;name&gt;</code>, <code>--font-weight-&lt;name&gt;</code>",
                                    "Space, radius and shadow are <code>--space-&lt;n&gt;</code>, <code>--radius-&lt;name&gt;</code>, <code>--shadow-&lt;n&gt;</code>", "Use the token, never the raw value"]))
+    body += row("Where the values are used", "Generated from tokens.css", spec_table([
+        ("browser-extension/style-v1/design-system/tokens.css", "extension names (--accent, --ink, --r-btn …) mapped by design-tokens/map.json; the readable view-tokens.html is regenerated with it"),
+        ("versance.html, edgar/versance.html", "the four :root blocks (light, dark media query, data-theme dark, data-theme light) in the web app's own names"),
+        ("tokens.json, DESIGN-TOKENS.md, system/ai/*.md, skills/versance-ui/tokens.css", "generated by build_system.py"),
+        ("Not generated", "styles v2 to v13 and medicus-01.html (design examples with their own CSS)")], ("File", "How")))
     body += row("Files", "Download", '<p class="dl"><a href="/design-tokens/tokens.css" download>tokens.css</a><a href="/design-tokens/tokens.json" download>tokens.json</a><a href="/design-tokens/fonts.css" download>fonts.css</a><a href="/design-tokens/DESIGN-TOKENS.md" download>DESIGN-TOKENS.md</a></p>')
     body += row("Reference", "Every token, generated from tokens.css", tokens_html_table())
     body += row("CSS", "All tokens as custom properties", code(CSS_TOKENS, "Copy CSS", True))
@@ -532,6 +533,7 @@ document.addEventListener('click',function(e){
 """
 
 def main():
+    subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "build_tokens.py")], check=True)   # style-v1 tokens.css, versance.html, edgar/versance.html
     write_token_json()
     sync_design_tokens_md()
     write("system.js", JS)

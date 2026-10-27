@@ -1,5 +1,8 @@
 /* Versance design tokens: based on the web app (versance.html) and the browser-extension design style-v1 (browser-extension/style-v1/design-system/tokens.css).
-   One token per line with its use as the trailing comment: the docs, tokens.json and the skill are generated from this file.
+   THE ONE SET OF VERSANCE TOKENS. Every other place that carries token values is generated from this file (python3 tools/build_system.py):
+   style-v1's tokens.css and the :root blocks of versance.html and edgar/versance.html (through design-tokens/map.json), tokens.json, DESIGN-TOKENS.md, the AI files, the skill's tokens.css and the System pages. Edit values here only.
+   Each literal value is defined once; other names for the same value are var() aliases. Styles v2 to v13 and medicus-01.html are separate design examples with their own CSS and are not part of this set.
+   One token per line with its use as the trailing comment.
    Source tag at the start of each comment (tools/audit.py checks [app], [ext] and [both] values against the source files):
      [both] the same value is in versance.html and in style-v1
      [ext]  from style-v1 (the extension: indigo accent, 14px body)
@@ -8,7 +11,7 @@
 :root {
   /* Color: text */
   --color-text: #000000;                     /* [both] body text (--ink) */
-  --color-text-on-dark: #ffffff;             /* [both] text and icons on the dark sidebar and on filled buttons */
+  --color-text-on-dark: var(--color-surface);             /* [both] text and icons on the dark sidebar and on filled buttons; same value as --color-surface */
   --color-text-muted: #65728e;               /* [both] labels, captions (--muted) */
   --color-text-faint: #8d96aa;               /* [both] placeholders, disabled text (--faint) */
 
@@ -19,7 +22,7 @@
   --color-primary-tint-8: #eff1ff;           /* [ext] hover on rows and rail buttons (--accent-tint-8) */
   --color-primary-tint-15: #e0e4ff;          /* [ext] selected pill, citation chip (--accent-tint-15) */
   --color-primary-tint-25: #ccd3ff;          /* [ext] disabled primary button, low-emphasis outlines (--accent-tint-25) */
-  --color-accent: #324efe;                   /* [ext] the active-item bar in the admin sidebar (the accent) */
+  --color-accent: var(--color-primary);                   /* [ext] the active-item bar in the admin sidebar (the accent); same value as --color-primary */
 
   /* Color: surfaces and lines */
   --color-ink: #0a1922;                      /* [both] near-black: the admin sidebar and the dark pill button (--exception-dark) */
@@ -28,12 +31,12 @@
   --color-page-bg: #f9f9f9;                  /* [ext] page tint, code boxes, tool pane (--pane) */
   --color-surface-alt: #f3f5f9;              /* [both] chips, tiles, hover fills (--hover) */
   --color-border: #d9dde5;                   /* [both] borders and rules (--line) */
-  --color-border-light: #f3f5f9;             /* [both] row dividers (--line-soft, --line2) */
-  --color-hover: #f3f5f9;                    /* [both] round icon button hover */
+  --color-border-light: var(--color-surface-alt);             /* [both] row dividers (--line-soft, --line2); same value as --color-surface-alt */
+  --color-hover: var(--color-surface-alt);                    /* [both] round icon button hover; same value as --color-surface-alt */
   --color-link-underline: rgba(50, 78, 254, 0.4); /* [ours] underline on admin links */
   --color-backdrop: rgba(10, 25, 34, 0.5);   /* [ours] dimmed backdrop behind the menu drawer */
-  --color-disabled-bg: #f3f5f9;              /* [ours] disabled fill */
-  --color-disabled-text: #8d96aa;            /* [both] disabled text (--faint) */
+  --color-disabled-bg: var(--color-surface-alt);              /* [ours] disabled fill; same value as --color-surface-alt */
+  --color-disabled-text: var(--color-text-faint);            /* [both] disabled text (--faint); same value as --color-text-faint */
 
   /* Color: status */
   --color-success: #5ac47e;                  /* [app] the web app's green (--accent, --green): toggle on, "ask" actions */
@@ -47,26 +50,27 @@
   --color-amber: #e2b43d;                    /* [both] news tag, "create" actions (--tag-news, --amber) */
 
   /* Color: source tags */
-  --color-tag-filing: #324efe;               /* [ext] filing tag in the extension (--tag-filing) */
+  --color-tag-filing: var(--color-primary);               /* [ext] filing tag in the extension (--tag-filing); same value as --color-primary */
   --color-tag-filing-app: #2b40c5;           /* [app] filing tag in the web app (--col-filing) */
   --color-tag-transcript: #ea5b5b;           /* [both] transcript tag (--tag-transcript, .tg.transcript) */
-  --color-tag-web: #65728e;                  /* [both] web tag (--tag-web, --col-web) */
+  --color-tag-web: var(--color-text-muted);                  /* [both] web tag (--tag-web, --col-web); same value as --color-text-muted */
 
   /* Color: web app (versance.html) */
-  --app-sidebar-bg: #ffffff;                 /* [app] the web app's white sidebar (--sidebar-bg) */
+  --app-sidebar-bg: var(--color-surface);                 /* [app] the web app's white sidebar (--sidebar-bg); same value as --color-surface */
   --app-nav-active: #c7e2f0;                 /* [app] active sidebar item fill (.navbtn.active) */
-  --app-accent: #5ac47e;                     /* [app] the web app's accent (--accent) */
+  --app-accent: var(--color-success);                     /* [app] the web app's accent (--accent); same value as --color-success */
   --app-accent-dark: #3da865;                /* [app] accent hover (--accent-d) */
-  --app-accent-bg: #def3e5;                  /* [app] selected pill, send button fill (--accent-bg) */
-  --app-accent-text: #1c6b38;                /* [app] text on the accent fill (--accent-text) */
+  --app-accent-bg: var(--color-success-bg);                  /* [app] selected pill, send button fill (--accent-bg); same value as --color-success-bg */
+  --app-accent-text: var(--color-success-text);                /* [app] text on the accent fill (--accent-text); same value as --color-success-text */
 
   /* Color: web app dark theme (reference only: the admin is light) */
-  --app-dark-bg: #0a1922;                    /* [app] dark theme page (--bg in the dark :root) */
-  --app-dark-sidebar: #0d2030;               /* [app] dark theme sidebar and panels */
+  --app-dark-bg: var(--color-ink);                    /* [app] dark theme page (--bg in the dark :root); same value as --color-ink */
+  --app-dark-sidebar: var(--color-ink-soft);               /* [app] dark theme sidebar and panels; same value as --color-ink-soft */
   --app-dark-line: #1a3040;                  /* [app] dark theme borders */
   --app-dark-hover: #152838;                 /* [app] dark theme hover and chips */
-  --app-dark-text: #f3f5f9;                  /* [app] dark theme text */
+  --app-dark-text: var(--color-surface-alt);                  /* [app] dark theme text; same value as --color-surface-alt */
   --app-dark-accent-bg: #0d2a18;             /* [app] dark theme selected fill */
+  --app-source-transcript: #334efe;          /* [app] the web app's transcript source colour (--col-transcript), one digit from the extension's indigo */
   --app-dark-accent-text: #7dd498;           /* [app] dark theme accent text */
 
   /* Typography */
@@ -91,6 +95,7 @@
   --font-weight-regular: 400;                /* [ext] body (--fw-regular) */
   --font-weight-semibold: 600;               /* [ext] pane titles, selected pills (--fw-semibold) */
   --font-weight-bold: 700;                   /* [ext] buttons, tags, nav (--fw-bold) */
+  --line-height-body: 1.5;                   /* [ext] unitless body line height (--lh-body) */
   --font-weight-thead: 600;                  /* [ext] table head */
 
   /* Radius */
@@ -119,6 +124,8 @@
   /* Elevation */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 3px 10px rgba(0, 0, 0, 0.06); /* [app] resting card (--shadow-sm) */
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 6px 20px rgba(0, 0, 0, 0.08); /* [app] composer, menus, popovers (--shadow) */
+  --shadow-sm-dark: 0 1px 2px rgba(0, 0, 0, 0.3), 0 3px 10px rgba(0, 0, 0, 0.4); /* [app] resting card in the web app dark theme */
+  --shadow-dark: 0 1px 3px rgba(0, 0, 0, 0.35), 0 6px 20px rgba(0, 0, 0, 0.5); /* [app] composer and menus in the web app dark theme */
   --shadow-lg: 0 16px 40px rgba(10, 25, 34, 0.3); /* [ours] dialogs and the System menu drawer */
 
   /* Motion */
@@ -126,7 +133,7 @@
   --duration-fast: 0.12s;                    /* [ext] button and nav hover (--dur-fast) */
   --duration-menu-item: 0.15s;               /* [ext] same as hover */
   --ease-standard: ease;                     /* [ours] transition timing */
-  --focus-ring: 2px solid #324efe;           /* [ext] keyboard focus on buttons and links, with a 2px offset (--focus-ring) */
+  --focus-ring: 2px solid var(--color-primary); /* [ext] keyboard focus on buttons and links, with a 2px offset (--focus-ring) */
 
   /* Layout */
   --sidebar-width: 230px;                    /* [app] the web app sidebar width (.sidebar) */
