@@ -1,0 +1,131 @@
+/* Versance admin shell: dark left nav + content, in the Versance look (web app + extension style-v1). Built from the design tokens only. */
+/* shell overlays on the dark sidebar: the white token at a fixed share, so no new colour is introduced */
+:root{--shell-hover:color-mix(in srgb,var(--color-text-on-dark) 12%,transparent);--shell-current:color-mix(in srgb,var(--color-text-on-dark) 18%,transparent);--shell-focus:color-mix(in srgb,var(--color-text-on-dark) 20%,transparent)}
+*{box-sizing:border-box}
+body{margin:0;display:flex;min-height:100vh;background:var(--color-page-bg);color:var(--color-text);font-family:var(--font-family);font-size:var(--font-size-md);line-height:var(--line-height-md);letter-spacing:var(--letter-spacing);-webkit-font-smoothing:antialiased}
+.side{flex:none;width:var(--sidebar-width);background:var(--color-ink);color:var(--color-text-on-dark);display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.side .logo{display:block;padding:var(--space-6) var(--space-6) var(--space-4)}
+.side .logo img{display:block;width:160px;height:auto}
+.side hr{border:0;border-top:1px solid var(--color-text-on-dark);opacity:.25;margin:var(--space-2) var(--space-6)}
+.side nav{display:flex;flex-direction:column;padding:var(--space-2) 0}
+.side nav a{position:relative;overflow:hidden;display:block;margin:0 var(--space-3) var(--space-1);padding:7.5px var(--space-3);border-radius:var(--radius-pill);color:var(--color-text-on-dark);text-decoration:none;font-size:var(--font-size-nav);line-height:var(--line-height-nav);font-weight:var(--font-weight-semibold);transition:background-color var(--duration-fast) var(--ease-standard)}
+.side nav a:hover{background:var(--shell-hover)}
+.side nav a:focus-visible{background:var(--shell-focus);outline:0}
+.side nav a[aria-current=page]{background:var(--shell-current)}
+main{flex:1;min-width:0;padding:var(--page-padding)}
+h1{font-size:var(--font-size-title);line-height:var(--line-height-title);font-weight:var(--font-weight-title);margin:var(--space-6) 0 var(--space-4)}
+.lead{margin:0 0 var(--space-6);max-width:640px}
+.card{background:var(--color-surface);border-radius:var(--radius-panel);box-shadow:var(--shadow-sm);padding:var(--card-padding)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-4)}
+.tiles a{display:block;color:inherit;text-decoration:none;transition:box-shadow var(--duration-hover) var(--ease-standard)}
+.tiles a:hover{box-shadow:var(--shadow)}
+.tiles b{display:block;font-size:var(--font-size-lg);line-height:var(--line-height-lg);font-weight:var(--font-weight-bold);color:var(--color-primary)}
+.tiles span{display:block;margin-top:var(--space-1)}
+.tiles code{display:block;margin-top:var(--space-2);font-size:var(--font-size-caption);color:var(--color-text-muted)}
+table{width:100%;border-collapse:collapse}
+th{font-size:var(--font-size-thead);line-height:var(--line-height-thead);font-weight:var(--font-weight-thead);color:var(--color-text);text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:var(--space-2);border-bottom:1px solid var(--color-border-light)}
+td{font-size:var(--font-size-table);line-height:var(--line-height-table);padding:var(--space-2);height:51px;border-bottom:1px solid var(--color-border-light)}
+tr:last-child td{border-bottom:0}
+td a{color:var(--color-primary);text-decoration:underline;text-decoration-color:var(--color-link-underline);text-underline-offset:2px}
+td a:hover{text-decoration-color:currentColor}
+body.embed main{padding:0;display:flex}
+body.embed iframe{flex:1;width:100%;height:100vh;border:0;background:var(--color-surface)}
+body.white main{background:var(--color-surface)}
+body.white .card{box-shadow:none;border:1px solid var(--color-border-light)}
+.tw{width:48px;padding:0}
+.twisty{width:40px;height:40px;border:0;border-radius:50%;background:none;padding:var(--space-2);color:var(--color-text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color var(--duration-hover) var(--ease-standard)}
+.twisty:hover{background:var(--color-hover)}
+.twisty svg{width:24px;height:24px;transition:transform var(--duration-menu-item) var(--ease-standard)}
+.twisty[aria-expanded=true] svg{transform:rotate(90deg)}
+tr.dev td{height:auto;padding:0 var(--space-2) var(--space-4)}
+.devbox{background:var(--color-page-bg);border:1px solid var(--color-border);border-radius:var(--radius-sm);padding:var(--space-4)}
+table.kv th{width:150px;vertical-align:top;border:0;padding:var(--space-1) var(--space-2) var(--space-1) 0;white-space:nowrap}
+table.kv td{height:auto;border:0;padding:var(--space-1) 0}
+table.kv ul{margin:0;padding-left:var(--space-4)}
+.lk a{margin-right:var(--space-3);display:inline-block}
+code{font-size:var(--font-size-caption);background:var(--color-surface);border-radius:var(--radius-sm);padding:1px var(--space-1)}
+.codeview{margin-top:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-sm);overflow:hidden}
+.codeview[hidden]{display:none}
+.cvh{display:flex;align-items:center;padding:var(--space-1) var(--space-2) var(--space-1) var(--space-4);border-bottom:1px solid var(--color-border-light);background:var(--color-page-bg);font-size:var(--font-size-caption);font-weight:var(--font-weight-bold)}
+.cvh span{flex:1}
+.cvh button{width:32px;height:32px;border:0;border-radius:50%;background:none;padding:var(--space-1);color:var(--color-text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color var(--duration-hover) var(--ease-standard)}
+.cvh button:hover{background:var(--color-hover)}
+.cvh svg{width:20px;height:20px}
+.codeview pre{margin:0;padding:var(--space-4);max-height:360px;overflow:auto;font:12px/18px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:0;color:var(--color-text);tab-size:2}
+.codeview code{font:inherit;background:none;padding:0;white-space:pre}
+tr.dev>td:last-child{max-width:0;overflow:hidden}
+.devbox,.codeview{min-width:0;max-width:100%}
+tr.pg:has(+tr.dev:not([hidden])) td{border-bottom:0}
+table.list{table-layout:fixed}
+table.list>thead th:nth-child(2){width:16%}
+table.list>thead th:nth-child(3){width:26%}
+table.list>thead th:nth-child(4){width:30%}
+table.list>thead th:nth-child(5){width:28%}
+table.list td{overflow-wrap:anywhere}
+a.ext svg.out{width:16px;height:16px;margin-left:var(--space-1);vertical-align:-3px;fill:currentColor}
+.pgname{border:0;background:none;padding:0;font:inherit;font-weight:var(--font-weight-bold);letter-spacing:inherit;color:var(--color-text);cursor:pointer;text-align:left}
+.pgname:hover{color:var(--color-primary)}
+.navrow{display:flex;align-items:stretch;margin:0 var(--space-3) var(--space-1);border-radius:var(--radius-pill);overflow:hidden}
+.navrow>a{margin:0!important}
+.navrow>a:first-child{flex:1}
+.side nav a.navout{flex:none;display:flex;align-items:center;padding:0 var(--space-3) 0 var(--space-2);background:none}
+.side nav a.navout svg{width:18px;height:18px;fill:currentColor;opacity:.8}
+.side nav a.navout:hover svg{opacity:1}
+.side nav a.navout:hover{background:var(--shell-hover)}
+/* System row: the whole row carries the hover / current background; only the icon (and its padding) is the link out */
+.navrow{transition:background-color var(--duration-hover) var(--ease-standard)}
+.navrow:hover{background:var(--shell-hover)}
+.navrow:has(>a[aria-current=page]){background:var(--shell-current)}
+.side nav .navrow>a:first-child,.side nav .navrow>a:first-child:hover,.side nav .navrow>a[aria-current=page]{background:none;box-shadow:none}
+.side nav a.navout:hover{background:var(--shell-current)}
+.menubtn{display:none;width:48px;height:48px;border:0;border-radius:50%;background:none;color:var(--color-text-on-dark);cursor:pointer;align-items:center;justify-content:center;padding:0;transition:background-color var(--duration-hover) var(--ease-standard)}
+.menubtn:hover{background:var(--shell-hover)}
+.menubtn svg{width:28px;height:28px;fill:currentColor;transition:transform 200ms var(--ease-standard)}
+.side.open .menubtn svg{transform:rotate(180deg)}
+@media (max-width:720px){
+  body{flex-direction:column}
+  .side{position:static;width:100%;height:auto;min-height:64px;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:0 var(--space-2) 0 0;z-index:30}
+  .side .logo{padding:16px var(--space-4)}
+  .side .logo img{width:auto;height:32px}
+  .side hr{display:none}
+  .menubtn{display:flex}
+  /* the menu opens inside the header block and pushes the page down (it does not float over it) */
+  .side nav{display:none;flex:0 0 100%;position:static;padding:var(--space-2) 0;border-top:1px solid color-mix(in srgb,var(--color-text-on-dark) 25%,transparent)}
+  .side.open nav{display:flex}
+  main{padding:var(--space-4)}
+  body.embed main{padding:0}
+  body.embed iframe{height:calc(100vh - 64px)}
+}
+
+/* flat cards with a hairline border */
+.card{border-radius:var(--radius-panel)}
+.tiles a:hover b{color:var(--color-primary-hover)}
+.side .logo img{filter:none}
+@media (max-width:720px){.card{overflow-x:auto}table.list{min-width:720px}}
+
+/* developer spec pages */
+.crumb{margin:0;font-size:var(--font-size-caption);line-height:var(--line-height-caption);color:var(--color-text-muted)}
+.crumb a{color:var(--color-text-muted)}
+.actions{display:flex;flex-wrap:wrap;gap:var(--space-2) var(--space-6);margin:0 0 var(--space-6)}
+.specs .devbox{margin-bottom:var(--space-6)}
+.spec{margin:0 0 var(--space-6)}
+.spec h2,.specs h2.refs{margin:0 0 var(--space-2);padding-bottom:var(--space-2);border-bottom:1px solid var(--color-border);font-size:var(--font-size-lg);line-height:var(--line-height-lg);font-weight:var(--font-weight-title)}
+.spec ul{margin:0;padding-left:var(--space-5)}
+.spec li{margin:var(--space-1) 0;max-width:900px}
+/* icon links: quiet text actions with a leading or trailing icon */
+.ilink{display:inline-flex;align-items:center;gap:var(--space-1);padding:0;border:0;background:none;color:var(--color-primary);font:var(--font-weight-semibold) var(--font-size-md)/var(--line-height-md) var(--font-family);text-decoration:none;cursor:pointer;transition:color var(--duration-hover) var(--ease-standard)}
+.ilink svg{width:18px;height:18px;fill:currentColor;flex:none}
+.ilink:hover{color:var(--color-primary-hover);text-decoration:underline;text-underline-offset:2px}
+.ilink:focus-visible{outline:2px solid var(--color-primary);outline-offset:2px;border-radius:var(--radius-sm)}
+td a.ilink,td a.ilink:hover{text-decoration:none}
+td a.ilink:hover{text-decoration:underline}
+.back{margin:0 0 var(--space-4)}
+
+/* Public list groups: a heading row per group (web app, each extension style) that folds its rows */
+tr.grp th{padding:var(--space-4) var(--space-2) var(--space-2);border-bottom:1px solid var(--color-border);background:none;text-transform:none;letter-spacing:0;font-size:var(--font-size-md);line-height:var(--line-height-md);font-weight:var(--font-weight-bold)}
+tr.grp button{display:flex;align-items:center;gap:var(--space-2);width:100%;padding:0;border:0;background:none;color:var(--color-text);font:inherit;text-align:left;cursor:pointer}
+tr.grp button svg{width:20px;height:20px;fill:currentColor;flex:none;transition:transform var(--duration-menu-item) var(--ease-standard)}
+tr.grp button[aria-expanded=true] svg{transform:rotate(90deg)}
+tr.grp .gsub{font-weight:var(--font-weight-regular);color:var(--color-text-muted)}
+tr.grp .gcount{margin-left:auto;white-space:nowrap;font-weight:var(--font-weight-regular);color:var(--color-text-muted);font-size:var(--font-size-caption)}
+tr[hidden],tr[data-collapsed]{display:none}

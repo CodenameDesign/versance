@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Versance Admin | System | Design tokens</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/design-tokens/fonts.css">
+<link rel="stylesheet" href="/design-tokens/tokens.css">
+<link rel="stylesheet" href="/admin/system/system.css">
+<script>if(self!==top)document.documentElement.classList.add("framed");else{var bare=/[?&]bare(&|$)/.test(location.search);try{if(bare)sessionStorage.setItem("sysbare","1");else bare=sessionStorage.getItem("sysbare")}catch(e){}if(!bare)location.replace("/admin/system#"+location.pathname.replace(/^\/admin\/system/,"")+location.hash)}</script>
+</head>
+<body class="dsys">
+<header class="bar">
+  <div class="bar__title"><a href="/admin/system/"><img src="/versance-logo.svg" alt="Versance"></a><div>Versance <span>Developer System</span></div></div>
+  <button class="bar__menu" type="button" aria-label="Open the menu" aria-expanded="false" aria-controls="bar-nav"><svg class="i-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></button>
+  <div class="bar__scrim" aria-hidden="true"></div>
+  <nav id="bar-nav" aria-label="Sections"><button class="bar__close" type="button" aria-label="Close the menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></button><a href="/admin/system/">Overview</a><a href="/admin/system/typography/">Typography</a><a href="/admin/system/colour/">Colour</a><a href="/admin/system/foundations/">Foundations</a><a href="/admin/system/components/">Components</a><a href="/admin/system/tokens/" aria-current=page>Design tokens</a><a href="/admin/system/ai/">AI files</a></nav>
+</header>
+<section class="pg">
+  <div class="pg__head"><span>Section 06 &mdash; Design tokens</span><span></span><span class="pg__meta"></span></div>
+  <div class="pg__grid">
+    <div class="pg__side"><h2>Design <b>tokens</b></h2><p class="lede">The system's values as named custom properties and as JSON, ready to use in code or a design tool.</p></div>
+    <div class="pg__main"><div class="row"><div class="row__label"><b>Naming</b></div><div class="row__body"><ul class="rules"><li>Colours are <code>--color-&lt;name&gt;</code></li><li>Type is <code>--font-size-&lt;name&gt;</code>, <code>--line-height-&lt;name&gt;</code>, <code>--font-weight-&lt;name&gt;</code></li><li>Space, radius and shadow are <code>--space-&lt;n&gt;</code>, <code>--radius-&lt;name&gt;</code>, <code>--shadow-&lt;n&gt;</code></li><li>Use the token, never the raw value</li></ul></div></div><div class="row"><div class="row__label"><b>Files</b><small>Download</small></div><div class="row__body"><p class="dl"><a href="/design-tokens/tokens.css" download>tokens.css</a><a href="/design-tokens/tokens.json" download>tokens.json</a><a href="/design-tokens/fonts.css" download>fonts.css</a><a href="/design-tokens/DESIGN-TOKENS.md" download>DESIGN-TOKENS.md</a></p></div></div><div class="row"><div class="row__label"><b>Reference</b><small>Every token, generated from tokens.css</small></div><div class="row__body"><table class="spec"><thead><tr><th>Token</th><th>Value</th><th>Use</th><th>Source</th></tr></thead><tbody><tr><td><code>--color-text</code></td><td><code>#000000</code></td><td>body text (--ink)</td><td>Web app and extension</td></tr><tr><td><code>--color-text-on-dark</code></td><td><code>#ffffff</code></td><td>text and icons on the dark sidebar and on filled buttons</td><td>Web app and extension</td></tr><tr><td><code>--color-text-muted</code></td><td><code>#65728e</code></td><td>labels, captions (--muted)</td><td>Web app and extension</td></tr><tr><td><code>--color-text-faint</code></td><td><code>#8d96aa</code></td><td>placeholders, disabled text (--faint)</td><td>Web app and extension</td></tr><tr><td><code>--color-primary</code></td><td><code>#324efe</code></td><td>the one accent (--accent): links, active states, primary buttons, focus</td><td>Extension style-v1</td></tr><tr><td><code>--color-primary-hover</code></td><td><code>#2c45e0</code></td><td>primary hover (--accent-hover)</td><td>Extension style-v1</td></tr><tr><td><code>--color-primary-dark</code></td><td><code>#263bc1</code></td><td>primary pressed (--accent-pressed)</td><td>Extension style-v1</td></tr><tr><td><code>--color-primary-tint-8</code></td><td><code>#eff1ff</code></td><td>hover on rows and rail buttons (--accent-tint-8)</td><td>Extension style-v1</td></tr><tr><td><code>--color-primary-tint-15</code></td><td><code>#e0e4ff</code></td><td>selected pill, citation chip (--accent-tint-15)</td><td>Extension style-v1</td></tr><tr><td><code>--color-primary-tint-25</code></td><td><code>#ccd3ff</code></td><td>disabled primary button, low-emphasis outlines (--accent-tint-25)</td><td>Extension style-v1</td></tr><tr><td><code>--color-accent</code></td><td><code>#324efe</code></td><td>the active-item bar in the admin sidebar (the accent)</td><td>Extension style-v1</td></tr><tr><td><code>--color-ink</code></td><td><code>#0a1922</code></td><td>near-black: the admin sidebar and the dark pill button (--exception-dark)</td><td>Web app and extension</td></tr><tr><td><code>--color-ink-soft</code></td><td><code>#0d2030</code></td><td>hover on the dark sidebar (the web app&#x27;s dark-theme sidebar)</td><td>Web app</td></tr><tr><td><code>--color-surface</code></td><td><code>#ffffff</code></td><td>cards, menus, inputs (--panel, --bg)</td><td>Web app and extension</td></tr><tr><td><code>--color-page-bg</code></td><td><code>#f9f9f9</code></td><td>page tint, code boxes, tool pane (--pane)</td><td>Extension style-v1</td></tr><tr><td><code>--color-surface-alt</code></td><td><code>#f3f5f9</code></td><td>chips, tiles, hover fills (--hover)</td><td>Web app and extension</td></tr><tr><td><code>--color-border</code></td><td><code>#d9dde5</code></td><td>borders and rules (--line)</td><td>Web app and extension</td></tr><tr><td><code>--color-border-light</code></td><td><code>#f3f5f9</code></td><td>row dividers (--line-soft, --line2)</td><td>Web app and extension</td></tr><tr><td><code>--color-hover</code></td><td><code>#f3f5f9</code></td><td>round icon button hover</td><td>Web app and extension</td></tr><tr><td><code>--color-link-underline</code></td><td><code>rgba(50, 78, 254, 0.4)</code></td><td>underline on admin links</td><td>Ours (admin tool)</td></tr><tr><td><code>--color-backdrop</code></td><td><code>rgba(10, 25, 34, 0.5)</code></td><td>dimmed backdrop behind the menu drawer</td><td>Ours (admin tool)</td></tr><tr><td><code>--color-disabled-bg</code></td><td><code>#f3f5f9</code></td><td>disabled fill</td><td>Ours (admin tool)</td></tr><tr><td><code>--color-disabled-text</code></td><td><code>#8d96aa</code></td><td>disabled text (--faint)</td><td>Web app and extension</td></tr><tr><td><code>--color-success</code></td><td><code>#5ac47e</code></td><td>the web app&#x27;s green (--accent, --green): toggle on, &quot;ask&quot; actions</td><td>Web app</td></tr><tr><td><code>--color-success-bg</code></td><td><code>#def3e5</code></td><td>pale green fill (--accent-bg)</td><td>Web app</td></tr><tr><td><code>--color-success-text</code></td><td><code>#1c6b38</code></td><td>text on the pale green (--accent-text)</td><td>Web app</td></tr><tr><td><code>--color-danger</code></td><td><code>#dc2927</code></td><td>high severity (--risk-high)</td><td>Extension style-v1</td></tr><tr><td><code>--color-danger-bg</code></td><td><code>#fce8e8</code></td><td>pale red fill</td><td>Ours (admin tool)</td></tr><tr><td><code>--color-danger-text</code></td><td><code>#a51d1b</code></td><td>text on the pale red</td><td>Ours (admin tool)</td></tr><tr><td><code>--color-warning</code></td><td><code>#f59d0a</code></td><td>medium severity (--risk-medium)</td><td>Extension style-v1</td></tr><tr><td><code>--color-warning-bg</code></td><td><code>#fef2db</code></td><td>pale amber fill</td><td>Ours (admin tool)</td></tr><tr><td><code>--color-amber</code></td><td><code>#e2b43d</code></td><td>news tag, &quot;create&quot; actions (--tag-news, --amber)</td><td>Web app and extension</td></tr><tr><td><code>--color-tag-filing</code></td><td><code>#324efe</code></td><td>filing tag in the extension (--tag-filing)</td><td>Extension style-v1</td></tr><tr><td><code>--color-tag-filing-app</code></td><td><code>#2b40c5</code></td><td>filing tag in the web app (--col-filing)</td><td>Web app</td></tr><tr><td><code>--color-tag-transcript</code></td><td><code>#ea5b5b</code></td><td>transcript tag (--tag-transcript, .tg.transcript)</td><td>Web app and extension</td></tr><tr><td><code>--color-tag-web</code></td><td><code>#65728e</code></td><td>web tag (--tag-web, --col-web)</td><td>Web app and extension</td></tr><tr><td><code>--app-sidebar-bg</code></td><td><code>#ffffff</code></td><td>the web app&#x27;s white sidebar (--sidebar-bg)</td><td>Web app</td></tr><tr><td><code>--app-nav-active</code></td><td><code>#c7e2f0</code></td><td>active sidebar item fill (.navbtn.active)</td><td>Web app</td></tr><tr><td><code>--app-accent</code></td><td><code>#5ac47e</code></td><td>the web app&#x27;s accent (--accent)</td><td>Web app</td></tr><tr><td><code>--app-accent-dark</code></td><td><code>#3da865</code></td><td>accent hover (--accent-d)</td><td>Web app</td></tr><tr><td><code>--app-accent-bg</code></td><td><code>#def3e5</code></td><td>selected pill, send button fill (--accent-bg)</td><td>Web app</td></tr><tr><td><code>--app-accent-text</code></td><td><code>#1c6b38</code></td><td>text on the accent fill (--accent-text)</td><td>Web app</td></tr><tr><td><code>--app-dark-bg</code></td><td><code>#0a1922</code></td><td>dark theme page (--bg in the dark :root)</td><td>Web app</td></tr><tr><td><code>--app-dark-sidebar</code></td><td><code>#0d2030</code></td><td>dark theme sidebar and panels</td><td>Web app</td></tr><tr><td><code>--app-dark-line</code></td><td><code>#1a3040</code></td><td>dark theme borders</td><td>Web app</td></tr><tr><td><code>--app-dark-hover</code></td><td><code>#152838</code></td><td>dark theme hover and chips</td><td>Web app</td></tr><tr><td><code>--app-dark-text</code></td><td><code>#f3f5f9</code></td><td>dark theme text</td><td>Web app</td></tr><tr><td><code>--app-dark-accent-bg</code></td><td><code>#0d2a18</code></td><td>dark theme selected fill</td><td>Web app</td></tr><tr><td><code>--app-dark-accent-text</code></td><td><code>#7dd498</code></td><td>dark theme accent text</td><td>Web app</td></tr><tr><td><code>--font-family</code></td><td><code>&quot;Figtree&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif</code></td><td>the typeface of the web app and the extension</td><td>Web app and extension</td></tr><tr><td><code>--font-family-mono</code></td><td><code>&quot;Roboto Mono&quot;, monospace</code></td><td>the web app composer and code</td><td>Web app</td></tr><tr><td><code>--letter-spacing</code></td><td><code>0</code></td><td>the web app sets none (the hero title uses -0.5px)</td><td>Web app</td></tr><tr><td><code>--font-size-md</code></td><td><code>14px</code></td><td>body text (--fs-body)</td><td>Extension style-v1</td></tr><tr><td><code>--line-height-md</code></td><td><code>21px</code></td><td>body line height (--lh-body 1.5)</td><td>Extension style-v1</td></tr><tr><td><code>--font-size-lg</code></td><td><code>18px</code></td><td>help title (--fs-help-h1)</td><td>Extension style-v1</td></tr><tr><td><code>--line-height-lg</code></td><td><code>22.5px</code></td><td>help title line height (1.25)</td><td>Extension style-v1</td></tr><tr><td><code>--font-size-title</code></td><td><code>28px</code></td><td>page title (.hero h1)</td><td>Web app</td></tr><tr><td><code>--line-height-title</code></td><td><code>34px</code></td><td>page title line height</td><td>Ours (admin tool)</td></tr><tr><td><code>--font-weight-title</code></td><td><code>700</code></td><td>page title weight</td><td>Web app</td></tr><tr><td><code>--font-size-table</code></td><td><code>14px</code></td><td>table text (--fs-body)</td><td>Extension style-v1</td></tr><tr><td><code>--line-height-table</code></td><td><code>21px</code></td><td>table line height</td><td>Extension style-v1</td></tr><tr><td><code>--font-size-nav</code></td><td><code>13px</code></td><td>sidebar item text (.new-btn 13px)</td><td>Web app</td></tr><tr><td><code>--line-height-nav</code></td><td><code>20px</code></td><td>sidebar item line height</td><td>Ours (admin tool)</td></tr><tr><td><code>--font-size-thead</code></td><td><code>11px</code></td><td>table head, uppercase caps (--fs-caps)</td><td>Extension style-v1</td></tr><tr><td><code>--line-height-thead</code></td><td><code>16px</code></td><td>table head line height</td><td>Ours (admin tool)</td></tr><tr><td><code>--font-size-caption</code></td><td><code>12px</code></td><td>captions, code badges (--fs-small)</td><td>Extension style-v1</td></tr><tr><td><code>--line-height-caption</code></td><td><code>18px</code></td><td>caption line height</td><td>Ours (admin tool)</td></tr><tr><td><code>--font-weight-regular</code></td><td><code>400</code></td><td>body (--fw-regular)</td><td>Extension style-v1</td></tr><tr><td><code>--font-weight-semibold</code></td><td><code>600</code></td><td>pane titles, selected pills (--fw-semibold)</td><td>Extension style-v1</td></tr><tr><td><code>--font-weight-bold</code></td><td><code>700</code></td><td>buttons, tags, nav (--fw-bold)</td><td>Extension style-v1</td></tr><tr><td><code>--font-weight-thead</code></td><td><code>600</code></td><td>table head</td><td>Extension style-v1</td></tr><tr><td><code>--radius-cite</code></td><td><code>4px</code></td><td>citation chip (--r-cite)</td><td>Extension style-v1</td></tr><tr><td><code>--radius-tag</code></td><td><code>6px</code></td><td>source tags (--r-tag)</td><td>Extension style-v1</td></tr><tr><td><code>--radius-sm</code></td><td><code>8px</code></td><td>buttons, small cards (--r-btn)</td><td>Extension style-v1</td></tr><tr><td><code>--radius-box</code></td><td><code>10px</code></td><td>inputs, tab strip (--r-box)</td><td>Extension style-v1</td></tr><tr><td><code>--radius-panel</code></td><td><code>12px</code></td><td>cards and tiles (--r-panel)</td><td>Extension style-v1</td></tr><tr><td><code>--radius-pill</code></td><td><code>999px</code></td><td>pills, tabs, sidebar items, toggles</td><td>Web app and extension</td></tr><tr><td><code>--radius-round</code></td><td><code>50%</code></td><td>icon buttons, send button, dots</td><td>Extension style-v1</td></tr><tr><td><code>--space-1</code></td><td><code>4px</code></td><td>admin scale</td><td>Ours (admin tool)</td></tr><tr><td><code>--space-2</code></td><td><code>8px</code></td><td>admin scale</td><td>Ours (admin tool)</td></tr><tr><td><code>--space-3</code></td><td><code>12px</code></td><td>admin scale</td><td>Ours (admin tool)</td></tr><tr><td><code>--space-4</code></td><td><code>16px</code></td><td>admin scale</td><td>Ours (admin tool)</td></tr><tr><td><code>--space-5</code></td><td><code>20px</code></td><td>web app sidebar padding</td><td>Web app</td></tr><tr><td><code>--space-6</code></td><td><code>24px</code></td><td>admin scale</td><td>Ours (admin tool)</td></tr><tr><td><code>--space-8</code></td><td><code>32px</code></td><td>admin scale</td><td>Ours (admin tool)</td></tr><tr><td><code>--space-10</code></td><td><code>40px</code></td><td>admin scale</td><td>Ours (admin tool)</td></tr><tr><td><code>--pad-btn</code></td><td><code>7px 13px</code></td><td>button padding (--pad-btn)</td><td>Extension style-v1</td></tr><tr><td><code>--pad-pill</code></td><td><code>6px 12px</code></td><td>pill padding (--pad-pill)</td><td>Extension style-v1</td></tr><tr><td><code>--page-padding</code></td><td><code>40px</code></td><td>main area padding</td><td>Ours (admin tool)</td></tr><tr><td><code>--card-padding</code></td><td><code>24px</code></td><td>card padding</td><td>Ours (admin tool)</td></tr><tr><td><code>--shadow-sm</code></td><td><code>0 1px 2px rgba(0, 0, 0, 0.05), 0 3px 10px rgba(0, 0, 0, 0.06)</code></td><td>resting card (--shadow-sm)</td><td>Web app</td></tr><tr><td><code>--shadow</code></td><td><code>0 1px 3px rgba(0, 0, 0, 0.06), 0 6px 20px rgba(0, 0, 0, 0.08)</code></td><td>composer, menus, popovers (--shadow)</td><td>Web app</td></tr><tr><td><code>--shadow-lg</code></td><td><code>0 16px 40px rgba(10, 25, 34, 0.3)</code></td><td>dialogs and the System menu drawer</td><td>Ours (admin tool)</td></tr><tr><td><code>--duration-hover</code></td><td><code>0.15s</code></td><td>colour fades (--dur)</td><td>Extension style-v1</td></tr><tr><td><code>--duration-fast</code></td><td><code>0.12s</code></td><td>button and nav hover (--dur-fast)</td><td>Extension style-v1</td></tr><tr><td><code>--duration-menu-item</code></td><td><code>0.15s</code></td><td>same as hover</td><td>Extension style-v1</td></tr><tr><td><code>--ease-standard</code></td><td><code>ease</code></td><td>transition timing</td><td>Ours (admin tool)</td></tr><tr><td><code>--focus-ring</code></td><td><code>2px solid #324efe</code></td><td>keyboard focus on buttons and links, with a 2px offset (--focus-ring)</td><td>Extension style-v1</td></tr><tr><td><code>--sidebar-width</code></td><td><code>230px</code></td><td>the web app sidebar width (.sidebar)</td><td>Web app</td></tr><tr><td><code>--rail-width</code></td><td><code>40px</code></td><td>the extension icon rail (--rail-w)</td><td>Extension style-v1</td></tr><tr><td><code>--content-max-width</code></td><td><code>1200px</code></td><td>admin content width</td><td>Ours (admin tool)</td></tr><tr><td><code>--nav-indicator-height</code></td><td><code>3px</code></td><td>active item bar in the admin sidebar</td><td>Ours (admin tool)</td></tr><tr><td><code>--header-height</code></td><td><code>64px</code></td><td>phone header</td><td>Ours (admin tool)</td></tr></tbody></table></div></div><div class="row"><div class="row__label"><b>CSS</b><small>All tokens as custom properties</small></div><div class="row__body"><pre class="code code--scroll">/* Versance design tokens: based on the web app (versance.html) and the browser-extension design style-v1 (browser-extension/style-v1/design-system/tokens.css).
+   One token per line with its use as the trailing comment: the docs, tokens.json and the skill are generated from this file.
+   Source tag at the start of each comment (tools/audit.py checks [app], [ext] and [both] values against the source files):
+     [both] the same value is in versance.html and in style-v1
+     [ext]  from style-v1 (the extension: indigo accent, 14px body)
+     [app]  from the web app versance.html (:root, white sidebar, green accent)
+     [ours] chosen for the admin tool; neither source defines it */
+:root {
+  /* Color: text */
+  --color-text: #000000;                     /* [both] body text (--ink) */
+  --color-text-on-dark: #ffffff;             /* [both] text and icons on the dark sidebar and on filled buttons */
+  --color-text-muted: #65728e;               /* [both] labels, captions (--muted) */
+  --color-text-faint: #8d96aa;               /* [both] placeholders, disabled text (--faint) */
+
+  /* Color: brand (extension indigo) */
+  --color-primary: #324efe;                  /* [ext] the one accent (--accent): links, active states, primary buttons, focus */
+  --color-primary-hover: #2c45e0;            /* [ext] primary hover (--accent-hover) */
+  --color-primary-dark: #263bc1;             /* [ext] primary pressed (--accent-pressed) */
+  --color-primary-tint-8: #eff1ff;           /* [ext] hover on rows and rail buttons (--accent-tint-8) */
+  --color-primary-tint-15: #e0e4ff;          /* [ext] selected pill, citation chip (--accent-tint-15) */
+  --color-primary-tint-25: #ccd3ff;          /* [ext] disabled primary button, low-emphasis outlines (--accent-tint-25) */
+  --color-accent: #324efe;                   /* [ext] the active-item bar in the admin sidebar (the accent) */
+
+  /* Color: surfaces and lines */
+  --color-ink: #0a1922;                      /* [both] near-black: the admin sidebar and the dark pill button (--exception-dark) */
+  --color-ink-soft: #0d2030;                 /* [app] hover on the dark sidebar (the web app&#x27;s dark-theme sidebar) */
+  --color-surface: #ffffff;                  /* [both] cards, menus, inputs (--panel, --bg) */
+  --color-page-bg: #f9f9f9;                  /* [ext] page tint, code boxes, tool pane (--pane) */
+  --color-surface-alt: #f3f5f9;              /* [both] chips, tiles, hover fills (--hover) */
+  --color-border: #d9dde5;                   /* [both] borders and rules (--line) */
+  --color-border-light: #f3f5f9;             /* [both] row dividers (--line-soft, --line2) */
+  --color-hover: #f3f5f9;                    /* [both] round icon button hover */
+  --color-link-underline: rgba(50, 78, 254, 0.4); /* [ours] underline on admin links */
+  --color-backdrop: rgba(10, 25, 34, 0.5);   /* [ours] dimmed backdrop behind the menu drawer */
+  --color-disabled-bg: #f3f5f9;              /* [ours] disabled fill */
+  --color-disabled-text: #8d96aa;            /* [both] disabled text (--faint) */
+
+  /* Color: status */
+  --color-success: #5ac47e;                  /* [app] the web app&#x27;s green (--accent, --green): toggle on, &quot;ask&quot; actions */
+  --color-success-bg: #def3e5;               /* [app] pale green fill (--accent-bg) */
+  --color-success-text: #1c6b38;             /* [app] text on the pale green (--accent-text) */
+  --color-danger: #dc2927;                   /* [ext] high severity (--risk-high) */
+  --color-danger-bg: #fce8e8;                /* [ours] pale red fill */
+  --color-danger-text: #a51d1b;              /* [ours] text on the pale red */
+  --color-warning: #f59d0a;                  /* [ext] medium severity (--risk-medium) */
+  --color-warning-bg: #fef2db;               /* [ours] pale amber fill */
+  --color-amber: #e2b43d;                    /* [both] news tag, &quot;create&quot; actions (--tag-news, --amber) */
+
+  /* Color: source tags */
+  --color-tag-filing: #324efe;               /* [ext] filing tag in the extension (--tag-filing) */
+  --color-tag-filing-app: #2b40c5;           /* [app] filing tag in the web app (--col-filing) */
+  --color-tag-transcript: #ea5b5b;           /* [both] transcript tag (--tag-transcript, .tg.transcript) */
+  --color-tag-web: #65728e;                  /* [both] web tag (--tag-web, --col-web) */
+
+  /* Color: web app (versance.html) */
+  --app-sidebar-bg: #ffffff;                 /* [app] the web app&#x27;s white sidebar (--sidebar-bg) */
+  --app-nav-active: #c7e2f0;                 /* [app] active sidebar item fill (.navbtn.active) */
+  --app-accent: #5ac47e;                     /* [app] the web app&#x27;s accent (--accent) */
+  --app-accent-dark: #3da865;                /* [app] accent hover (--accent-d) */
+  --app-accent-bg: #def3e5;                  /* [app] selected pill, send button fill (--accent-bg) */
+  --app-accent-text: #1c6b38;                /* [app] text on the accent fill (--accent-text) */
+
+  /* Color: web app dark theme (reference only: the admin is light) */
+  --app-dark-bg: #0a1922;                    /* [app] dark theme page (--bg in the dark :root) */
+  --app-dark-sidebar: #0d2030;               /* [app] dark theme sidebar and panels */
+  --app-dark-line: #1a3040;                  /* [app] dark theme borders */
+  --app-dark-hover: #152838;                 /* [app] dark theme hover and chips */
+  --app-dark-text: #f3f5f9;                  /* [app] dark theme text */
+  --app-dark-accent-bg: #0d2a18;             /* [app] dark theme selected fill */
+  --app-dark-accent-text: #7dd498;           /* [app] dark theme accent text */
+
+  /* Typography */
+  --font-family: &quot;Figtree&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif; /* [both] the typeface of the web app and the extension */
+  --font-family-mono: &quot;Roboto Mono&quot;, monospace; /* [app] the web app composer and code */
+  --letter-spacing: 0;                       /* [app] the web app sets none (the hero title uses -0.5px) */
+  --font-size-md: 14px;                      /* [ext] body text (--fs-body) */
+  --line-height-md: 21px;                    /* [ext] body line height (--lh-body 1.5) */
+  --font-size-lg: 18px;                      /* [ext] help title (--fs-help-h1) */
+  --line-height-lg: 22.5px;                  /* [ext] help title line height (1.25) */
+  --font-size-title: 28px;                   /* [app] page title (.hero h1) */
+  --line-height-title: 34px;                 /* [ours] page title line height */
+  --font-weight-title: 700;                  /* [app] page title weight */
+  --font-size-table: 14px;                   /* [ext] table text (--fs-body) */
+  --line-height-table: 21px;                 /* [ext] table line height */
+  --font-size-nav: 13px;                     /* [app] sidebar item text (.new-btn 13px) */
+  --line-height-nav: 20px;                   /* [ours] sidebar item line height */
+  --font-size-thead: 11px;                   /* [ext] table head, uppercase caps (--fs-caps) */
+  --line-height-thead: 16px;                 /* [ours] table head line height */
+  --font-size-caption: 12px;                 /* [ext] captions, code badges (--fs-small) */
+  --line-height-caption: 18px;               /* [ours] caption line height */
+  --font-weight-regular: 400;                /* [ext] body (--fw-regular) */
+  --font-weight-semibold: 600;               /* [ext] pane titles, selected pills (--fw-semibold) */
+  --font-weight-bold: 700;                   /* [ext] buttons, tags, nav (--fw-bold) */
+  --font-weight-thead: 600;                  /* [ext] table head */
+
+  /* Radius */
+  --radius-cite: 4px;                        /* [ext] citation chip (--r-cite) */
+  --radius-tag: 6px;                         /* [ext] source tags (--r-tag) */
+  --radius-sm: 8px;                          /* [ext] buttons, small cards (--r-btn) */
+  --radius-box: 10px;                        /* [ext] inputs, tab strip (--r-box) */
+  --radius-panel: 12px;                      /* [ext] cards and tiles (--r-panel) */
+  --radius-pill: 999px;                      /* [both] pills, tabs, sidebar items, toggles */
+  --radius-round: 50%;                       /* [ext] icon buttons, send button, dots */
+
+  /* Spacing */
+  --space-1: 4px;                            /* [ours] admin scale */
+  --space-2: 8px;                            /* [ours] admin scale */
+  --space-3: 12px;                           /* [ours] admin scale */
+  --space-4: 16px;                           /* [ours] admin scale */
+  --space-5: 20px;                           /* [app] web app sidebar padding */
+  --space-6: 24px;                           /* [ours] admin scale */
+  --space-8: 32px;                           /* [ours] admin scale */
+  --space-10: 40px;                          /* [ours] admin scale */
+  --pad-btn: 7px 13px;                       /* [ext] button padding (--pad-btn) */
+  --pad-pill: 6px 12px;                      /* [ext] pill padding (--pad-pill) */
+  --page-padding: 40px;                      /* [ours] main area padding */
+  --card-padding: 24px;                      /* [ours] card padding */
+
+  /* Elevation */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05), 0 3px 10px rgba(0, 0, 0, 0.06); /* [app] resting card (--shadow-sm) */
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 6px 20px rgba(0, 0, 0, 0.08); /* [app] composer, menus, popovers (--shadow) */
+  --shadow-lg: 0 16px 40px rgba(10, 25, 34, 0.3); /* [ours] dialogs and the System menu drawer */
+
+  /* Motion */
+  --duration-hover: 0.15s;                   /* [ext] colour fades (--dur) */
+  --duration-fast: 0.12s;                    /* [ext] button and nav hover (--dur-fast) */
+  --duration-menu-item: 0.15s;               /* [ext] same as hover */
+  --ease-standard: ease;                     /* [ours] transition timing */
+  --focus-ring: 2px solid #324efe;           /* [ext] keyboard focus on buttons and links, with a 2px offset (--focus-ring) */
+
+  /* Layout */
+  --sidebar-width: 230px;                    /* [app] the web app sidebar width (.sidebar) */
+  --rail-width: 40px;                        /* [ext] the extension icon rail (--rail-w) */
+  --content-max-width: 1200px;               /* [ours] admin content width */
+  --nav-indicator-height: 3px;               /* [ours] active item bar in the admin sidebar */
+  --header-height: 64px;                     /* [ours] phone header */
+}
+</pre><button class="copy" type="button">Copy CSS</button></div></div><div class="row"><div class="row__label"><b>JSON</b><small>The same tokens as data</small></div><div class="row__body"><pre class="code code--scroll">{
+  &quot;name&quot;: &quot;versance&quot;,
+  &quot;version&quot;: &quot;1.0&quot;,
+  &quot;source&quot;: &quot;versance.html (web app) and browser-extension/style-v1 via design-tokens/tokens.css&quot;,
+  &quot;color&quot;: {
+    &quot;color-text&quot;: &quot;#000000&quot;,
+    &quot;color-text-on-dark&quot;: &quot;#ffffff&quot;,
+    &quot;color-text-muted&quot;: &quot;#65728e&quot;,
+    &quot;color-text-faint&quot;: &quot;#8d96aa&quot;,
+    &quot;color-primary&quot;: &quot;#324efe&quot;,
+    &quot;color-primary-hover&quot;: &quot;#2c45e0&quot;,
+    &quot;color-primary-dark&quot;: &quot;#263bc1&quot;,
+    &quot;color-primary-tint-8&quot;: &quot;#eff1ff&quot;,
+    &quot;color-primary-tint-15&quot;: &quot;#e0e4ff&quot;,
+    &quot;color-primary-tint-25&quot;: &quot;#ccd3ff&quot;,
+    &quot;color-accent&quot;: &quot;#324efe&quot;,
+    &quot;color-ink&quot;: &quot;#0a1922&quot;,
+    &quot;color-ink-soft&quot;: &quot;#0d2030&quot;,
+    &quot;color-surface&quot;: &quot;#ffffff&quot;,
+    &quot;color-page-bg&quot;: &quot;#f9f9f9&quot;,
+    &quot;color-surface-alt&quot;: &quot;#f3f5f9&quot;,
+    &quot;color-border&quot;: &quot;#d9dde5&quot;,
+    &quot;color-border-light&quot;: &quot;#f3f5f9&quot;,
+    &quot;color-hover&quot;: &quot;#f3f5f9&quot;,
+    &quot;color-link-underline&quot;: &quot;rgba(50, 78, 254, 0.4)&quot;,
+    &quot;color-backdrop&quot;: &quot;rgba(10, 25, 34, 0.5)&quot;,
+    &quot;color-disabled-bg&quot;: &quot;#f3f5f9&quot;,
+    &quot;color-disabled-text&quot;: &quot;#8d96aa&quot;,
+    &quot;color-success&quot;: &quot;#5ac47e&quot;,
+    &quot;color-success-bg&quot;: &quot;#def3e5&quot;,
+    &quot;color-success-text&quot;: &quot;#1c6b38&quot;,
+    &quot;color-danger&quot;: &quot;#dc2927&quot;,
+    &quot;color-danger-bg&quot;: &quot;#fce8e8&quot;,
+    &quot;color-danger-text&quot;: &quot;#a51d1b&quot;,
+    &quot;color-warning&quot;: &quot;#f59d0a&quot;,
+    &quot;color-warning-bg&quot;: &quot;#fef2db&quot;,
+    &quot;color-amber&quot;: &quot;#e2b43d&quot;,
+    &quot;color-tag-filing&quot;: &quot;#324efe&quot;,
+    &quot;color-tag-filing-app&quot;: &quot;#2b40c5&quot;,
+    &quot;color-tag-transcript&quot;: &quot;#ea5b5b&quot;,
+    &quot;color-tag-web&quot;: &quot;#65728e&quot;,
+    &quot;app-sidebar-bg&quot;: &quot;#ffffff&quot;,
+    &quot;app-nav-active&quot;: &quot;#c7e2f0&quot;,
+    &quot;app-accent&quot;: &quot;#5ac47e&quot;,
+    &quot;app-accent-dark&quot;: &quot;#3da865&quot;,
+    &quot;app-accent-bg&quot;: &quot;#def3e5&quot;,
+    &quot;app-accent-text&quot;: &quot;#1c6b38&quot;,
+    &quot;app-dark-bg&quot;: &quot;#0a1922&quot;,
+    &quot;app-dark-sidebar&quot;: &quot;#0d2030&quot;,
+    &quot;app-dark-line&quot;: &quot;#1a3040&quot;,
+    &quot;app-dark-hover&quot;: &quot;#152838&quot;,
+    &quot;app-dark-text&quot;: &quot;#f3f5f9&quot;,
+    &quot;app-dark-accent-bg&quot;: &quot;#0d2a18&quot;,
+    &quot;app-dark-accent-text&quot;: &quot;#7dd498&quot;
+  },
+  &quot;font&quot;: {
+    &quot;family&quot;: &quot;\&quot;Figtree\&quot;, -apple-system, BlinkMacSystemFont, \&quot;Segoe UI\&quot;, sans-serif&quot;,
+    &quot;mono&quot;: &quot;\&quot;Roboto Mono\&quot;, monospace&quot;
+  },
+  &quot;layout&quot;: {
+    &quot;page-padding&quot;: &quot;40px&quot;,
+    &quot;card-padding&quot;: &quot;24px&quot;,
+    &quot;sidebar-width&quot;: &quot;230px&quot;,
+    &quot;rail-width&quot;: &quot;40px&quot;,
+    &quot;content-max-width&quot;: &quot;1200px&quot;
+  },
+  &quot;cssVariables&quot;: {
+    &quot;--color-text&quot;: &quot;#000000&quot;,
+    &quot;--color-text-on-dark&quot;: &quot;#ffffff&quot;,
+    &quot;--color-text-muted&quot;: &quot;#65728e&quot;,
+    &quot;--color-text-faint&quot;: &quot;#8d96aa&quot;,
+    &quot;--color-primary&quot;: &quot;#324efe&quot;,
+    &quot;--color-primary-hover&quot;: &quot;#2c45e0&quot;,
+    &quot;--color-primary-dark&quot;: &quot;#263bc1&quot;,
+    &quot;--color-primary-tint-8&quot;: &quot;#eff1ff&quot;,
+    &quot;--color-primary-tint-15&quot;: &quot;#e0e4ff&quot;,
+    &quot;--color-primary-tint-25&quot;: &quot;#ccd3ff&quot;,
+    &quot;--color-accent&quot;: &quot;#324efe&quot;,
+    &quot;--color-ink&quot;: &quot;#0a1922&quot;,
+    &quot;--color-ink-soft&quot;: &quot;#0d2030&quot;,
+    &quot;--color-surface&quot;: &quot;#ffffff&quot;,
+    &quot;--color-page-bg&quot;: &quot;#f9f9f9&quot;,
+    &quot;--color-surface-alt&quot;: &quot;#f3f5f9&quot;,
+    &quot;--color-border&quot;: &quot;#d9dde5&quot;,
+    &quot;--color-border-light&quot;: &quot;#f3f5f9&quot;,
+    &quot;--color-hover&quot;: &quot;#f3f5f9&quot;,
+    &quot;--color-link-underline&quot;: &quot;rgba(50, 78, 254, 0.4)&quot;,
+    &quot;--color-backdrop&quot;: &quot;rgba(10, 25, 34, 0.5)&quot;,
+    &quot;--color-disabled-bg&quot;: &quot;#f3f5f9&quot;,
+    &quot;--color-disabled-text&quot;: &quot;#8d96aa&quot;,
+    &quot;--color-success&quot;: &quot;#5ac47e&quot;,
+    &quot;--color-success-bg&quot;: &quot;#def3e5&quot;,
+    &quot;--color-success-text&quot;: &quot;#1c6b38&quot;,
+    &quot;--color-danger&quot;: &quot;#dc2927&quot;,
+    &quot;--color-danger-bg&quot;: &quot;#fce8e8&quot;,
+    &quot;--color-danger-text&quot;: &quot;#a51d1b&quot;,
+    &quot;--color-warning&quot;: &quot;#f59d0a&quot;,
+    &quot;--color-warning-bg&quot;: &quot;#fef2db&quot;,
+    &quot;--color-amber&quot;: &quot;#e2b43d&quot;,
+    &quot;--color-tag-filing&quot;: &quot;#324efe&quot;,
+    &quot;--color-tag-filing-app&quot;: &quot;#2b40c5&quot;,
+    &quot;--color-tag-transcript&quot;: &quot;#ea5b5b&quot;,
+    &quot;--color-tag-web&quot;: &quot;#65728e&quot;,
+    &quot;--app-sidebar-bg&quot;: &quot;#ffffff&quot;,
+    &quot;--app-nav-active&quot;: &quot;#c7e2f0&quot;,
+    &quot;--app-accent&quot;: &quot;#5ac47e&quot;,
+    &quot;--app-accent-dark&quot;: &quot;#3da865&quot;,
+    &quot;--app-accent-bg&quot;: &quot;#def3e5&quot;,
+    &quot;--app-accent-text&quot;: &quot;#1c6b38&quot;,
+    &quot;--app-dark-bg&quot;: &quot;#0a1922&quot;,
+    &quot;--app-dark-sidebar&quot;: &quot;#0d2030&quot;,
+    &quot;--app-dark-line&quot;: &quot;#1a3040&quot;,
+    &quot;--app-dark-hover&quot;: &quot;#152838&quot;,
+    &quot;--app-dark-text&quot;: &quot;#f3f5f9&quot;,
+    &quot;--app-dark-accent-bg&quot;: &quot;#0d2a18&quot;,
+    &quot;--app-dark-accent-text&quot;: &quot;#7dd498&quot;,
+    &quot;--font-family&quot;: &quot;\&quot;Figtree\&quot;, -apple-system, BlinkMacSystemFont, \&quot;Segoe UI\&quot;, sans-serif&quot;,
+    &quot;--font-family-mono&quot;: &quot;\&quot;Roboto Mono\&quot;, monospace&quot;,
+    &quot;--letter-spacing&quot;: &quot;0&quot;,
+    &quot;--font-size-md&quot;: &quot;14px&quot;,
+    &quot;--line-height-md&quot;: &quot;21px&quot;,
+    &quot;--font-size-lg&quot;: &quot;18px&quot;,
+    &quot;--line-height-lg&quot;: &quot;22.5px&quot;,
+    &quot;--font-size-title&quot;: &quot;28px&quot;,
+    &quot;--line-height-title&quot;: &quot;34px&quot;,
+    &quot;--font-weight-title&quot;: &quot;700&quot;,
+    &quot;--font-size-table&quot;: &quot;14px&quot;,
+    &quot;--line-height-table&quot;: &quot;21px&quot;,
+    &quot;--font-size-nav&quot;: &quot;13px&quot;,
+    &quot;--line-height-nav&quot;: &quot;20px&quot;,
+    &quot;--font-size-thead&quot;: &quot;11px&quot;,
+    &quot;--line-height-thead&quot;: &quot;16px&quot;,
+    &quot;--font-size-caption&quot;: &quot;12px&quot;,
+    &quot;--line-height-caption&quot;: &quot;18px&quot;,
+    &quot;--font-weight-regular&quot;: &quot;400&quot;,
+    &quot;--font-weight-semibold&quot;: &quot;600&quot;,
+    &quot;--font-weight-bold&quot;: &quot;700&quot;,
+    &quot;--font-weight-thead&quot;: &quot;600&quot;,
+    &quot;--radius-cite&quot;: &quot;4px&quot;,
+    &quot;--radius-tag&quot;: &quot;6px&quot;,
+    &quot;--radius-sm&quot;: &quot;8px&quot;,
+    &quot;--radius-box&quot;: &quot;10px&quot;,
+    &quot;--radius-panel&quot;: &quot;12px&quot;,
+    &quot;--radius-pill&quot;: &quot;999px&quot;,
+    &quot;--radius-round&quot;: &quot;50%&quot;,
+    &quot;--space-1&quot;: &quot;4px&quot;,
+    &quot;--space-2&quot;: &quot;8px&quot;,
+    &quot;--space-3&quot;: &quot;12px&quot;,
+    &quot;--space-4&quot;: &quot;16px&quot;,
+    &quot;--space-5&quot;: &quot;20px&quot;,
+    &quot;--space-6&quot;: &quot;24px&quot;,
+    &quot;--space-8&quot;: &quot;32px&quot;,
+    &quot;--space-10&quot;: &quot;40px&quot;,
+    &quot;--pad-btn&quot;: &quot;7px 13px&quot;,
+    &quot;--pad-pill&quot;: &quot;6px 12px&quot;,
+    &quot;--page-padding&quot;: &quot;40px&quot;,
+    &quot;--card-padding&quot;: &quot;24px&quot;,
+    &quot;--shadow-sm&quot;: &quot;0 1px 2px rgba(0, 0, 0, 0.05), 0 3px 10px rgba(0, 0, 0, 0.06)&quot;,
+    &quot;--shadow&quot;: &quot;0 1px 3px rgba(0, 0, 0, 0.06), 0 6px 20px rgba(0, 0, 0, 0.08)&quot;,
+    &quot;--shadow-lg&quot;: &quot;0 16px 40px rgba(10, 25, 34, 0.3)&quot;,
+    &quot;--duration-hover&quot;: &quot;0.15s&quot;,
+    &quot;--duration-fast&quot;: &quot;0.12s&quot;,
+    &quot;--duration-menu-item&quot;: &quot;0.15s&quot;,
+    &quot;--ease-standard&quot;: &quot;ease&quot;,
+    &quot;--focus-ring&quot;: &quot;2px solid #324efe&quot;,
+    &quot;--sidebar-width&quot;: &quot;230px&quot;,
+    &quot;--rail-width&quot;: &quot;40px&quot;,
+    &quot;--content-max-width&quot;: &quot;1200px&quot;,
+    &quot;--nav-indicator-height&quot;: &quot;3px&quot;,
+    &quot;--header-height&quot;: &quot;64px&quot;
+  }
+}
+</pre><button class="copy" type="button">Copy JSON</button></div></div></div>
+  </div>
+</section>
+<script src="/admin/system/system.js"></script>
+</body>
+</html>

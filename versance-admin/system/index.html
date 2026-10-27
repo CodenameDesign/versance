@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Versance Admin | System | Overview</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/design-tokens/fonts.css">
+<link rel="stylesheet" href="/design-tokens/tokens.css">
+<link rel="stylesheet" href="/admin/system/system.css">
+<script>if(self!==top)document.documentElement.classList.add("framed");else{var bare=/[?&]bare(&|$)/.test(location.search);try{if(bare)sessionStorage.setItem("sysbare","1");else bare=sessionStorage.getItem("sysbare")}catch(e){}if(!bare)location.replace("/admin/system#"+location.pathname.replace(/^\/admin\/system/,"")+location.hash)}</script>
+</head>
+<body class="dsys">
+<header class="bar">
+  <div class="bar__title"><a href="/admin/system/"><img src="/versance-logo.svg" alt="Versance"></a><div>Versance <span>Developer System</span></div></div>
+  <button class="bar__menu" type="button" aria-label="Open the menu" aria-expanded="false" aria-controls="bar-nav"><svg class="i-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></button>
+  <div class="bar__scrim" aria-hidden="true"></div>
+  <nav id="bar-nav" aria-label="Sections"><button class="bar__close" type="button" aria-label="Close the menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></button><a href="/admin/system/" aria-current=page>Overview</a><a href="/admin/system/typography/">Typography</a><a href="/admin/system/colour/">Colour</a><a href="/admin/system/foundations/">Foundations</a><a href="/admin/system/components/">Components</a><a href="/admin/system/tokens/">Design tokens</a><a href="/admin/system/ai/">AI files</a></nav>
+</header>
+<section class="pg">
+  <div class="pg__head"><span>Section 01 &mdash; Overview</span><span></span><span class="pg__meta">Version 1.0</span></div>
+  <div class="pg__grid">
+    <div class="pg__side"><h2>Developer <b>system</b></h2><p class="lede">How the Versance interface is built: type, colour, foundations and components, in a form a developer or an AI assistant can use.</p></div>
+    <div class="pg__main"><div class="row"><div class="row__label"><b>What this is</b></div><div class="row__body"><ul class="rules"><li>One reference for building Versance admin tools and prototypes in the Versance look</li><li>The tokens are based on two sources: the web app (<code>versance.html</code>) and the browser-extension design <code>browser-extension/style-v1/</code>. Every token says which one it comes from; values neither defines are tagged <b>Ours</b></li><li>Use the tokens, not hard-coded values. The same data produces these pages, the CSS and JSON tokens, and the AI files</li></ul></div></div><div class="row"><div class="row__label"><b>The two sources</b><small>Where the tokens come from</small></div><div class="row__body"><table class="spec"><thead><tr><th>Source</th><th>What it supplies</th></tr></thead><tbody><tr><td>Web app</td><td><code>versance.html</code> (Talk to Edgar): white sidebar 230px, green accent #5AC47E, light-blue active nav #C7E2F0, Figtree and Roboto Mono, a dark theme</td></tr><tr><td>Extension style-v1</td><td><code>browser-extension/style-v1/</code>: one indigo accent #324EFE with tints, 14px body, 8px buttons, 10px inputs, 12px cards, severity colours</td></tr><tr><td>This admin</td><td>Indigo accent and style-v1 type and shapes; the web app's sidebar width, shadows and green for success; a near-black #0A1922 sidebar</td></tr></tbody></table></div></div><div class="row"><div class="row__label"><b>Principles</b></div><div class="row__body"><ul class="rules"><li><b>One accent.</b> Indigo #324EFE for links, actions, focus and selected states; pale tints for hover and disabled</li><li><b>Light surfaces, hairlines.</b> White cards, #F9F9F9 panes, #D9DDE5 borders</li><li><b>Figtree everywhere</b>, Roboto Mono only for code and the web app composer</li><li><b>Pills and soft corners.</b> 8px buttons, 10px inputs, 12px cards, fully rounded pills and tabs</li></ul></div></div><div class="row"><div class="row__label"><b>Quick start</b><small>Add the tokens</small></div><div class="row__body"><pre class="code">&lt;link rel=&quot;stylesheet&quot; href=&quot;/design-tokens/fonts.css&quot;&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/design-tokens/tokens.css&quot;&gt;
+
+&lt;style&gt;
+  body{margin:0;font:var(--font-size-md)/var(--line-height-md) var(--font-family);color:var(--color-text);-webkit-font-smoothing:antialiased}
+  a{color:var(--color-primary)}
+&lt;/style&gt;</pre><button class="copy" type="button">Copy snippet</button></div></div><div class="row"><div class="row__label"><b>Reference</b></div><div class="row__body"><p>The <a href="/admin/public">Public</a> list shows the web app and every extension style (v1 to v13) with the files, tokens and skill a developer needs.</p><div class="note">Figtree loads from Google Fonts, as in the source designs. To self-host it, download the font files and replace the import in <code>fonts.css</code>.</div></div></div></div>
+  </div>
+</section>
+<script src="/admin/system/system.js"></script>
+</body>
+</html>
