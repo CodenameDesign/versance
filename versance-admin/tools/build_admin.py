@@ -49,9 +49,9 @@ GROUPS = {}   # gid -> dict(title, sub, open)
 PAGES = []
 
 # ---- web app and reference pages
-GROUPS["web"] = dict(title="Web App", sub="versance.html (Talk to Edgar) and its copy in edgar/", open=True)
-GROUPS["medicus"] = dict(title="Medicus", sub="Design example: the saved Medicus Pharma home page", open=True)
-GROUPS["ext"] = dict(title="Browser Extension v1 – v13", sub="v1 is the baseline (part of the token set); v2 to v13 are design examples", open=True)
+GROUPS["web"] = dict(title="Web App", sub="versance.html (Talk to Edgar) and its copy in edgar/", open=False)
+GROUPS["medicus"] = dict(title="Medicus", sub="Design example: the saved Medicus Pharma home page", open=False)
+GROUPS["ext"] = dict(title="Browser Extension v1 – v13", sub="v1 is the baseline (part of the token set); v2 to v13 are design examples", open=False)
 APP_SPEC = [
     ("About this page", [
         "The Versance web app mock-up (\"Talk to Edgar\"): a white 230px sidebar with a New button and pill nav items, a main area with the hero, the composer and cards",
@@ -87,7 +87,7 @@ for sdir in STYLES:
     name = (md[0].split("style v%d:" % n)[-1].strip() if md else sid)
     summary = next((l for l in md[1:6] if l.strip()), "")
     short = summary if len(summary) <= 90 else summary[:summary.rfind(" ", 0, 90)] + "…"
-    GROUPS[sid] = dict(title=f"Style v{n}: {name}" + ("" if n == 1 else " (design example)"), sub=(short if n == 1 else "Design example. " + short), open=(n == 1), parent="ext")
+    GROUPS[sid] = dict(title=f"Style v{n}: {name}" + ("" if n == 1 else " (design example)"), sub=(short if n == 1 else "Design example. " + short), open=False, parent="ext")
     docs = [(f"Style v{n} tokens", f"/public/extension/{sid}/design-system/view-tokens.html"), (f"Style v{n} components", f"/public/extension/{sid}/design-system/view-components.html"),
             (f"Style v{n} document", f"/public/extension/{sid}/design-system/view-design-system.html")]
     style_files = [f"{base}/design-system/design-system.md", f"{base}/design-system/tokens.css", f"{base}/design-system/components.css"]
