@@ -326,12 +326,13 @@ def build_logos():
         svg = (ROOT / "logos" / f"{stem}.svg").read_text()
         (out / f"{stem}.svg").write_text(svg)
         (out / f"{stem}-white.svg").write_text(re.sub(r"<svg ", '<svg fill="#ffffff" ', svg, count=1))
+        (out / f"{stem}-blue.svg").write_text(re.sub(r"<svg ", f'<svg fill="{TV["--color-primary"]}" ', svg, count=1))
     (ROOT / "versance-logo.svg").write_text((ROOT / "logos/versance-lock-up.svg").read_text())
 
 def p_logos():
-    body = row("Logos", "Black and white", rules([
+    body = row("Logos", "Black, white and blue", rules([
         "Use the <b>lock-up</b> by default; use the <b>icon</b> only where the wordmark will not fit",
-        "Black on light surfaces, white on dark (<code>var(--color-ink)</code>) or photographic backgrounds. No other colours, no gradients, no effects",
+        f"Black on light surfaces, white on dark (<code>var(--color-ink)</code>) or photographic backgrounds, and Versance blue (<code>--color-primary</code>, {TV['--color-primary']}) on white or light surfaces where the brand colour is wanted. No other colours, no gradients, no effects",
         "Never stretch, rotate, outline or re-draw a logo. Scale it proportionally, by width, and let the height follow",
         "Clear space: keep at least the height of the icon's inner bars (about a quarter of the logo height) free on every side",
         "Minimum size: lock-up 120px wide, icon 24px wide",
@@ -342,10 +343,12 @@ def p_logos():
         body += row(name, f"viewBox {size}",
                     f"<p>{about}</p>"
                     f'<div class="box"><img src="/admin/system/logos/{stem}.svg" alt="{name}, black" style="{w};height:auto"></div>'
+                    f'<div class="box"><img src="/admin/system/logos/{stem}-blue.svg" alt="{name}, blue" style="{w};height:auto"></div>'
                     f'<div class="box dark"><img src="/admin/system/logos/{stem}-white.svg" alt="{name}, white" style="{w};height:auto"></div>'
                     f'<p class="dl" style="margin-top:16px"><a href="/admin/system/logos/{stem}.svg" download>Download {stem}.svg (black)</a> &nbsp; '
+                    f'<a href="/admin/system/logos/{stem}-blue.svg" download>Download {stem}-blue.svg (blue)</a> &nbsp; '
                     f'<a href="/admin/system/logos/{stem}-white.svg" download>Download {stem}-white.svg (white)</a></p>', stem)
-    return page("logos", "<b>Logos</b>", "The Versance logos: the lock-up, the icon and the TTE lock-up, in black and white.", body)
+    return page("logos", "<b>Logos</b>", "The Versance logos: the lock-up, the icon and the TTE lock-up, in black, Versance blue and white.", body)
 
 def p_foundations():
     sp = "".join(f'<tr><td><code>{n}</code></td><td>{v}</td><td><div class="bars"><div style="width:{v}"></div></div></td></tr>' for _, n, v, _, _ in TOKENS if n.startswith("--space-"))
@@ -458,7 +461,7 @@ SKILL_FILES = [
     ("tokens.css", "The tokens as CSS", "Custom properties to link into any page."),
     ("fonts.css", "The web fonts", "The Figtree and Roboto Mono import (Google Fonts)."),
     ("starter.html", "Starter page", "Header, page title, buttons, pills, table and footer built from the tokens."),
-    ("logos/", "The logos", "The lock-up, icon and TTE lock-up as SVG, black and white."),
+    ("logos/", "The logos", "The lock-up, icon and TTE lock-up as SVG, black, blue and white."),
     ("check.py", "The checker", "Flags colours, font sizes, radii and fonts that are not in the system."),
 ]
 TEMPLATES = Path(__file__).resolve().parent / "skill_template"
