@@ -12,6 +12,7 @@ Read these in order:
 - **Use the tokens** (`var(--color-*)`, `--font-size-*`, `--radius-*`, `--shadow*`) instead of hard-coded values.
 - **Font:** Figtree (link `fonts.css`), Roboto Mono only for code and the web app composer. Set `-webkit-font-smoothing: antialiased` on body.
 - **One accent:** indigo `var(--color-primary)` for links, actions, focus and selected states; pale tints (`--color-primary-tint-*`) for hover, selected and disabled. Green (`--color-success`) is for success and toggles in the web app; `--color-danger` and `--color-warning` mean severity.
+- **Logo:** use the Versance lock-up (`logos/versance-lock-up.svg`, white variant on dark); the icon alone only where the wordmark will not fit. Never recolour, stretch or re-draw it.
 - **Shapes:** buttons 8px, inputs 10px, cards 12px, pills fully rounded. Body text 14px; page titles 28px / 700.
 - **Surfaces:** white cards with a 1px `var(--color-border)` border, `var(--color-page-bg)` panes, `var(--color-surface-alt)` chips and hovers. The dark `var(--color-ink)` is used for the sidebar and the one dark pill.
 - **Focus:** `var(--focus-ring)` with a 2px offset on buttons and links; text fields only change border colour.

@@ -4,7 +4,7 @@
     python3 tools/build_system.py
 
 Writes system/**/index.html, system/ai/*.md, system/ai/Versance-AI-Files.zip, system/skills/versance-ui/ (+ .zip),
-design-tokens/tokens.json and design-tokens/DESIGN-TOKENS.md. Nothing in system/ except system.css and logo-white.svg is hand-written.
+design-tokens/tokens.json and design-tokens/DESIGN-TOKENS.md. Nothing in system/ except system.css is hand-written. Logos: logos/*.svg are the sources; the build writes system/logos/ (black and white copies) and /versance-logo.svg.
 Edit tokens.css or the data below, run the script, commit.
 """
 import json, html, re, subprocess, sys, zipfile
@@ -22,7 +22,7 @@ SOURCES = T.SOURCES
 E = html.escape
 
 # ---------------------------------------------------------------- data (tokens come from tokens.css)
-SECTIONS = [("", "Overview"), ("typography", "Typography"), ("colour", "Colour"), ("foundations", "Foundations"),
+SECTIONS = [("", "Overview"), ("typography", "Typography"), ("colour", "Colour"), ("logos", "Logos"), ("foundations", "Foundations"),
             ("components", "Components"), ("tokens", "Design tokens"), ("ai", "AI files")]
 
 COLOUR_BLURBS = {
@@ -47,7 +47,7 @@ FOUNDATIONS = {
 # Components: (id, title, blurb, specimen html, spec rows, snippet)
 COMPONENTS = [
     ("shell", "Admin shell", "Dark left nav with the Versance logo and pill items, and a content area. Collapses to a top bar below 720px, where the menu opens inside the header and pushes the page down.",
-     '<div class="sp-side"><img src="/admin/system/logo-white.svg" alt=""><hr><span class="on">System</span><span>Public</span></div>',
+     '<div class="sp-side"><img src="/admin/system/logos/versance-lock-up-white.svg" alt=""><hr><span class="on">System</span><span>Public</span></div>',
      [("Sidebar", "fill var(--color-ink), width var(--sidebar-width) (the web app's 230px), sticky and full height; logo 160px wide, padding 24px"),
       ("Item", "pill (var(--radius-pill)), 13px / 600, padding 7.5px 12px, 12px side margin, hover white at 12%, 120ms"),
       ("Active item", "white at 18% fill; no side bar"),
@@ -315,6 +315,38 @@ def p_colour():
     ]))
     return page("colour", "Colour", "A small palette with fixed jobs: indigo for action, near-black frames, green and severity colours for state.", body)
 
+LOGOS = [("versance-lock-up", "Lock-up", "Icon and VERSANCE.AI wordmark. The primary logo: the admin sidebar, page headers and the home page.", "305 x 84"),
+         ("versance-icon", "Icon", "The waveform circle alone. Use where the wordmark will not fit: app icons, avatars, a collapsed rail.", "84 x 84"),
+         ("versance-tte-lock-up", "TTE lock-up", "The TTE lock-up (icon with its own wordmark), supplied as a separate logo.", "269 x 84")]
+
+def build_logos():
+    out = SYS / "logos"
+    out.mkdir(parents=True, exist_ok=True)
+    for stem, *_ in LOGOS:
+        svg = (ROOT / "logos" / f"{stem}.svg").read_text()
+        (out / f"{stem}.svg").write_text(svg)
+        (out / f"{stem}-white.svg").write_text(re.sub(r"<svg ", '<svg fill="#ffffff" ', svg, count=1))
+    (ROOT / "versance-logo.svg").write_text((ROOT / "logos/versance-lock-up.svg").read_text())
+
+def p_logos():
+    body = row("Logos", "Black and white", rules([
+        "Use the <b>lock-up</b> by default; use the <b>icon</b> only where the wordmark will not fit",
+        "Black on light surfaces, white on dark (<code>var(--color-ink)</code>) or photographic backgrounds. No other colours, no gradients, no effects",
+        "Never stretch, rotate, outline or re-draw a logo. Scale it proportionally, by width, and let the height follow",
+        "Clear space: keep at least the height of the icon's inner bars (about a quarter of the logo height) free on every side",
+        "Minimum size: lock-up 120px wide, icon 24px wide",
+        "Admin sidebar: lock-up, white, 160px wide (32px high on a phone), padding 24px",
+    ]))
+    for stem, name, about, size in LOGOS:
+        w = "width:" + ("96px" if stem == "versance-icon" else "240px")
+        body += row(name, f"viewBox {size}",
+                    f"<p>{about}</p>"
+                    f'<div class="box"><img src="/admin/system/logos/{stem}.svg" alt="{name}, black" style="{w};height:auto"></div>'
+                    f'<div class="box dark"><img src="/admin/system/logos/{stem}-white.svg" alt="{name}, white" style="{w};height:auto"></div>'
+                    f'<p class="dl" style="margin-top:16px"><a href="/admin/system/logos/{stem}.svg" download>Download {stem}.svg (black)</a> &nbsp; '
+                    f'<a href="/admin/system/logos/{stem}-white.svg" download>Download {stem}-white.svg (white)</a></p>', stem)
+    return page("logos", "<b>Logos</b>", "The Versance logos: the lock-up, the icon and the TTE lock-up, in black and white.", body)
+
 def p_foundations():
     sp = "".join(f'<tr><td><code>{n}</code></td><td>{v}</td><td><div class="bars"><div style="width:{v}"></div></div></td></tr>' for _, n, v, _, _ in TOKENS if n.startswith("--space-"))
     body = row("Spacing", "Scale", f'<table class="spec"><thead><tr><th>Token</th><th>Value</th><th></th></tr></thead><tbody>{sp}</tbody></table>'
@@ -386,6 +418,7 @@ Read these in order:
 - **Use the tokens** (`var(--color-*)`, `--font-size-*`, `--radius-*`, `--shadow*`) instead of hard-coded values.
 - **Font:** Figtree (link `fonts.css`), Roboto Mono only for code and the web app composer. Set `-webkit-font-smoothing: antialiased` on body.
 - **One accent:** indigo `var(--color-primary)` for links, actions, focus and selected states; pale tints (`--color-primary-tint-*`) for hover, selected and disabled. Green (`--color-success`) is for success and toggles in the web app; `--color-danger` and `--color-warning` mean severity.
+- **Logo:** use the Versance lock-up (`logos/versance-lock-up.svg`, white variant on dark); the icon alone only where the wordmark will not fit. Never recolour, stretch or re-draw it.
 - **Shapes:** buttons 8px, inputs 10px, cards 12px, pills fully rounded. Body text 14px; page titles 28px / 700.
 - **Surfaces:** white cards with a 1px `var(--color-border)` border, `var(--color-page-bg)` panes, `var(--color-surface-alt)` chips and hovers. The dark `var(--color-ink)` is used for the sidebar and the one dark pill.
 - **Focus:** `var(--focus-ring)` with a 2px offset on buttons and links; text fields only change border colour.
@@ -425,6 +458,7 @@ SKILL_FILES = [
     ("tokens.css", "The tokens as CSS", "Custom properties to link into any page."),
     ("fonts.css", "The web fonts", "The Figtree and Roboto Mono import (Google Fonts)."),
     ("starter.html", "Starter page", "Header, page title, buttons, pills, table and footer built from the tokens."),
+    ("logos/", "The logos", "The lock-up, icon and TTE lock-up as SVG, black and white."),
     ("check.py", "The checker", "Flags colours, font sizes, radii and fonts that are not in the system."),
 ]
 TEMPLATES = Path(__file__).resolve().parent / "skill_template"
@@ -480,6 +514,11 @@ def build_skill():
              "starter.html": (TEMPLATES / "starter.html").read_text().replace("__SITE__", SITE), "check.py": check_py()}
     for name, text in files.items():
         (d / name).write_text(text)
+    (d / "logos").mkdir(exist_ok=True)
+    logos = [f"logos/{p.name}" for p in sorted((SYS / "logos").glob("*.svg"))]
+    for n in logos:
+        (d / n).write_text((SYS / n).read_text())
+    files = {**files, **{n: None for n in logos}}
     with zipfile.ZipFile(SYS / "skills" / f"{SKILL_SLUG}.zip", "w", zipfile.ZIP_DEFLATED) as z:
         for name in files:
             z.write(d / name, f"{SKILL_SLUG}/{name}")
@@ -488,7 +527,7 @@ def p_skill_row():
     base = f"{SITE}/admin/system/skills/{SKILL_SLUG}.zip"
     install = f"curl -L <your-host>{base} -o {SKILL_SLUG}.zip && unzip -o {SKILL_SLUG}.zip -d ~/.claude/skills"
     h3 = '<h3 style="margin:28px 0 8px;font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-primary)">'
-    files = spec_table([(f'<a href="/admin/system/skills/{SKILL_SLUG}/{f}" download>{f}</a>', sub, about) for f, sub, about in SKILL_FILES], ("File", "What it is", "About"))
+    files = spec_table([(f if f.endswith("/") else f'<a href="/admin/system/skills/{SKILL_SLUG}/{f}" download>{f}</a>', sub, about) for f, sub, about in SKILL_FILES], ("File", "What it is", "About"))
     inner = ("<p>A skill for AI coding agents. Give it a screen to build and it uses the Versance tokens and component specs, starts from a working page, and checks the result for values that are not in the system.</p>"
              + h3 + "Install</h3><p>Download the zip below and unzip it into <code>~/.claude/skills</code>, or from a terminal (replace <code>&lt;your-host&gt;</code> with where this site is deployed):</p>"
              + code(install, "Copy command") + h3 + "Use</h3>" + code("/versance-ui build a settings page with a filter card and a table of filings, in the Versance style", "Copy example")
@@ -534,10 +573,11 @@ document.addEventListener('click',function(e){
 
 def main():
     subprocess.run([sys.executable, str(Path(__file__).resolve().parent / "build_tokens.py")], check=True)   # style-v1 tokens.css, versance.html, edgar/versance.html
+    build_logos()
     write_token_json()
     sync_design_tokens_md()
     write("system.js", JS)
-    pages = {"": p_overview, "typography": p_type, "colour": p_colour, "foundations": p_foundations, "components": p_components, "tokens": p_tokens, "ai": p_ai}
+    pages = {"": p_overview, "typography": p_type, "colour": p_colour, "logos": p_logos, "foundations": p_foundations, "components": p_components, "tokens": p_tokens, "ai": p_ai}
     for slug, fn in pages.items():
         write(f"{slug}/index.html" if slug else "index.html", fn())
     for f, _, _, fn in AI_FILES:

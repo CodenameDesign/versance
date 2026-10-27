@@ -7,7 +7,8 @@ The same admin as CNO, 4Mativ and Equinox (left-nav shell, **Public** page list 
 ```
 design-tokens/   tokens.css (the one set), map.json (source variable names to canonical tokens), fonts.css, tokens.json + DESIGN-TOKENS.md (generated)
 admin/           shell: index, system (iframe), public (generated list), spec/ (generated, one page per entry), admin.css, menu.js
-system/          generated design-system site, AI files and the versance-ui skill (system.css and logo-white.svg are hand-written)
+system/          generated design-system site, AI files and the versance-ui skill (only system.css is hand-written)
+logos/          the logo SVG sources (lock-up, icon, TTE lock-up); the build makes the white copies and /versance-logo.svg
 tools/           build_system.py, build_tokens.py, build_admin.py, audit.py, tokens_lib.py, skill_template/
 nginx.conf, Dockerfile, index.html (logo on white)
 ```
