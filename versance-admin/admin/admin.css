@@ -1,14 +1,14 @@
 /* Versance admin shell: dark left nav + content, in the Versance look (web app + extension style-v1). Built from the design tokens only. */
 /* shell overlays on the dark sidebar: the white token at a fixed share, so no new colour is introduced */
-:root{--shell-hover:color-mix(in srgb,var(--color-text-on-dark) 12%,transparent);--shell-current:color-mix(in srgb,var(--color-text-on-dark) 18%,transparent);--shell-focus:color-mix(in srgb,var(--color-text-on-dark) 20%,transparent)}
+:root{--shell-hover:color-mix(in srgb,var(--color-surface) 12%,transparent);--shell-current:color-mix(in srgb,var(--color-surface) 18%,transparent);--shell-focus:color-mix(in srgb,var(--color-surface) 20%,transparent)}
 *{box-sizing:border-box}
 body{margin:0;display:flex;min-height:100vh;background:var(--color-page-bg);color:var(--color-text);font-family:var(--font-family);font-size:var(--font-size-md);line-height:var(--line-height-md);letter-spacing:var(--letter-spacing);-webkit-font-smoothing:antialiased}
-.side{flex:none;width:var(--sidebar-width);background:var(--color-ink);color:var(--color-text-on-dark);display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
+.side{flex:none;width:var(--sidebar-width);background:var(--color-ink);color:var(--color-surface);display:flex;flex-direction:column;position:sticky;top:0;height:100vh}
 .side .logo{display:block;padding:var(--space-6) var(--space-6) var(--space-4)}
 .side .logo img{display:block;width:160px;height:auto}
-.side hr{border:0;border-top:1px solid var(--color-text-on-dark);opacity:.25;margin:var(--space-2) var(--space-6)}
+.side hr{border:0;border-top:1px solid var(--color-surface);opacity:.25;margin:var(--space-2) var(--space-6)}
 .side nav{display:flex;flex-direction:column;padding:var(--space-2) 0}
-.side nav a{position:relative;overflow:hidden;display:block;margin:0 var(--space-3) var(--space-1);padding:7.5px var(--space-3);border-radius:var(--radius-pill);color:var(--color-text-on-dark);text-decoration:none;font-size:var(--font-size-nav);line-height:var(--line-height-nav);font-weight:var(--font-weight-semibold);transition:background-color var(--duration-fast) var(--ease-standard)}
+.side nav a{position:relative;overflow:hidden;display:block;margin:0 var(--space-3) var(--space-1);padding:7.5px var(--space-3);border-radius:var(--radius-pill);color:var(--color-surface);text-decoration:none;font-size:var(--font-size-nav);line-height:var(--line-height-nav);font-weight:var(--font-weight-semibold);transition:background-color var(--duration-fast) var(--ease-standard)}
 .side nav a:hover{background:var(--shell-hover)}
 .side nav a:focus-visible{background:var(--shell-focus);outline:0}
 .side nav a[aria-current=page]{background:var(--shell-current)}
@@ -23,18 +23,18 @@ h1{font-size:var(--font-size-title);line-height:var(--line-height-title);font-we
 .tiles span{display:block;margin-top:var(--space-1)}
 .tiles code{display:block;margin-top:var(--space-2);font-size:var(--font-size-caption);color:var(--color-text-muted)}
 table{width:100%;border-collapse:collapse}
-th{font-size:var(--font-size-thead);line-height:var(--line-height-thead);font-weight:var(--font-weight-thead);color:var(--color-text);text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:var(--space-2);border-bottom:1px solid var(--color-border-light)}
-td{font-size:var(--font-size-table);line-height:var(--line-height-table);padding:var(--space-2);height:51px;border-bottom:1px solid var(--color-border-light)}
+th{font-size:var(--font-size-thead);line-height:var(--line-height-thead);font-weight:var(--font-weight-thead);color:var(--color-text);text-transform:uppercase;letter-spacing:.04em;text-align:left;padding:var(--space-2);border-bottom:1px solid var(--color-surface-alt)}
+td{font-size:var(--font-size-table);line-height:var(--line-height-table);padding:var(--space-2);height:51px;border-bottom:1px solid var(--color-surface-alt)}
 tr:last-child td{border-bottom:0}
 td a{color:var(--color-primary);text-decoration:underline;text-decoration-color:var(--color-link-underline);text-underline-offset:2px}
 td a:hover{text-decoration-color:currentColor}
 body.embed main{padding:0;display:flex}
 body.embed iframe{flex:1;width:100%;height:100vh;border:0;background:var(--color-surface)}
 body.white main{background:var(--color-surface)}
-body.white .card{box-shadow:none;border:1px solid var(--color-border-light)}
+body.white .card{box-shadow:none;border:1px solid var(--color-surface-alt)}
 .tw{width:48px;padding:0}
 .twisty{width:40px;height:40px;border:0;border-radius:50%;background:none;padding:var(--space-2);color:var(--color-text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color var(--duration-hover) var(--ease-standard)}
-.twisty:hover{background:var(--color-hover)}
+.twisty:hover{background:var(--color-surface-alt)}
 .twisty svg{width:24px;height:24px;transition:transform var(--duration-menu-item) var(--ease-standard)}
 .twisty[aria-expanded=true] svg{transform:rotate(90deg)}
 tr.dev td{height:auto;padding:0 var(--space-2) var(--space-4)}
@@ -46,10 +46,10 @@ table.kv ul{margin:0;padding-left:var(--space-4)}
 code{font-size:var(--font-size-caption);background:var(--color-surface);border-radius:var(--radius-sm);padding:1px var(--space-1)}
 .codeview{margin-top:var(--space-4);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-sm);overflow:hidden}
 .codeview[hidden]{display:none}
-.cvh{display:flex;align-items:center;padding:var(--space-1) var(--space-2) var(--space-1) var(--space-4);border-bottom:1px solid var(--color-border-light);background:var(--color-page-bg);font-size:var(--font-size-caption);font-weight:var(--font-weight-bold)}
+.cvh{display:flex;align-items:center;padding:var(--space-1) var(--space-2) var(--space-1) var(--space-4);border-bottom:1px solid var(--color-surface-alt);background:var(--color-page-bg);font-size:var(--font-size-caption);font-weight:var(--font-weight-bold)}
 .cvh span{flex:1}
 .cvh button{width:32px;height:32px;border:0;border-radius:50%;background:none;padding:var(--space-1);color:var(--color-text-muted);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background-color var(--duration-hover) var(--ease-standard)}
-.cvh button:hover{background:var(--color-hover)}
+.cvh button:hover{background:var(--color-surface-alt)}
 .cvh svg{width:20px;height:20px}
 .codeview pre{margin:0;padding:var(--space-4);max-height:360px;overflow:auto;font:12px/18px ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:0;color:var(--color-text);tab-size:2}
 .codeview code{font:inherit;background:none;padding:0;white-space:pre}
@@ -78,7 +78,7 @@ a.ext svg.out{width:16px;height:16px;margin-left:var(--space-1);vertical-align:-
 .navrow:has(>a[aria-current=page]){background:var(--shell-current)}
 .side nav .navrow>a:first-child,.side nav .navrow>a:first-child:hover,.side nav .navrow>a[aria-current=page]{background:none;box-shadow:none}
 .side nav a.navout:hover{background:var(--shell-current)}
-.menubtn{display:none;width:48px;height:48px;border:0;border-radius:50%;background:none;color:var(--color-text-on-dark);cursor:pointer;align-items:center;justify-content:center;padding:0;transition:background-color var(--duration-hover) var(--ease-standard)}
+.menubtn{display:none;width:48px;height:48px;border:0;border-radius:50%;background:none;color:var(--color-surface);cursor:pointer;align-items:center;justify-content:center;padding:0;transition:background-color var(--duration-hover) var(--ease-standard)}
 .menubtn:hover{background:var(--shell-hover)}
 .menubtn svg{width:28px;height:28px;fill:currentColor;transition:transform 200ms var(--ease-standard)}
 .side.open .menubtn svg{transform:rotate(180deg)}
@@ -90,7 +90,7 @@ a.ext svg.out{width:16px;height:16px;margin-left:var(--space-1);vertical-align:-
   .side hr{display:none}
   .menubtn{display:flex}
   /* the menu opens inside the header block and pushes the page down (it does not float over it) */
-  .side nav{display:none;flex:0 0 100%;position:static;padding:var(--space-2) 0;border-top:1px solid color-mix(in srgb,var(--color-text-on-dark) 25%,transparent)}
+  .side nav{display:none;flex:0 0 100%;position:static;padding:var(--space-2) 0;border-top:1px solid color-mix(in srgb,var(--color-surface) 25%,transparent)}
   .side.open nav{display:flex}
   main{padding:var(--space-4)}
   body.embed main{padding:0}

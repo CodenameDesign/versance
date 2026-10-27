@@ -53,7 +53,7 @@ COMPONENTS = [
       ("Active item", "white at 18% fill; no side bar"),
       ("Main", "padding var(--page-padding), white on the Public and System pages"),
       ("Mobile", "at 720px the sidebar becomes a 64px top bar; the arrow button opens the menu inside the header")],
-     ".side{width:var(--sidebar-width);background:var(--color-ink);color:var(--color-text-on-dark)}\n.side nav a{margin:0 12px 4px;padding:7.5px 12px;border-radius:var(--radius-pill);font:600 var(--font-size-nav)/var(--line-height-nav) var(--font-family)}"),
+     ".side{width:var(--sidebar-width);background:var(--color-ink);color:var(--color-surface)}\n.side nav a{margin:0 12px 4px;padding:7.5px 12px;border-radius:var(--radius-pill);font:600 var(--font-size-nav)/var(--line-height-nav) var(--font-family)}"),
     ("buttons", "Buttons", "Extension buttons: 8px radius, 14px text. One primary, an outline for secondary actions, a near-black pill.",
      '<span class="sp-btn p">Export Report</span><span class="sp-btn o">Export Conversation</span><span class="sp-btn">Cancel</span><span class="sp-btn dark">Web Search On</span><span class="sp-btn p off">Disabled</span>',
      [("Base", "padding var(--pad-btn), 1px var(--color-border) border, radius var(--radius-sm), var(--font-size-md); hover border and text var(--color-primary), 120ms"),
@@ -61,7 +61,7 @@ COMPONENTS = [
       ("Primary disabled", "fill var(--color-primary-tint-25), white text, not-allowed"),
       ("Outline (.o)", "var(--color-primary) text, 1px var(--color-primary-tint-25) border; disabled tints lighter"),
       ("Dark pill (.dark)", "fill var(--color-ink), white text, radius var(--radius-pill): the one deliberate non-indigo control (Web Search On)"),
-      ("Tile button", "var(--color-hover) fill, no border, full width (Upload a document)"),
+      ("Tile button", "var(--color-surface-alt) fill, no border, full width (Upload a document)"),
       ("Focus", "var(--focus-ring) with a 2px offset on every button, link and role=button")],
      ".btn{display:inline-flex;align-items:center;gap:6px;padding:var(--pad-btn);border:1px solid var(--color-border);border-radius:var(--radius-sm);transition:border-color var(--duration-fast),color var(--duration-fast)}\n.btn:hover{border-color:var(--color-primary);color:var(--color-primary)}\n.btn.p{background:var(--color-primary);border-color:var(--color-primary);color:#fff}\n.btn.p:hover{background:var(--color-primary-hover)}"),
     ("pills", "Pills and tabs", "Pill-shaped chips and tabs. Selected state is the pale indigo tint.",
@@ -69,13 +69,13 @@ COMPONENTS = [
      [("Pill", "padding var(--pad-pill), radius var(--radius-pill), var(--color-surface-alt) fill, var(--color-text-muted) text; hover var(--color-border) fill and black text"),
       ("Selected pill", "var(--color-primary-tint-15) fill, var(--color-primary) text, weight 600"),
       ("Tab strip", "4px padding, #E6E6E6 fill, radius var(--radius-box); tab padding 4px 12px, pill radius; active tab white with black text"),
-      ("Web app pill (.cpill.on)", "var(--app-accent-bg) fill and var(--app-accent-text) text, 12.5px")],
+      ("Web app pill (.cpill.on)", "var(--color-success-bg) fill and var(--color-success-text) text, 12.5px")],
      ".cpill{display:inline-flex;gap:7px;padding:var(--pad-pill);border-radius:var(--radius-pill);background:var(--color-surface-alt);color:var(--color-text-muted)}\n.cpill.is-selected{background:var(--color-primary-tint-15);color:var(--color-primary);font-weight:600}"),
     ("toggle", "Toggle and send", "The 26 x 15 toggle and the round send button.",
      '<span class="sp-tog"></span><span class="sp-tog on"></span><span class="sp-send"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" fill="none"/></svg></span><span class="sp-send off"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" fill="none"/></svg></span>',
      [("Toggle", "26 x 15px, radius var(--radius-pill), var(--color-border) off, var(--color-primary) on; 11px white knob, 2px inset, 180ms; the web app's on colour is var(--color-success)"),
       ("Send", "36px circle, var(--color-primary) fill, white icon; hover var(--color-primary-hover); disabled var(--color-primary-tint-25) until there is content"),
-      ("Web app send", "var(--app-accent-bg) fill with var(--app-accent-text) icon; hover fills var(--app-accent) with white")],
+      ("Web app send", "var(--color-success-bg) fill with var(--color-success-text) icon; hover fills var(--color-success) with white")],
      ".tog{width:26px;height:15px;border-radius:var(--radius-pill);background:var(--color-border)}\n.tog.on{background:var(--color-primary)}\n.send-btn{width:36px;height:36px;border-radius:50%;background:var(--color-primary);color:#fff}"),
     ("fields", "Fields", "Text input and select: 10px radius, 1px border that turns indigo on focus (no ring).",
      '<div class="sp-field">Search filings</div><div class="sp-field on">Edgar</div>',
@@ -91,27 +91,27 @@ COMPONENTS = [
      ".rail-btn{width:30px;height:30px;border-radius:var(--radius-box)}\n.rail-btn.active{background:var(--color-primary);color:#fff}"),
     ("surfaces", "Pane, tile and card", "Surfaces in the extension: the grey tool pane, dismissible tiles and bordered cards.",
      '<div class="sp-tile">Upload a document to start<i>&times;</i></div><div class="sp-card">Primary company filings</div>',
-     [("Pane", "var(--color-page-bg) (#F9F9F9)"), ("Tile", "var(--color-hover) fill, radius var(--radius-panel), padding 16px 40px 16px 16px; a 20px round close button top right (indigo, hover var(--color-primary-tint-15))"),
-      ("Info tile", "white with a 1px var(--color-border-light) border"), ("Card", "white, 1px var(--color-border) border, radius var(--radius-panel), padding 12px 14px"),
+     [("Pane", "var(--color-page-bg) (#F9F9F9)"), ("Tile", "var(--color-surface-alt) fill, radius var(--radius-panel), padding 16px 40px 16px 16px; a 20px round close button top right (indigo, hover var(--color-primary-tint-15))"),
+      ("Info tile", "white with a 1px var(--color-surface-alt) border"), ("Card", "white, 1px var(--color-border) border, radius var(--radius-panel), padding 12px 14px"),
       ("Web app card", "var(--color-surface-alt) fill, radius 16px, padding 18px 20px, 13px / 600 muted heading")],
      ".card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-panel);padding:12px 14px}"),
     ("tags", "Source tags and severity", "Small solid tags for the source of an answer, and uppercase severity pills.",
      '<span class="sp-tg f">FILING</span><span class="sp-tg t">TRANSCRIPT</span><span class="sp-tg w">WEB</span><span class="sp-tg n">NEWS</span><span class="sp-risk h">High</span><span class="sp-risk m">Medium</span>',
      [("Source tag", "10px / 700, letter-spacing .4px, white on colour, padding 3px 8px, radius var(--radius-tag)"),
-      ("Colours", "filing var(--color-tag-filing) (the web app uses var(--color-tag-filing-app)), transcript var(--color-tag-transcript), web var(--color-tag-web), news var(--color-amber)"),
+      ("Colours", "filing var(--color-primary) (the web app uses var(--color-tag-filing-app)), transcript var(--color-tag-transcript), web var(--color-text-muted), news var(--color-amber)"),
       ("Severity", "12px / 700 uppercase, letter-spacing .02em, white on colour, padding 4px 10px, pill; High var(--color-danger), Medium var(--color-warning)"),
       ("Low risk", "no style is defined: no reference design shows one")],
      ".tg{font:700 10px var(--font-family);letter-spacing:.4px;padding:3px 8px;border-radius:var(--radius-tag);color:#fff}\n.risk{font:700 12px var(--font-family);text-transform:uppercase;padding:4px 10px;border-radius:var(--radius-pill);color:#fff}"),
     ("cite", "Citation, rows and info text", "The inline citation chip, document rows and the indigo help text.",
      '<span class="sp-info">Help title</span><p class="sp-line">Revenue grew 12%<span class="sp-cite">1</span></p><div class="sp-docrow"><span>10-K 2025</span><span class="d">Mar 3, 2026</span></div>',
      [("Citation", "16px minimum, var(--color-primary-tint-15) fill, var(--color-primary) 10px / 700, radius var(--radius-cite)"),
-      ("Doc row", "padding 10px 4px, 1px var(--color-border-light) divider; hover var(--color-primary-tint-8); date in var(--color-text-muted), tabular numbers"),
+      ("Doc row", "padding 10px 4px, 1px var(--color-surface-alt) divider; hover var(--color-primary-tint-8); date in var(--color-text-muted), tabular numbers"),
       ("Info text", "var(--color-primary); title 18px / 700 (line 1.25), sub-heads 14px / 700"),
       ("Link", "var(--color-primary), underlined; hover var(--color-primary-hover)")],
      ".cite{min-width:16px;height:16px;padding:0 4px;background:var(--color-primary-tint-15);color:var(--color-primary);border-radius:var(--radius-cite);font:700 10px var(--font-family)}"),
     ("app-nav", "Web app sidebar", "The web app's white sidebar: the New button and the pill nav items (these are the web app's own values, not the admin's).",
      '<div class="sp-app"><span class="nb new"><i>+</i>New chat</span><span class="nb on">Ask Edgar</span><span class="nb">Filings</span></div>',
-     [("Sidebar", "230px wide, var(--app-sidebar-bg), padding 20px, hairline var(--color-border) on the right"),
+     [("Sidebar", "230px wide, var(--color-surface), padding 20px, hairline var(--color-border) on the right"),
       ("New button", "pill, var(--color-surface-alt) fill, 13px / 500, a 20px black round plus icon; hover var(--color-border)"),
       ("Nav button", "pill, 14px, var(--color-text-muted); hover var(--color-surface-alt) and black; 6px gap between items"),
       ("Active", "var(--app-nav-active) (#C7E2F0) fill, black text, weight 600")],
@@ -120,7 +120,7 @@ COMPONENTS = [
      '<div class="sp-comp"><span>Ask about a company&hellip;</span><b>&#8593;</b></div>',
      [("Box", "white, 1px var(--color-border) border, radius 20px, var(--shadow), padding 16px 16px 13px"),
       ("Text", "var(--font-family-mono) 15px / 1.55, placeholder var(--color-text-faint)"),
-      ("Send", "36px circle bottom right, var(--app-accent-bg) fill, var(--app-accent-text) icon")],
+      ("Send", "36px circle bottom right, var(--color-success-bg) fill, var(--color-success-text) icon")],
      ".composer{background:#fff;border:1px solid var(--color-border);border-radius:20px;box-shadow:var(--shadow);padding:16px 16px 13px}"),
     ("ilink", "Icon link", "The admin's quiet action: a text link with an 18px icon, no fill or border.",
      '<span class="sp-ilink"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/></svg>Open developer spec</span>',
@@ -129,10 +129,10 @@ COMPONENTS = [
      ".ilink{display:inline-flex;align-items:center;gap:var(--space-1);color:var(--color-primary);font:600 var(--font-size-md)/var(--line-height-md) var(--font-family)}\n.ilink:hover{color:var(--color-primary-hover);text-decoration:underline;text-underline-offset:2px}"),
     ("table", "List table with developer row", "The Public page list: group heading rows, one row per page, a twisty that opens the route, source files and spec link.",
      '<table class="sp-table"><thead><tr><th></th><th>Page</th><th>File</th></tr></thead><tbody><tr><td>&#9656;</td><td><b>Coworker</b></td><td><code>VBE-101-Coworker.html</code></td></tr></tbody></table>',
-     [("Head cell", "11px / 600 uppercase, letter-spacing .04em, 1px var(--color-border-light) rule"), ("Body cell", "14px / 21px, padding 8px, 51px rows"),
+     [("Head cell", "11px / 600 uppercase, letter-spacing .04em, 1px var(--color-surface-alt) rule"), ("Body cell", "14px / 21px, padding 8px, 51px rows"),
       ("Group row", "bold 14px heading with a 20px chevron that folds the group's rows; the count sits at the right"),
       ("Developer box", "var(--color-page-bg), 1px var(--color-border), radius var(--radius-sm), padding 16px")],
-     "table{border-collapse:collapse;width:100%}\nth{font:600 var(--font-size-thead)/var(--line-height-thead) var(--font-family);text-transform:uppercase;letter-spacing:.04em}\ntd{padding:8px;font-size:var(--font-size-table);border-bottom:1px solid var(--color-border-light)}"),
+     "table{border-collapse:collapse;width:100%}\nth{font:600 var(--font-size-thead)/var(--line-height-thead) var(--font-family);text-transform:uppercase;letter-spacing:.04em}\ntd{padding:8px;font-size:var(--font-size-table);border-bottom:1px solid var(--color-surface-alt)}"),
 ]
 
 # ---------------------------------------------------------------- tokens.css parsing
@@ -264,7 +264,7 @@ def p_overview():
         "Use the tokens, not hard-coded values. The same data produces these pages, the CSS and JSON tokens, and the AI files",
     ]))
     body += row("One set", "How the tokens are kept", spec_table([
-        ("Source of truth", "<code>design-tokens/tokens.css</code>: every value is written once; other names for the same value are <code>var()</code> aliases"),
+        ("Source of truth", "<code>design-tokens/tokens.css</code>: every value is written once, under one name; the web app's and the extension's own names for it are listed in <code>design-tokens/map.json</code>"),
         ("Based on", "the web app (<code>versance.html</code>) and the extension baseline (<code>browser-extension/style-v1/</code>); each token says which one it comes from, and values neither defines are tagged <b>Ours</b>"),
         ("Generated copies", "style-v1's <code>tokens.css</code> and viewer page, the <code>:root</code> blocks of <code>versance.html</code> and <code>edgar/versance.html</code> (through <code>design-tokens/map.json</code>), <code>tokens.json</code>, <code>DESIGN-TOKENS.md</code>, the AI files and the skill's <code>tokens.css</code>"),
         ("Change a value", "edit <code>tokens.css</code>, run <code>python3 tools/build_system.py</code>, then <code>python3 tools/audit.py</code>"),
@@ -326,7 +326,7 @@ def p_foundations():
                                     "The toggle knob moves in 180ms; the System menu drawer slides in over 250ms",
                                     f"Keyboard focus: <code>--focus-ring</code> ({TV['--focus-ring']}) with a 2px offset"]))
     body += row("Layout", "", spec_table([("Sidebar", f"{TV['--sidebar-width']} wide (the web app sidebar), near-black in the admin"), ("Icon rail", f"{TV['--rail-width']} wide (the extension)"),
-                                         ("Content", f"max width {TV['--content-max-width']}, padding {TV['--page-padding']}"), ("Phone header", TV["--header-height"])], ("Part", "Spec")))
+                                         ("Content", f"max width {TV['--content-max-width']}, padding {TV['--page-padding']}")], ("Part", "Spec")))
     return page("foundations", "<b>Foundations</b>", "Spacing, radius, elevation, motion and layout: the values every component is built from.", body)
 
 def p_components():
@@ -404,8 +404,8 @@ Read these in order:
 | Body text | `var(--color-text)` on `var(--color-surface)` |
 | Muted label | `var(--color-text-muted)` |
 | Link or primary action | `var(--color-primary)`, hover `var(--color-primary-hover)` |
-| Hairline | `1px solid var(--color-border)` (rows: `--color-border-light`) |
-| Sidebar | `var(--color-ink)` with `var(--color-text-on-dark)` |
+| Hairline | `1px solid var(--color-border)` (rows: `--color-surface-alt`) |
+| Sidebar | `var(--color-ink)` with `var(--color-surface)` |
 | Success | `--color-success*` (web app green) |
 | High / medium severity | `--color-danger` / `--color-warning` |
 

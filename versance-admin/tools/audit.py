@@ -9,7 +9,7 @@ Checks (exit code 1 if any fail):
   3. design-tokens/tokens.json lists every tokens.css property in its generated "cssVariables" map
   4. the skill folder is in step with the source files (tokens.css, fonts.css)
   5. the starter, admin.css and system.css pass the skill's checker (no raw colours, font sizes, radii or fonts outside the system)
-  6. one set: no colour value is defined twice in tokens.css (other names for it are var() aliases)
+  6. one set: no colour value is defined twice in tokens.css (one name per value; the source designs' names live in map.json)
   7. the generated copies (style-v1 tokens.css and viewer, versance.html, edgar/versance.html) match tokens.css (tools/build_tokens.py --check)
   8. the design examples (styles v2 to v13, medicus-01.html) have no uncommitted changes
 """
@@ -70,7 +70,7 @@ r = subprocess.run([sys.executable, str(ROOT / "system/skills/versance-ui/check.
                    capture_output=True, text=True)
 if r.returncode: fails.append(("checker findings", r.stdout.strip().splitlines()))
 
-# 6. one set: each literal colour is defined once in tokens.css; every other name for it is a var() alias
+# 6. one set: each literal colour is defined once in tokens.css, under one name
 sys.path.insert(0, str(ROOT / "tools"))
 import tokens_lib
 seen, dup = {}, []
@@ -79,7 +79,7 @@ for g, n, raw, note, tag in tokens_lib.read():
     m = re.fullmatch(r"(#[0-9a-fA-F]{6}|rgba?\([^)]*\))", raw.strip())
     if not m: continue
     key = re.sub(r"\s+", "", raw.lower())
-    if key in seen: dup.append(f"{n} repeats {seen[key]} ({raw}); make it var({seen[key]})")
+    if key in seen: dup.append(f"{n} repeats {seen[key]} ({raw}); use the existing token {seen[key]} (one name per value)")
     else: seen[key] = n
 if dup: fails.append(("a value is defined twice in tokens.css", dup))
 

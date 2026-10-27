@@ -7,7 +7,6 @@ Named values for the Versance interface, based on the web app (versance.html) an
 | Colour | Token | Hex / value | RGB | Use |
 | --- | --- | --- | --- | --- |
 | Text | `--color-text` | `#000000` | R0 G0 B0 | body text (--ink) |
-| Text on dark | `--color-text-on-dark` | `#ffffff` | R255 G255 B255 | text and icons on the dark sidebar and on filled buttons; same value as --color-surface |
 | Text muted | `--color-text-muted` | `#65728e` | R101 G114 B142 | labels, captions (--muted) |
 | Text faint | `--color-text-faint` | `#8d96aa` | R141 G150 B170 | placeholders, disabled text (--faint) |
 | Primary | `--color-primary` | `#324efe` | R50 G78 B254 | the one accent (--accent): links, active states, primary buttons, focus |
@@ -16,43 +15,25 @@ Named values for the Versance interface, based on the web app (versance.html) an
 | Primary tint 8 | `--color-primary-tint-8` | `#eff1ff` | R239 G241 B255 | hover on rows and rail buttons (--accent-tint-8) |
 | Primary tint 15 | `--color-primary-tint-15` | `#e0e4ff` | R224 G228 B255 | selected pill, citation chip (--accent-tint-15) |
 | Primary tint 25 | `--color-primary-tint-25` | `#ccd3ff` | R204 G211 B255 | disabled primary button, low-emphasis outlines (--accent-tint-25) |
-| Accent | `--color-accent` | `#324efe` | R50 G78 B254 | the active-item bar in the admin sidebar (the accent); same value as --color-primary |
 | Ink | `--color-ink` | `#0a1922` | R10 G25 B34 | near-black: the admin sidebar and the dark pill button (--exception-dark) |
 | Ink soft | `--color-ink-soft` | `#0d2030` | R13 G32 B48 | hover on the dark sidebar (the web app's dark-theme sidebar) |
 | Surface | `--color-surface` | `#ffffff` | R255 G255 B255 | cards, menus, inputs (--panel, --bg) |
 | Page bg | `--color-page-bg` | `#f9f9f9` | R249 G249 B249 | page tint, code boxes, tool pane (--pane) |
 | Surface alt | `--color-surface-alt` | `#f3f5f9` | R243 G245 B249 | chips, tiles, hover fills (--hover) |
 | Border | `--color-border` | `#d9dde5` | R217 G221 B229 | borders and rules (--line) |
-| Border light | `--color-border-light` | `#f3f5f9` | R243 G245 B249 | row dividers (--line-soft, --line2); same value as --color-surface-alt |
-| Hover | `--color-hover` | `#f3f5f9` | R243 G245 B249 | round icon button hover; same value as --color-surface-alt |
 | Link underline | `--color-link-underline` | `rgba(50, 78, 254, 0.4)` |  | underline on admin links |
-| Backdrop | `--color-backdrop` | `rgba(10, 25, 34, 0.5)` |  | dimmed backdrop behind the menu drawer |
-| Disabled bg | `--color-disabled-bg` | `#f3f5f9` | R243 G245 B249 | disabled fill; same value as --color-surface-alt |
-| Disabled text | `--color-disabled-text` | `#8d96aa` | R141 G150 B170 | disabled text (--faint); same value as --color-text-faint |
 | Success | `--color-success` | `#5ac47e` | R90 G196 B126 | the web app's green (--accent, --green): toggle on, "ask" actions |
 | Success bg | `--color-success-bg` | `#def3e5` | R222 G243 B229 | pale green fill (--accent-bg) |
 | Success text | `--color-success-text` | `#1c6b38` | R28 G107 B56 | text on the pale green (--accent-text) |
 | Danger | `--color-danger` | `#dc2927` | R220 G41 B39 | high severity (--risk-high) |
-| Danger bg | `--color-danger-bg` | `#fce8e8` | R252 G232 B232 | pale red fill |
-| Danger text | `--color-danger-text` | `#a51d1b` | R165 G29 B27 | text on the pale red |
 | Warning | `--color-warning` | `#f59d0a` | R245 G157 B10 | medium severity (--risk-medium) |
-| Warning bg | `--color-warning-bg` | `#fef2db` | R254 G242 B219 | pale amber fill |
 | Amber | `--color-amber` | `#e2b43d` | R226 G180 B61 | news tag, "create" actions (--tag-news, --amber) |
-| Tag filing | `--color-tag-filing` | `#324efe` | R50 G78 B254 | filing tag in the extension (--tag-filing); same value as --color-primary |
 | Tag filing app | `--color-tag-filing-app` | `#2b40c5` | R43 G64 B197 | filing tag in the web app (--col-filing) |
 | Tag transcript | `--color-tag-transcript` | `#ea5b5b` | R234 G91 B91 | transcript tag (--tag-transcript, .tg.transcript) |
-| Tag web | `--color-tag-web` | `#65728e` | R101 G114 B142 | web tag (--tag-web, --col-web); same value as --color-text-muted |
-| Sidebar bg | `--app-sidebar-bg` | `#ffffff` | R255 G255 B255 | the web app's white sidebar (--sidebar-bg); same value as --color-surface |
 | Nav active | `--app-nav-active` | `#c7e2f0` | R199 G226 B240 | active sidebar item fill (.navbtn.active) |
-| Accent | `--app-accent` | `#5ac47e` | R90 G196 B126 | the web app's accent (--accent); same value as --color-success |
 | Accent dark | `--app-accent-dark` | `#3da865` | R61 G168 B101 | accent hover (--accent-d) |
-| Accent bg | `--app-accent-bg` | `#def3e5` | R222 G243 B229 | selected pill, send button fill (--accent-bg); same value as --color-success-bg |
-| Accent text | `--app-accent-text` | `#1c6b38` | R28 G107 B56 | text on the accent fill (--accent-text); same value as --color-success-text |
-| Dark bg | `--app-dark-bg` | `#0a1922` | R10 G25 B34 | dark theme page (--bg in the dark :root); same value as --color-ink |
-| Dark sidebar | `--app-dark-sidebar` | `#0d2030` | R13 G32 B48 | dark theme sidebar and panels; same value as --color-ink-soft |
 | Dark line | `--app-dark-line` | `#1a3040` | R26 G48 B64 | dark theme borders |
 | Dark hover | `--app-dark-hover` | `#152838` | R21 G40 B56 | dark theme hover and chips |
-| Dark text | `--app-dark-text` | `#f3f5f9` | R243 G245 B249 | dark theme text; same value as --color-surface-alt |
 | Dark accent bg | `--app-dark-accent-bg` | `#0d2a18` | R13 G42 B24 | dark theme selected fill |
 | Source transcript | `--app-source-transcript` | `#334efe` | R51 G78 B254 | the web app's transcript source colour (--col-transcript), one digit from the extension's indigo |
 | Dark accent text | `--app-dark-accent-text` | `#7dd498` | R125 G212 B152 | dark theme accent text |
@@ -92,7 +73,6 @@ Generated from `tokens.css`, so it is always complete.
 | Token | Value | Use | Source |
 | --- | --- | --- | --- |
 | `--color-text` | `#000000` | body text (--ink) | Web app and extension |
-| `--color-text-on-dark` | `#ffffff` | text and icons on the dark sidebar and on filled buttons; same value as --color-surface | Web app and extension |
 | `--color-text-muted` | `#65728e` | labels, captions (--muted) | Web app and extension |
 | `--color-text-faint` | `#8d96aa` | placeholders, disabled text (--faint) | Web app and extension |
 | `--color-primary` | `#324efe` | the one accent (--accent): links, active states, primary buttons, focus | Extension style-v1 |
@@ -101,43 +81,25 @@ Generated from `tokens.css`, so it is always complete.
 | `--color-primary-tint-8` | `#eff1ff` | hover on rows and rail buttons (--accent-tint-8) | Extension style-v1 |
 | `--color-primary-tint-15` | `#e0e4ff` | selected pill, citation chip (--accent-tint-15) | Extension style-v1 |
 | `--color-primary-tint-25` | `#ccd3ff` | disabled primary button, low-emphasis outlines (--accent-tint-25) | Extension style-v1 |
-| `--color-accent` | `#324efe` | the active-item bar in the admin sidebar (the accent); same value as --color-primary | Extension style-v1 |
 | `--color-ink` | `#0a1922` | near-black: the admin sidebar and the dark pill button (--exception-dark) | Web app and extension |
 | `--color-ink-soft` | `#0d2030` | hover on the dark sidebar (the web app's dark-theme sidebar) | Web app |
 | `--color-surface` | `#ffffff` | cards, menus, inputs (--panel, --bg) | Web app and extension |
 | `--color-page-bg` | `#f9f9f9` | page tint, code boxes, tool pane (--pane) | Extension style-v1 |
 | `--color-surface-alt` | `#f3f5f9` | chips, tiles, hover fills (--hover) | Web app and extension |
 | `--color-border` | `#d9dde5` | borders and rules (--line) | Web app and extension |
-| `--color-border-light` | `#f3f5f9` | row dividers (--line-soft, --line2); same value as --color-surface-alt | Web app and extension |
-| `--color-hover` | `#f3f5f9` | round icon button hover; same value as --color-surface-alt | Web app and extension |
 | `--color-link-underline` | `rgba(50, 78, 254, 0.4)` | underline on admin links | Ours (admin tool) |
-| `--color-backdrop` | `rgba(10, 25, 34, 0.5)` | dimmed backdrop behind the menu drawer | Ours (admin tool) |
-| `--color-disabled-bg` | `#f3f5f9` | disabled fill; same value as --color-surface-alt | Ours (admin tool) |
-| `--color-disabled-text` | `#8d96aa` | disabled text (--faint); same value as --color-text-faint | Web app and extension |
 | `--color-success` | `#5ac47e` | the web app's green (--accent, --green): toggle on, "ask" actions | Web app |
 | `--color-success-bg` | `#def3e5` | pale green fill (--accent-bg) | Web app |
 | `--color-success-text` | `#1c6b38` | text on the pale green (--accent-text) | Web app |
 | `--color-danger` | `#dc2927` | high severity (--risk-high) | Extension style-v1 |
-| `--color-danger-bg` | `#fce8e8` | pale red fill | Ours (admin tool) |
-| `--color-danger-text` | `#a51d1b` | text on the pale red | Ours (admin tool) |
 | `--color-warning` | `#f59d0a` | medium severity (--risk-medium) | Extension style-v1 |
-| `--color-warning-bg` | `#fef2db` | pale amber fill | Ours (admin tool) |
 | `--color-amber` | `#e2b43d` | news tag, "create" actions (--tag-news, --amber) | Web app and extension |
-| `--color-tag-filing` | `#324efe` | filing tag in the extension (--tag-filing); same value as --color-primary | Extension style-v1 |
 | `--color-tag-filing-app` | `#2b40c5` | filing tag in the web app (--col-filing) | Web app |
 | `--color-tag-transcript` | `#ea5b5b` | transcript tag (--tag-transcript, .tg.transcript) | Web app and extension |
-| `--color-tag-web` | `#65728e` | web tag (--tag-web, --col-web); same value as --color-text-muted | Web app and extension |
-| `--app-sidebar-bg` | `#ffffff` | the web app's white sidebar (--sidebar-bg); same value as --color-surface | Web app |
 | `--app-nav-active` | `#c7e2f0` | active sidebar item fill (.navbtn.active) | Web app |
-| `--app-accent` | `#5ac47e` | the web app's accent (--accent); same value as --color-success | Web app |
 | `--app-accent-dark` | `#3da865` | accent hover (--accent-d) | Web app |
-| `--app-accent-bg` | `#def3e5` | selected pill, send button fill (--accent-bg); same value as --color-success-bg | Web app |
-| `--app-accent-text` | `#1c6b38` | text on the accent fill (--accent-text); same value as --color-success-text | Web app |
-| `--app-dark-bg` | `#0a1922` | dark theme page (--bg in the dark :root); same value as --color-ink | Web app |
-| `--app-dark-sidebar` | `#0d2030` | dark theme sidebar and panels; same value as --color-ink-soft | Web app |
 | `--app-dark-line` | `#1a3040` | dark theme borders | Web app |
 | `--app-dark-hover` | `#152838` | dark theme hover and chips | Web app |
-| `--app-dark-text` | `#f3f5f9` | dark theme text; same value as --color-surface-alt | Web app |
 | `--app-dark-accent-bg` | `#0d2a18` | dark theme selected fill | Web app |
 | `--app-source-transcript` | `#334efe` | the web app's transcript source colour (--col-transcript), one digit from the extension's indigo | Web app |
 | `--app-dark-accent-text` | `#7dd498` | dark theme accent text | Web app |
@@ -178,7 +140,6 @@ Generated from `tokens.css`, so it is always complete.
 | `--space-5` | `20px` | web app sidebar padding | Web app |
 | `--space-6` | `24px` | admin scale | Ours (admin tool) |
 | `--space-8` | `32px` | admin scale | Ours (admin tool) |
-| `--space-10` | `40px` | admin scale | Ours (admin tool) |
 | `--pad-btn` | `7px 13px` | button padding (--pad-btn) | Extension style-v1 |
 | `--pad-pill` | `6px 12px` | pill padding (--pad-pill) | Extension style-v1 |
 | `--page-padding` | `40px` | main area padding | Ours (admin tool) |
@@ -196,8 +157,6 @@ Generated from `tokens.css`, so it is always complete.
 | `--sidebar-width` | `230px` | the web app sidebar width (.sidebar) | Web app |
 | `--rail-width` | `40px` | the extension icon rail (--rail-w) | Extension style-v1 |
 | `--content-max-width` | `1200px` | admin content width | Ours (admin tool) |
-| `--nav-indicator-height` | `3px` | active item bar in the admin sidebar | Ours (admin tool) |
-| `--header-height` | `64px` | phone header | Ours (admin tool) |
 
 ## CSS
 
@@ -205,7 +164,7 @@ Generated from `tokens.css`, so it is always complete.
 /* Versance design tokens: based on the web app (versance.html) and the browser-extension design style-v1 (browser-extension/style-v1/design-system/tokens.css).
    THE ONE SET OF VERSANCE TOKENS. Every other place that carries token values is generated from this file (python3 tools/build_system.py):
    style-v1's tokens.css and the :root blocks of versance.html and edgar/versance.html (through design-tokens/map.json), tokens.json, DESIGN-TOKENS.md, the AI files, the skill's tokens.css and the System pages. Edit values here only.
-   Each literal value is defined once; other names for the same value are var() aliases. Styles v2 to v13 and medicus-01.html are separate design examples with their own CSS and are not part of this set.
+   Each value is defined once, under one name (no aliases); the web app's and the extension's own names for it are in design-tokens/map.json. Styles v2 to v13 and medicus-01.html are separate design examples with their own CSS and are not part of this set.
    One token per line with its use as the trailing comment.
    Source tag at the start of each comment (tools/audit.py checks [app], [ext] and [both] values against the source files):
      [both] the same value is in versance.html and in style-v1
@@ -215,7 +174,6 @@ Generated from `tokens.css`, so it is always complete.
 :root {
   /* Color: text */
   --color-text: #000000;                     /* [both] body text (--ink) */
-  --color-text-on-dark: var(--color-surface);             /* [both] text and icons on the dark sidebar and on filled buttons; same value as --color-surface */
   --color-text-muted: #65728e;               /* [both] labels, captions (--muted) */
   --color-text-faint: #8d96aa;               /* [both] placeholders, disabled text (--faint) */
 
@@ -226,7 +184,6 @@ Generated from `tokens.css`, so it is always complete.
   --color-primary-tint-8: #eff1ff;           /* [ext] hover on rows and rail buttons (--accent-tint-8) */
   --color-primary-tint-15: #e0e4ff;          /* [ext] selected pill, citation chip (--accent-tint-15) */
   --color-primary-tint-25: #ccd3ff;          /* [ext] disabled primary button, low-emphasis outlines (--accent-tint-25) */
-  --color-accent: var(--color-primary);                   /* [ext] the active-item bar in the admin sidebar (the accent); same value as --color-primary */
 
   /* Color: surfaces and lines */
   --color-ink: #0a1922;                      /* [both] near-black: the admin sidebar and the dark pill button (--exception-dark) */
@@ -235,44 +192,27 @@ Generated from `tokens.css`, so it is always complete.
   --color-page-bg: #f9f9f9;                  /* [ext] page tint, code boxes, tool pane (--pane) */
   --color-surface-alt: #f3f5f9;              /* [both] chips, tiles, hover fills (--hover) */
   --color-border: #d9dde5;                   /* [both] borders and rules (--line) */
-  --color-border-light: var(--color-surface-alt);             /* [both] row dividers (--line-soft, --line2); same value as --color-surface-alt */
-  --color-hover: var(--color-surface-alt);                    /* [both] round icon button hover; same value as --color-surface-alt */
   --color-link-underline: rgba(50, 78, 254, 0.4); /* [ours] underline on admin links */
-  --color-backdrop: rgba(10, 25, 34, 0.5);   /* [ours] dimmed backdrop behind the menu drawer */
-  --color-disabled-bg: var(--color-surface-alt);              /* [ours] disabled fill; same value as --color-surface-alt */
-  --color-disabled-text: var(--color-text-faint);            /* [both] disabled text (--faint); same value as --color-text-faint */
 
   /* Color: status */
   --color-success: #5ac47e;                  /* [app] the web app's green (--accent, --green): toggle on, "ask" actions */
   --color-success-bg: #def3e5;               /* [app] pale green fill (--accent-bg) */
   --color-success-text: #1c6b38;             /* [app] text on the pale green (--accent-text) */
   --color-danger: #dc2927;                   /* [ext] high severity (--risk-high) */
-  --color-danger-bg: #fce8e8;                /* [ours] pale red fill */
-  --color-danger-text: #a51d1b;              /* [ours] text on the pale red */
   --color-warning: #f59d0a;                  /* [ext] medium severity (--risk-medium) */
-  --color-warning-bg: #fef2db;               /* [ours] pale amber fill */
   --color-amber: #e2b43d;                    /* [both] news tag, "create" actions (--tag-news, --amber) */
 
   /* Color: source tags */
-  --color-tag-filing: var(--color-primary);               /* [ext] filing tag in the extension (--tag-filing); same value as --color-primary */
   --color-tag-filing-app: #2b40c5;           /* [app] filing tag in the web app (--col-filing) */
   --color-tag-transcript: #ea5b5b;           /* [both] transcript tag (--tag-transcript, .tg.transcript) */
-  --color-tag-web: var(--color-text-muted);                  /* [both] web tag (--tag-web, --col-web); same value as --color-text-muted */
 
   /* Color: web app (versance.html) */
-  --app-sidebar-bg: var(--color-surface);                 /* [app] the web app's white sidebar (--sidebar-bg); same value as --color-surface */
   --app-nav-active: #c7e2f0;                 /* [app] active sidebar item fill (.navbtn.active) */
-  --app-accent: var(--color-success);                     /* [app] the web app's accent (--accent); same value as --color-success */
   --app-accent-dark: #3da865;                /* [app] accent hover (--accent-d) */
-  --app-accent-bg: var(--color-success-bg);                  /* [app] selected pill, send button fill (--accent-bg); same value as --color-success-bg */
-  --app-accent-text: var(--color-success-text);                /* [app] text on the accent fill (--accent-text); same value as --color-success-text */
 
   /* Color: web app dark theme (reference only: the admin is light) */
-  --app-dark-bg: var(--color-ink);                    /* [app] dark theme page (--bg in the dark :root); same value as --color-ink */
-  --app-dark-sidebar: var(--color-ink-soft);               /* [app] dark theme sidebar and panels; same value as --color-ink-soft */
   --app-dark-line: #1a3040;                  /* [app] dark theme borders */
   --app-dark-hover: #152838;                 /* [app] dark theme hover and chips */
-  --app-dark-text: var(--color-surface-alt);                  /* [app] dark theme text; same value as --color-surface-alt */
   --app-dark-accent-bg: #0d2a18;             /* [app] dark theme selected fill */
   --app-source-transcript: #334efe;          /* [app] the web app's transcript source colour (--col-transcript), one digit from the extension's indigo */
   --app-dark-accent-text: #7dd498;           /* [app] dark theme accent text */
@@ -319,7 +259,6 @@ Generated from `tokens.css`, so it is always complete.
   --space-5: 20px;                           /* [app] web app sidebar padding */
   --space-6: 24px;                           /* [ours] admin scale */
   --space-8: 32px;                           /* [ours] admin scale */
-  --space-10: 40px;                          /* [ours] admin scale */
   --pad-btn: 7px 13px;                       /* [ext] button padding (--pad-btn) */
   --pad-pill: 6px 12px;                      /* [ext] pill padding (--pad-pill) */
   --page-padding: 40px;                      /* [ours] main area padding */
@@ -343,7 +282,5 @@ Generated from `tokens.css`, so it is always complete.
   --sidebar-width: 230px;                    /* [app] the web app sidebar width (.sidebar) */
   --rail-width: 40px;                        /* [ext] the extension icon rail (--rail-w) */
   --content-max-width: 1200px;               /* [ours] admin content width */
-  --nav-indicator-height: 3px;               /* [ours] active item bar in the admin sidebar */
-  --header-height: 64px;                     /* [ours] phone header */
 }
 ```

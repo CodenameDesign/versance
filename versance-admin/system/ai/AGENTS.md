@@ -30,8 +30,8 @@ Read these in order:
 | Body text | `var(--color-text)` on `var(--color-surface)` |
 | Muted label | `var(--color-text-muted)` |
 | Link or primary action | `var(--color-primary)`, hover `var(--color-primary-hover)` |
-| Hairline | `1px solid var(--color-border)` (rows: `--color-border-light`) |
-| Sidebar | `var(--color-ink)` with `var(--color-text-on-dark)` |
+| Hairline | `1px solid var(--color-border)` (rows: `--color-surface-alt`) |
+| Sidebar | `var(--color-ink)` with `var(--color-surface)` |
 | Success | `--color-success*` (web app green) |
 | High / medium severity | `--color-danger` / `--color-warning` |
 

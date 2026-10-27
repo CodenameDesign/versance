@@ -15,7 +15,7 @@ Dark left nav with the Versance logo and pill items, and a content area. Collaps
 | Mobile | at 720px the sidebar becomes a 64px top bar; the arrow button opens the menu inside the header |
 
 ```css
-.side{width:var(--sidebar-width);background:var(--color-ink);color:var(--color-text-on-dark)}
+.side{width:var(--sidebar-width);background:var(--color-ink);color:var(--color-surface)}
 .side nav a{margin:0 12px 4px;padding:7.5px 12px;border-radius:var(--radius-pill);font:600 var(--font-size-nav)/var(--line-height-nav) var(--font-family)}
 ```
 
@@ -30,7 +30,7 @@ Extension buttons: 8px radius, 14px text. One primary, an outline for secondary 
 | Primary disabled | fill var(--color-primary-tint-25), white text, not-allowed |
 | Outline (.o) | var(--color-primary) text, 1px var(--color-primary-tint-25) border; disabled tints lighter |
 | Dark pill (.dark) | fill var(--color-ink), white text, radius var(--radius-pill): the one deliberate non-indigo control (Web Search On) |
-| Tile button | var(--color-hover) fill, no border, full width (Upload a document) |
+| Tile button | var(--color-surface-alt) fill, no border, full width (Upload a document) |
 | Focus | var(--focus-ring) with a 2px offset on every button, link and role=button |
 
 ```css
@@ -49,7 +49,7 @@ Pill-shaped chips and tabs. Selected state is the pale indigo tint.
 | Pill | padding var(--pad-pill), radius var(--radius-pill), var(--color-surface-alt) fill, var(--color-text-muted) text; hover var(--color-border) fill and black text |
 | Selected pill | var(--color-primary-tint-15) fill, var(--color-primary) text, weight 600 |
 | Tab strip | 4px padding, #E6E6E6 fill, radius var(--radius-box); tab padding 4px 12px, pill radius; active tab white with black text |
-| Web app pill (.cpill.on) | var(--app-accent-bg) fill and var(--app-accent-text) text, 12.5px |
+| Web app pill (.cpill.on) | var(--color-success-bg) fill and var(--color-success-text) text, 12.5px |
 
 ```css
 .cpill{display:inline-flex;gap:7px;padding:var(--pad-pill);border-radius:var(--radius-pill);background:var(--color-surface-alt);color:var(--color-text-muted)}
@@ -64,7 +64,7 @@ The 26 x 15 toggle and the round send button.
 | --- | --- |
 | Toggle | 26 x 15px, radius var(--radius-pill), var(--color-border) off, var(--color-primary) on; 11px white knob, 2px inset, 180ms; the web app's on colour is var(--color-success) |
 | Send | 36px circle, var(--color-primary) fill, white icon; hover var(--color-primary-hover); disabled var(--color-primary-tint-25) until there is content |
-| Web app send | var(--app-accent-bg) fill with var(--app-accent-text) icon; hover fills var(--app-accent) with white |
+| Web app send | var(--color-success-bg) fill with var(--color-success-text) icon; hover fills var(--color-success) with white |
 
 ```css
 .tog{width:26px;height:15px;border-radius:var(--radius-pill);background:var(--color-border)}
@@ -109,8 +109,8 @@ Surfaces in the extension: the grey tool pane, dismissible tiles and bordered ca
 | Property | Value |
 | --- | --- |
 | Pane | var(--color-page-bg) (#F9F9F9) |
-| Tile | var(--color-hover) fill, radius var(--radius-panel), padding 16px 40px 16px 16px; a 20px round close button top right (indigo, hover var(--color-primary-tint-15)) |
-| Info tile | white with a 1px var(--color-border-light) border |
+| Tile | var(--color-surface-alt) fill, radius var(--radius-panel), padding 16px 40px 16px 16px; a 20px round close button top right (indigo, hover var(--color-primary-tint-15)) |
+| Info tile | white with a 1px var(--color-surface-alt) border |
 | Card | white, 1px var(--color-border) border, radius var(--radius-panel), padding 12px 14px |
 | Web app card | var(--color-surface-alt) fill, radius 16px, padding 18px 20px, 13px / 600 muted heading |
 
@@ -125,7 +125,7 @@ Small solid tags for the source of an answer, and uppercase severity pills.
 | Property | Value |
 | --- | --- |
 | Source tag | 10px / 700, letter-spacing .4px, white on colour, padding 3px 8px, radius var(--radius-tag) |
-| Colours | filing var(--color-tag-filing) (the web app uses var(--color-tag-filing-app)), transcript var(--color-tag-transcript), web var(--color-tag-web), news var(--color-amber) |
+| Colours | filing var(--color-primary) (the web app uses var(--color-tag-filing-app)), transcript var(--color-tag-transcript), web var(--color-text-muted), news var(--color-amber) |
 | Severity | 12px / 700 uppercase, letter-spacing .02em, white on colour, padding 4px 10px, pill; High var(--color-danger), Medium var(--color-warning) |
 | Low risk | no style is defined: no reference design shows one |
 
@@ -141,7 +141,7 @@ The inline citation chip, document rows and the indigo help text.
 | Property | Value |
 | --- | --- |
 | Citation | 16px minimum, var(--color-primary-tint-15) fill, var(--color-primary) 10px / 700, radius var(--radius-cite) |
-| Doc row | padding 10px 4px, 1px var(--color-border-light) divider; hover var(--color-primary-tint-8); date in var(--color-text-muted), tabular numbers |
+| Doc row | padding 10px 4px, 1px var(--color-surface-alt) divider; hover var(--color-primary-tint-8); date in var(--color-text-muted), tabular numbers |
 | Info text | var(--color-primary); title 18px / 700 (line 1.25), sub-heads 14px / 700 |
 | Link | var(--color-primary), underlined; hover var(--color-primary-hover) |
 
@@ -155,7 +155,7 @@ The web app's white sidebar: the New button and the pill nav items (these are th
 
 | Property | Value |
 | --- | --- |
-| Sidebar | 230px wide, var(--app-sidebar-bg), padding 20px, hairline var(--color-border) on the right |
+| Sidebar | 230px wide, var(--color-surface), padding 20px, hairline var(--color-border) on the right |
 | New button | pill, var(--color-surface-alt) fill, 13px / 500, a 20px black round plus icon; hover var(--color-border) |
 | Nav button | pill, 14px, var(--color-text-muted); hover var(--color-surface-alt) and black; 6px gap between items |
 | Active | var(--app-nav-active) (#C7E2F0) fill, black text, weight 600 |
@@ -173,7 +173,7 @@ The web app's message box: 20px radius, mono text, pill row below.
 | --- | --- |
 | Box | white, 1px var(--color-border) border, radius 20px, var(--shadow), padding 16px 16px 13px |
 | Text | var(--font-family-mono) 15px / 1.55, placeholder var(--color-text-faint) |
-| Send | 36px circle bottom right, var(--app-accent-bg) fill, var(--app-accent-text) icon |
+| Send | 36px circle bottom right, var(--color-success-bg) fill, var(--color-success-text) icon |
 
 ```css
 .composer{background:#fff;border:1px solid var(--color-border);border-radius:20px;box-shadow:var(--shadow);padding:16px 16px 13px}
@@ -202,7 +202,7 @@ The Public page list: group heading rows, one row per page, a twisty that opens 
 
 | Property | Value |
 | --- | --- |
-| Head cell | 11px / 600 uppercase, letter-spacing .04em, 1px var(--color-border-light) rule |
+| Head cell | 11px / 600 uppercase, letter-spacing .04em, 1px var(--color-surface-alt) rule |
 | Body cell | 14px / 21px, padding 8px, 51px rows |
 | Group row | bold 14px heading with a 20px chevron that folds the group's rows; the count sits at the right |
 | Developer box | var(--color-page-bg), 1px var(--color-border), radius var(--radius-sm), padding 16px |
@@ -210,5 +210,5 @@ The Public page list: group heading rows, one row per page, a twisty that opens 
 ```css
 table{border-collapse:collapse;width:100%}
 th{font:600 var(--font-size-thead)/var(--line-height-thead) var(--font-family);text-transform:uppercase;letter-spacing:.04em}
-td{padding:8px;font-size:var(--font-size-table);border-bottom:1px solid var(--color-border-light)}
+td{padding:8px;font-size:var(--font-size-table);border-bottom:1px solid var(--color-surface-alt)}
 ```
