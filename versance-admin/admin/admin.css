@@ -129,3 +129,6 @@ tr.grp button[aria-expanded=true] svg{transform:rotate(90deg)}
 tr.grp .gsub{font-weight:var(--font-weight-regular);color:var(--color-text-muted)}
 tr.grp .gcount{margin-left:auto;white-space:nowrap;font-weight:var(--font-weight-regular);color:var(--color-text-muted);font-size:var(--font-size-caption)}
 tr[hidden],tr[data-collapsed]{display:none}
+tr.grp.sub th{padding-left:var(--space-6);font-size:var(--font-size-md)}
+tr.grp.sub button{font-weight:var(--font-weight-semibold)}
+tr.grp:not(.sub) th{padding-top:var(--space-6);font-size:var(--font-size-lg);line-height:var(--line-height-lg)}

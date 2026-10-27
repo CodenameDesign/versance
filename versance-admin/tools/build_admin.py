@@ -49,7 +49,9 @@ GROUPS = {}   # gid -> dict(title, sub, open)
 PAGES = []
 
 # ---- web app and reference pages
-GROUPS["web"] = dict(title="Web app and Medicus design example", sub="versance.html (Talk to Edgar) and the saved Medicus page", open=True)
+GROUPS["web"] = dict(title="Web App", sub="versance.html (Talk to Edgar) and its copy in edgar/", open=True)
+GROUPS["medicus"] = dict(title="Medicus", sub="Design example: the saved Medicus Pharma home page", open=True)
+GROUPS["ext"] = dict(title="Browser Extension v1 – v13", sub="v1 is the baseline (part of the token set); v2 to v13 are design examples", open=True)
 APP_SPEC = [
     ("About this page", [
         "The Versance web app mock-up (\"Talk to Edgar\"): a white 230px sidebar with a New button and pill nav items, a main area with the hero, the composer and cards",
@@ -66,7 +68,7 @@ PAGES += [
       ["Identical to versance.html (verified); listed so every file in the repo has an entry"], spec=APP_SPEC, group="web"),
     P("Medicus Pharma home page (design example)", "medicus", "medicus-01.html", "A saved copy of the Medicus Pharma home page (WordPress), kept as a design example.", [],
       ["A design example: its CSS is only for this page and is not part of the Versance token set", "Third-party scripts and assets are referenced as saved"],
-      spec=[("About this page", ["A saved WordPress page (Medicus Pharma) kept as a design example", "Its fonts, colours and scripts are the site's own; it is not styled by, and not part of, the Versance token set"])], group="web"),
+      spec=[("About this page", ["A saved WordPress page (Medicus Pharma) kept as a design example", "Its fonts, colours and scripts are the site's own; it is not styled by, and not part of, the Versance token set"])], group="medicus"),
 ]
 
 # ---- the extension styles
@@ -85,7 +87,7 @@ for sdir in STYLES:
     name = (md[0].split("style v%d:" % n)[-1].strip() if md else sid)
     summary = next((l for l in md[1:6] if l.strip()), "")
     short = summary if len(summary) <= 90 else summary[:summary.rfind(" ", 0, 90)] + "…"
-    GROUPS[sid] = dict(title=f"Style v{n}: {name}" + ("" if n == 1 else " (design example)"), sub=(short if n == 1 else "Design example. " + short), open=(n == 1))
+    GROUPS[sid] = dict(title=f"Style v{n}: {name}" + ("" if n == 1 else " (design example)"), sub=(short if n == 1 else "Design example. " + short), open=(n == 1), parent="ext")
     docs = [(f"Style v{n} tokens", f"/public/extension/{sid}/design-system/view-tokens.html"), (f"Style v{n} components", f"/public/extension/{sid}/design-system/view-components.html"),
             (f"Style v{n} document", f"/public/extension/{sid}/design-system/view-design-system.html")]
     style_files = [f"{base}/design-system/design-system.md", f"{base}/design-system/tokens.css", f"{base}/design-system/components.css"]
@@ -216,7 +218,7 @@ TAIL = '''</tbody></table></div>
 <script>
 var COPY="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z",TICK="M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z";
 document.addEventListener("click",function(e){
- var gt=e.target.closest(".gtoggle");if(gt){var o=gt.getAttribute("aria-expanded")==="true";gt.setAttribute("aria-expanded",String(!o));document.querySelectorAll('tr[data-group="'+gt.dataset.g+'"]').forEach(function(r){if(o)r.setAttribute("data-collapsed","");else r.removeAttribute("data-collapsed");});return;}
+ var gt=e.target.closest(".gtoggle");if(gt){gt.setAttribute("aria-expanded",String(gt.getAttribute("aria-expanded")!=="true"));var open={};document.querySelectorAll(".gtoggle").forEach(function(h){open[h.dataset.g]=h.getAttribute("aria-expanded")==="true";});document.querySelectorAll("tr[data-group]").forEach(function(r){var p=r.getAttribute("data-parent"),closed=!open[r.dataset.group]||(p&&!open[p]);if(closed)r.setAttribute("data-collapsed","");else r.removeAttribute("data-collapsed");});return;}
  var a=e.target.closest("a[data-code]");
  if(a){e.preventDefault();var v=a.closest(".devbox").querySelector(".codeview"),code=v.querySelector("code");v.hidden=false;v.querySelector(".cvh span").textContent=a.textContent;code.textContent="Loading...";
   fetch(a.getAttribute("href")).then(function(r){return r.text();}).then(function(t){code.textContent=t;v.querySelector("pre").scrollTop=0;}).catch(function(){code.textContent="Could not load "+a.getAttribute("href");});return;}
@@ -234,15 +236,27 @@ document.addEventListener("click",function(e){
 CHEV = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 17 5-5-5-5z"></path></svg>'
 
 def list_rows():
-    out, cur = [], None
+    out, cur, opened = [], None, set()
+    def header(g):
+        info = GROUPS[g]; par = info.get("parent")
+        n = sum(1 for q in PAGES if q["group"] == g or GROUPS[q["group"]].get("parent") == g)
+        cls = "grp sub" if par else "grp"
+        hide = f' data-group="{par}"' + ("" if GROUPS[par]["open"] else " data-collapsed") if par else ""
+        return (f'<tr class="{cls}"{hide}><th colspan="5"><button type="button" class="gtoggle" data-g="{g}" aria-expanded="{str(info["open"]).lower()}">{CHEV}'
+                f'<span>{html.escape(info["title"])}</span><span class="gsub">{html.escape(info["sub"])}</span><span class="gcount">{n} page{"" if n == 1 else "s"}</span></button></th></tr>')
     for p in PAGES:
         g = p["group"]
         if g != cur:
-            cur = g; info = GROUPS[g]; n = sum(1 for q in PAGES if q["group"] == g)
-            out.append(f'<tr class="grp"><th colspan="5"><button type="button" class="gtoggle" data-g="{g}" aria-expanded="{str(info["open"]).lower()}">{CHEV}<span>{html.escape(info["title"])}</span><span class="gsub">{html.escape(info["sub"])}</span><span class="gcount">{n} pages</span></button></th></tr>')
+            cur = g; par = GROUPS[g].get("parent")
+            if par and par not in opened:
+                out.append(header(par)); opened.add(par)
+            out.append(header(g)); opened.add(g)
+        par = GROUPS[g].get("parent")
+        closed = (not GROUPS[g]["open"]) or (par and not GROUPS[par]["open"])
+        mark = " data-collapsed" if closed else ""
+        pa = f' data-parent="{par}"' if par else ""
         r = row(p)
-        mark = "" if GROUPS[g]["open"] else " data-collapsed"
-        r = r.replace('<tr class="pg">', f'<tr class="pg" data-group="{g}"{mark}>', 1).replace('<tr class="dev" hidden>', f'<tr class="dev" hidden data-group="{g}"{mark}>', 1)
+        r = r.replace('<tr class="pg">', f'<tr class="pg" data-group="{g}"{pa}{mark}>', 1).replace('<tr class="dev" hidden>', f'<tr class="dev" hidden data-group="{g}"{pa}{mark}>', 1)
         out.append(r)
     return "\n".join(out)
 
