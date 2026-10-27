@@ -132,3 +132,8 @@ tr[hidden],tr[data-collapsed]{display:none}
 tr.grp.sub th{padding-left:var(--space-6);font-size:var(--font-size-md)}
 tr.grp.sub button{font-weight:var(--font-weight-semibold)}
 tr.grp:not(.sub) th{padding-top:var(--space-6);font-size:var(--font-size-lg);line-height:var(--line-height-lg)}
+tr.grp:not(.sub) .gsub{font-size:var(--font-size-md)}
+tr.grp.sub .gsub{font-size:var(--font-size-caption)}
+table.list>thead th:nth-child(1){width:96px}
+tr.pg[data-group]>td:first-child,tr.dev[data-group]>td:first-child{padding-left:calc(var(--space-2) + 24px)}
+tr.pg[data-parent]>td:first-child,tr.dev[data-parent]>td:first-child{padding-left:calc(var(--space-2) + 48px)}
