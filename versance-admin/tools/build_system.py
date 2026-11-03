@@ -22,7 +22,7 @@ SOURCES = T.SOURCES
 E = html.escape
 
 # ---------------------------------------------------------------- data (tokens come from tokens.css)
-SECTIONS = [("", "Overview"), ("typography", "Typography"), ("colour", "Colour"), ("logos", "Logos"), ("foundations", "Foundations"),
+SECTIONS = [("overview", "Overview"), ("typography", "Typography"), ("colour", "Colour"), ("logos", "Logos"), ("foundations", "Foundations"),
             ("components", "Components"), ("tokens", "Design tokens"), ("ai", "AI files")]
 
 COLOUR_BLURBS = {
@@ -214,7 +214,7 @@ def tokens_html_table():
     return spec_table([(f"<code>{E(n)}</code>", f"<code>{E(v)}</code>", E(note or group), E(src)) for group, n, v, note, src in TOKENS], ("Token", "Value", "Use", "Source"))
 
 def href(slug):
-    return f"/admin/system/{slug}/" if slug else "/admin/system/"
+    return f"/admin/system/{slug}/"
 
 def page(slug, title_html, intro, body, meta=""):
     n = [s for s, _ in SECTIONS].index(slug) + 1
@@ -234,7 +234,7 @@ def page(slug, title_html, intro, body, meta=""):
 </head>
 <body class="dsys">
 <header class="bar">
-  <div class="bar__title"><a href="/admin/system/"><img src="/versance-logo.svg" alt="Versance"></a><div>Versance <span>Developer System</span></div></div>
+  <div class="bar__title"><a href="/admin/system/overview/"><img src="/versance-logo.svg" alt="Versance"></a><div>Versance <span>Developer System</span></div></div>
   <button class="bar__menu" type="button" aria-label="Open the menu" aria-expanded="false" aria-controls="bar-nav"><svg class="i-menu" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></button>
   <div class="bar__scrim" aria-hidden="true"></div>
   <nav id="bar-nav" aria-label="Sections"><button class="bar__close" type="button" aria-label="Close the menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></button>{nav}</nav>
@@ -279,7 +279,7 @@ def p_overview():
     body += row("Quick start", "Add the tokens", code('<link rel="stylesheet" href="/design-tokens/fonts.css">\n<link rel="stylesheet" href="/design-tokens/tokens.css">\n\n<style>\n  body{margin:0;font:var(--font-size-md)/var(--line-height-md) var(--font-family);color:var(--color-text);-webkit-font-smoothing:antialiased}\n  a{color:var(--color-primary)}\n</style>', "Copy snippet"))
     body += row("Reference", "", '<p>The <a href="/admin/public">Public</a> list shows the web app and every extension style (v1 to v13) with the files, tokens and skill a developer needs.</p>'
                 '<div class="note">Figtree loads from Google Fonts, as in the source designs. To self-host it, download the font files and replace the import in <code>fonts.css</code>.</div>')
-    return page("", "Developer <b>system</b>", "How the Versance interface is built: type, colour, foundations and components, in a form a developer or an AI assistant can use.", body, f"Version {VERSION}")
+    return page("overview", "Developer <b>system</b>", "How the Versance interface is built: type, colour, foundations and components, in a form a developer or an AI assistant can use.", body, f"Version {VERSION}")
 
 def p_type():
     body = row("Typeface", "Figtree", '<p><b>Figtree</b> is the typeface of the web app and the extension (weights 400 to 800). <b>Roboto Mono</b> is used for code and the web app composer. Letter spacing is normal; the web app hero title uses -0.5px.</p>'
@@ -572,6 +572,22 @@ document.addEventListener('click',function(e){
     var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(x){}a.remove();});
   if(b.classList.contains('copy')){b.textContent='Copied';setTimeout(function(){b.textContent=old},1200);}
 });
+/* behind Mission Control's gate (the signed-in email is at /admin/whoami.json), a page of this system the person cannot open is left out of the menu: each link is asked for with a HEAD request and a 403 hides it */
+(function(){var nav=document.getElementById('bar-nav');if(!nav||!window.fetch)return;
+var root=document.documentElement,hostGated=/-mc[.]/.test(location.hostname),gated=hostGated;
+try{if(sessionStorage.getItem('mc-gated'))gated=true;}catch(e){}
+if(gated)root.classList.add('gating'); /* the links stay invisible until the answers are in, so none flashes before it is hidden */
+var done=function(){root.classList.remove('gating');};setTimeout(done,3000);
+var hide=function(){return Promise.all([].map.call(nav.querySelectorAll('a[href^="/admin/"]'),function(a){
+    return fetch(a.getAttribute('href'),{method:'HEAD',credentials:'same-origin',cache:'no-store'}).then(function(r){if(r.status===403||r.status===401)a.hidden=true;}).catch(function(){});
+  })).then(done);};
+/* signed out on a gated host, the pages the gate would refuse are left out too (401) */
+var signedOut=function(){try{sessionStorage.removeItem('mc-gated');}catch(e){}return gated?hide():done();};
+fetch('/admin/whoami.json',{credentials:'same-origin',cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+  if(!d||!d.email)return signedOut();
+  try{sessionStorage.setItem('mc-gated','1');}catch(e){}
+  return hide();
+}).catch(signedOut);})();
 """
 
 def main():
@@ -580,9 +596,9 @@ def main():
     write_token_json()
     sync_design_tokens_md()
     write("system.js", JS)
-    pages = {"": p_overview, "typography": p_type, "colour": p_colour, "logos": p_logos, "foundations": p_foundations, "components": p_components, "tokens": p_tokens, "ai": p_ai}
+    pages = {"overview": p_overview, "typography": p_type, "colour": p_colour, "logos": p_logos, "foundations": p_foundations, "components": p_components, "tokens": p_tokens, "ai": p_ai}
     for slug, fn in pages.items():
-        write(f"{slug}/index.html" if slug else "index.html", fn())
+        write(f"{slug}/index.html", fn())
     for f, _, _, fn in AI_FILES:
         write(f"ai/{f}", fn())
     build_skill()

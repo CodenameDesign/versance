@@ -82,6 +82,13 @@ a.ext svg.out{width:16px;height:16px;margin-left:var(--space-1);vertical-align:-
 .menubtn:hover{background:var(--shell-hover)}
 .menubtn svg{width:28px;height:28px;fill:currentColor;transition:transform 200ms var(--ease-standard)}
 .side.open .menubtn svg{transform:rotate(180deg)}
+.side [hidden],.tiles [hidden],tr.pg[hidden]{display:none!important}
+.gating .side nav a,.gating .tiles a.card,.gating tr.pg{visibility:hidden}
+.side .who{margin-top:auto;padding:var(--space-4) var(--space-6);border-top:1px solid color-mix(in srgb,var(--color-surface) 25%,transparent)}
+.side .who-email{font-size:var(--font-size-caption);line-height:var(--line-height-caption);opacity:.8;overflow-wrap:anywhere}
+.side .who a{display:inline-block;margin-top:var(--space-1);padding:var(--space-1) 0;color:var(--color-surface);text-decoration:none;font-size:var(--font-size-nav);line-height:var(--line-height-nav);font-weight:var(--font-weight-semibold)}
+.side .who a:hover{text-decoration:underline}
+.side .who a:focus-visible{outline:2px solid var(--color-surface);outline-offset:2px}
 @media (max-width:720px){
   body{flex-direction:column}
   .side{position:static;width:100%;height:auto;min-height:64px;flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;padding:0 var(--space-2) 0 0;z-index:30}
@@ -92,6 +99,8 @@ a.ext svg.out{width:16px;height:16px;margin-left:var(--space-1);vertical-align:-
   /* the menu opens inside the header block and pushes the page down (it does not float over it) */
   .side nav{display:none;flex:0 0 100%;position:static;padding:var(--space-2) 0;border-top:1px solid color-mix(in srgb,var(--color-surface) 25%,transparent)}
   .side.open nav{display:flex}
+  .side .who{display:none;flex:0 0 100%;margin-top:0;padding:var(--space-2) var(--space-4) var(--space-4)}
+  .side.open .who{display:block}
   main{padding:var(--space-4)}
   body.embed main{padding:0}
   body.embed iframe{height:calc(100vh - 64px)}

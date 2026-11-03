@@ -15,16 +15,28 @@
   <button class="menubtn" type="button" aria-label="Show the admin menu" aria-expanded="false" aria-controls="admin-nav"><svg class="i-chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"></path></svg></button>
   <hr>
   <nav id="admin-nav" aria-label="Admin">
-    <div class="navrow"><a href="/admin/system" aria-current="page">System</a><a class="navout" href="/admin/system/?bare" target="_blank" rel="noopener" aria-label="Open the design system on its own in a new tab" title="Open the design system on its own"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path></svg></a></div>
+    <div class="navrow"><a href="/admin/system" aria-current="page">System</a><a class="navout" href="/admin/system/overview/?bare" target="_blank" rel="noopener" aria-label="Open the design system on its own in a new tab" title="Open the design system on its own"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z"></path></svg></a></div>
     <a href="/admin/public">Public</a>
   </nav>
 </aside>
-<main><iframe id="sys" src="/admin/system/" title="Versance Developer System"></iframe>
+<main><iframe id="sys" title="Versance Developer System"></iframe>
 <script>
-/* the system pages open inside this shell: /admin/system#/components/ shows /admin/system/components/ on the right */
-var f=document.getElementById("sys"),p=location.hash.slice(1);
-if(/^\/[a-z0-9\/_-]*(#[a-z0-9_-]*)?$/i.test(p))f.src="/admin/system"+p;
-f.addEventListener("load",function(){try{var q=f.contentWindow.location.pathname.replace(/^\/admin\/system/,"")||"/";history.replaceState(null,"","#"+q+f.contentWindow.location.hash);document.title=f.contentDocument.title;}catch(e){}});
+/* the pages open inside this shell: /admin/system#/colour/ shows /admin/system/colour/ on the right.
+   Which page opens first is decided here, so a page the gate refuses is never loaded just to be replaced: on a gated host (a -mc
+   host, or one this tab has seen to be gated) the Overview is asked for first, and if it is refused the first page the gate allows opens
+   instead. The frame stays invisible until that page has loaded. */
+var f=document.getElementById("sys"),p=location.hash.slice(1),opened=false,gated=/-mc\./.test(location.hostname);
+try{if(sessionStorage.getItem("mc-gated"))gated=true;}catch(e){}
+function go(u){opened=true;f.src=u;}
+if(gated)f.style.visibility="hidden";
+if(p&&p!=="/"&&/^\/[a-z0-9\/_-]*(#[a-z0-9_-]*)?$/i.test(p))go("/admin/system"+p);
+else if(!gated)go("/admin/system/overview/");
+else(function(){var order=["overview","typography","colour","logos","foundations","components","tokens","ai"];
+  function next(i){if(i>=order.length){go("/admin/system/overview/");return;}
+    fetch("/admin/system/"+order[i]+"/",{method:"HEAD",credentials:"same-origin",cache:"no-store"}).then(function(r){if(r.status===403||r.status===401)next(i+1);else go("/admin/system/"+order[i]+"/");}).catch(function(){go("/admin/system/overview/");});}
+  next(0);})();
+setTimeout(function(){if(!opened)go("/admin/system/overview/");},3000); /* never leave the frame empty if a request hangs */
+f.addEventListener("load",function(){if(!opened)return;f.style.visibility="";try{var q=f.contentWindow.location.pathname.replace(/^\/admin\/system/,"")||"/";history.replaceState(null,"","#"+q+f.contentWindow.location.hash);document.title=f.contentDocument.title;}catch(e){}});
 </script></main>
 <script src="/admin/menu.js"></script>
 </body>

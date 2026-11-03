@@ -12,3 +12,6 @@ When you change how the admin (or a new page) looks or behaves, update the syste
 
 ## Data
 Made-up company, filing and user data only. Never commit real data.
+
+## Mission Control (access)
+The admin sits behind Mission Control on `versance-mc.futurebits.io` (the original `versance.futurebits.io` is unchanged). The Dockerfile's first stage runs `tools/mc_sync.py` on every build to report this site's pages (needs the Coolify build variable `MC_SYNC_TOKEN`; it never fails the build). `tools/mc_sync.py` is a copy of the script in the futurebits-mission-control repo: update it from there. Every page of the system has its own address (the Overview is at `/admin/system/overview/`), so access to each can be set on its own. Do not add a page that shares an address with the shell.

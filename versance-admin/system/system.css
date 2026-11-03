@@ -18,6 +18,8 @@
 .bar nav{display:flex;gap:22px;overflow-x:auto;align-self:stretch;margin-bottom:-1px}
 .bar nav a{display:flex;align-items:center;color:var(--muted);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent}
 .bar nav a:hover{color:var(--ink)}
+.bar nav a[hidden]{display:none}
+.gating .bar nav a{visibility:hidden}
 .bar nav a[aria-current="page"]{color:var(--color-primary);font-weight:700;border-bottom-color:var(--color-primary)}
 
 /* page */
