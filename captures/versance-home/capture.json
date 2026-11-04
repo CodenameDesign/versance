@@ -1,0 +1,20 @@
+{
+ "tool": "page-capture 0.1.0",
+ "url": "https://www.versance.ai/",
+ "capturedAt": "2026-11-04T03:48:22.174Z",
+ "title": "(redacted-checked)",
+ "widths": [
+  1440,
+  1024,
+  768,
+  390
+ ],
+ "viewportHeight": 900,
+ "browser": "148.0.7778.96",
+ "durationSec": 212,
+ "elements": 1300,
+ "warnings": [
+  "4 iframes found: their contents are not captured (the boxes are kept)",
+  "154 non-GET request(s) were blocked while interacting (the page tried to write data); popups that need them may be incomplete"
+ ]
+}
