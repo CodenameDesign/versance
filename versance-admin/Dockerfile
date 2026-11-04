@@ -23,4 +23,6 @@ COPY versance-admin/system /usr/share/nginx/html/admin/system
 COPY browser-extension /usr/share/nginx/html/browser-extension
 COPY edgar /usr/share/nginx/html/edgar
 COPY versance.html medicus-01.html /usr/share/nginx/html/
+# page-capture: the captured pages
+COPY captures /usr/share/nginx/html/captures
 EXPOSE 80
