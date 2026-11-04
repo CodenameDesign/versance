@@ -1,13 +1,13 @@
 # Capture report: https://www.versance.ai/
 
-Captured 2026-11-04T03:48:22.174Z with page-capture 0.1.0 (148.0.7778.96) in 212 s. Widths measured: 1440, 1024, 768, 390 px.
+Captured 2026-11-04T05:09:12.870Z with page-capture 0.1.0 (148.0.7778.96) in 211 s. Widths measured: 1440, 1024, 768, 390 px.
 
 ## Summary
 
-- Elements captured: 1300
+- Elements captured: 1299
 - Stylesheets: 34; CSS rules written: 2753; unused font subsets skipped: 236
-- Files in assets/: 48; downloads that failed: 0
-- Interaction states captured: 2 (1 listbox, 1 popover); attempts that showed nothing: 8
+- Files in assets/: 38; downloads that failed: 0
+- Interaction states captured: 3 (1 listbox, 2 dialog); attempts that showed nothing: 13
 - Hover/focus/active: 39 element signatures probed, 36 change on a pseudo-state
 - Draft tokens: 123
 - Redaction: 0 replacements; leak check searched 0 original values in all text outputs and found 0
@@ -18,10 +18,10 @@ Both are loaded in the same browser; the original is measured live (already reda
 
 | Width | Elements compared | With style differences | Properties different | Boxes off by >0.75 px | Pixels different | Page height (orig / replica) |
 |---|---|---|---|---|---|---|
-| 1440 | 1102 | 15 (1.36%) | 80 of 22705 | 1006 | 427492 (4.9478%) | 6465 / 6470 |
-| 1024 | 1102 | 15 (1.36%) | 80 of 22705 | 1006 | 335451 (5.4598%) | 6465 / 6470 |
-| 768 | 1102 | 15 (1.36%) | 80 of 22591 | 1006 | 255726 (5.5496%) | 6465 / 6470 |
-| 390 | 1102 | 18 (1.63%) | 109 of 22640 | 1018 | 185943 (7.9463%) | 6465 / 6470 |
+| 1440 | 1102 | 15 (1.36%) | 80 of 22705 | 232 | 21982 (0.2544%) | 6465 / 6459 |
+| 1024 | 1102 | 15 (1.36%) | 80 of 22706 | 232 | 19073 (0.3104%) | 6465 / 6459 |
+| 768 | 1102 | 15 (1.36%) | 80 of 22592 | 232 | 15367 (0.3335%) | 6465 / 6459 |
+| 390 | 1102 | 18 (1.63%) | 109 of 22641 | 244 | 49506 (2.1156%) | 6465 / 6459 |
 
 ### Differences at 1440 px
 
@@ -33,9 +33,9 @@ Both are loaded in the same browser; the original is measured live (already reda
 - `border-bottom-style`: 4 elements; e.g. `solid` vs `(default)`
 - `border-bottom-width`: 4 elements; e.g. `1px` vs `(default)`
 - `border-inline-end-style`: 4 elements; e.g. `solid` vs `(default)`
-- box `div` original [0,0,1440,6464.61] vs replica [0,11,1440,6458.61]
-- box `div.main_MF` original [0,0,1440,6464.61] vs replica [0,11,1440,6458.61]
-- box `div.SCROLL_TO_TOP.ignore-focus.qe3oTb` original [0,0,1440,0] vs replica [0,11,1440,0]
+- box `div` original [0,0,1440,6464.61] vs replica [0,0,1440,6458.61]
+- box `div.main_MF` original [0,0,1440,6464.61] vs replica [0,0,1440,6458.61]
+- box `div._7xVID.pageBackground_k2rwv` original [0,0,1440,6464.61] vs replica [0,0,1440,6458.61]
 
 ### Differences at 1024 px
 
@@ -47,9 +47,9 @@ Both are loaded in the same browser; the original is measured live (already reda
 - `border-bottom-style`: 4 elements; e.g. `solid` vs `(default)`
 - `border-bottom-width`: 4 elements; e.g. `1px` vs `(default)`
 - `border-inline-end-style`: 4 elements; e.g. `solid` vs `(default)`
-- box `div` original [0,0,1024,6464.61] vs replica [0,11,1024,6458.61]
-- box `div.main_MF` original [0,0,1024,6464.61] vs replica [0,11,1024,6458.61]
-- box `div.SCROLL_TO_TOP.ignore-focus.qe3oTb` original [0,0,1024,0] vs replica [0,11,1024,0]
+- box `div` original [0,0,1024,6464.61] vs replica [0,0,1024,6458.61]
+- box `div.main_MF` original [0,0,1024,6464.61] vs replica [0,0,1024,6458.61]
+- box `div._7xVID.pageBackground_k2rwv` original [0,0,1024,6464.61] vs replica [0,0,1024,6458.61]
 
 ### Differences at 768 px
 
@@ -61,9 +61,9 @@ Both are loaded in the same browser; the original is measured live (already reda
 - `border-bottom-style`: 4 elements; e.g. `solid` vs `(default)`
 - `border-bottom-width`: 4 elements; e.g. `1px` vs `(default)`
 - `border-inline-end-style`: 4 elements; e.g. `solid` vs `(default)`
-- box `div` original [0,0,768,6464.61] vs replica [0,11,768,6458.61]
-- box `div.main_MF` original [0,0,768,6464.61] vs replica [0,11,768,6458.61]
-- box `div.SCROLL_TO_TOP.ignore-focus.qe3oTb` original [0,0,768,0] vs replica [0,11,768,0]
+- box `div` original [0,0,768,6464.61] vs replica [0,0,768,6458.61]
+- box `div.main_MF` original [0,0,768,6464.61] vs replica [0,0,768,6458.61]
+- box `div._7xVID.pageBackground_k2rwv` original [0,0,980,6464.61] vs replica [0,0,980,6458.61]
 
 ### Differences at 390 px
 
@@ -75,9 +75,9 @@ Both are loaded in the same browser; the original is measured live (already reda
 - `border-bottom-style`: 4 elements; e.g. `solid` vs `(default)`
 - `border-bottom-width`: 4 elements; e.g. `1px` vs `(default)`
 - `border-inline-end-style`: 4 elements; e.g. `solid` vs `(default)`
-- box `div` original [0,0,390,6464.61] vs replica [0,11,390,6458.61]
-- box `div.main_MF` original [0,0,390,6464.61] vs replica [0,11,390,6458.61]
-- box `div.SCROLL_TO_TOP.ignore-focus.qe3oTb` original [0,0,390,0] vs replica [0,11,390,0]
+- box `div` original [0,0,390,6464.61] vs replica [0,0,390,6458.61]
+- box `div.main_MF` original [0,0,390,6464.61] vs replica [0,0,390,6458.61]
+- box `div._7xVID.pageBackground_k2rwv` original [0,0,980,6464.61] vs replica [0,0,980,6458.61]
 
 ### Offline and errors
 
@@ -89,37 +89,41 @@ Both are loaded in the same browser; the original is measured live (already reda
 
 Same forced pseudo-states applied to both: 74 state(s) with a change compared, 72 identical, 2 different.
 
-- `span.s__49ESpn.smGGlF_.swbumPU` active: original `{"color":["rgb(204, 211, 255)","rgb(205, 212, 255)"],"border-block-end-color":["rgb(204, 211, 255)","rgb(205, 212, 255)"],"border-block-start-color":["rgb(204, ` vs replica `{}`
-- `span.s__49ESpn.smGGlF_.swbumPU` focus-visible: original `{"color":["rgb(204, 211, 255)","rgb(205, 212, 255)"],"border-block-end-color":["rgb(204, 211, 255)","rgb(205, 212, 255)"],"border-block-start-color":["rgb(204, ` vs replica `{}`
+- `span.s__5CjnXs.se5p61l` active: original `{"color":["rgb(204, 211, 255)","rgb(205, 212, 255)"],"border-block-end-color":["rgb(204, 211, 255)","rgb(205, 212, 255)"],"border-block-start-color":["rgb(204, ` vs replica `{}`
+- `span.s__49ESpn.smGGlF_.swbumPU` active: original `{}` vs replica `{"color":["rgb(204, 211, 255)","rgb(205, 212, 255)"],"border-block-end-color":["rgb(204, 211, 255)","rgb(205, 212, 255)"],"border-block-start-color":["rgb(204, `
 
 ### Interaction states replayed in the replica
 
 | State | Kind | Trigger | Opened | Roots found | Elements differing in style | Boxes off >2 px | Settle ms (orig / replica) | Closed |
 |---|---|---|---|---|---|---|---|---|
-| s1 | listbox | `Department` | yes | 1/1 | 10 of 40 | 40 | 93.3 / 162.7 | yes |
-| s2 | popover | `Cookie Settings` | NO (nothing opened for s2) | 0/1 | 0 of 0 | 0 | 164.5 / n/a | n/a |
+| s1 | listbox | `Department` | yes | 1/1 | 0 of 40 | 40 | 52.6 / 113.7 | yes |
+| s2 | dialog | `Cookie Settings` | yes | 1/1 | 13 of 58 | 5 | 47.9 / 39.2 | yes |
+| s3 | dialog | `Accept` | yes | 1/1 | 13 of 58 | 5 | 46.5 / 31.1 | yes |
 
 Examples of state style differences:
 
-- s1 `background-color`: `rgb(255, 245, 240)` vs `rgb(255, 255, 255)`
-- s1 `bottom`: `-247px` vs `-244px`
-- s1 `inset-block-end`: `-247px` vs `-244px`
-- s1 `font-family`: `wfont_a3f637_3f0d4ffb6bdc4c1cb6dc005c9dadbf65, wf_3f0d4ffb6bdc4c1cb6dc005c9, orig_inter_regular` vs `wfont_57a328_056b0e780fbb4e609d5cfb92039e33d9, wf_056b0e780fbb4e609d5cfb920, orig_inter_18_pt_light`
+- s2 `font-family`: `HelveticaNeue, "Helvetica Neue", helvetica, Sans-Serif` vs `HelveticaNeue, "Helvetica Neue", helvetica, sans-serif`
+- s2 `font-family`: `HelveticaNeue, "Helvetica Neue", helvetica, Sans-Serif` vs `HelveticaNeue, "Helvetica Neue", helvetica, sans-serif`
+- s2 `font-family`: `HelveticaNeue, "Helvetica Neue", helvetica, Sans-Serif` vs `HelveticaNeue, "Helvetica Neue", helvetica, sans-serif`
+- s2 `inset-inline-end`: `1px` vs `25px`
+- s3 `font-family`: `HelveticaNeue, "Helvetica Neue", helvetica, Sans-Serif` vs `HelveticaNeue, "Helvetica Neue", helvetica, sans-serif`
+- s3 `font-family`: `HelveticaNeue, "Helvetica Neue", helvetica, Sans-Serif` vs `HelveticaNeue, "Helvetica Neue", helvetica, sans-serif`
 
 ## Interaction states
 
 | State | Kind | Trigger (action) | Parent | Appear ms | Settle ms | Exit ms | Closed by | Motion |
 |---|---|---|---|---|---|---|---|---|
-| s1 | listbox | `Department` (click) |  | 9.4 | 93.3 | 7.7 | Escape | none detected |
-| s2 | popover | `Cookie Settings` (click) |  | 6.6 | 164.5 | n/a | outside-click | none detected |
+| s1 | listbox | `Department` (click) |  | 7.1 | 52.6 | 12.2 | Escape | none detected |
+| s2 | dialog | `Cookie Settings` (click) |  | 6.1 | 47.9 | 12.8 | Escape | none detected |
+| s3 | dialog | `Accept` (click) |  | 8.8 | 46.5 | 12.5 | Escape | none detected |
 
-Attempts without a captured state: 1 navigated, 4 not-actionable, 8 nothing-appeared. Native `<select>` and date inputs open a browser-drawn popup that is not in the page and cannot be captured.
+Attempts without a captured state: 2 navigated, 13 nothing-appeared, 2 not-actionable. Native `<select>` and date inputs open a browser-drawn popup that is not in the page and cannot be captured.
 
-Blocked while interacting (page tried to write): `POST https://px.ads.linkedin.com/wa/`, `POST https://tools.versance.ai/api/sync`, `POST https://sentry-next.wixpress.com/api/68/store/`, `POST https://analytics.google.com/g/collect`, `POST https://d.adroll.com/onp/EY4X5P6LURGFFAWV464EIM/VG73ZOREDJERFPBHZ6J67Z`, `POST https://sentry-next.wixpress.com/api/68/envelope/`
+Blocked while interacting (page tried to write): `POST https://px.ads.linkedin.com/wa/`, `POST https://frog.wix.com/`, `POST https://analytics.google.com/g/collect`, `POST https://sentry-next.wixpress.com/api/68/envelope/`, `POST https://d.adroll.com/onp/EY4X5P6LURGFFAWV464EIM/VG73ZOREDJERFPBHZ6J67Z`, `POST https://tools.versance.ai/api/sync`
 
 ## Redaction
 
-Rules: 0 selectors, 0 patterns, 0 literals; links: keep.
+Rules: 0 selectors, 2 patterns, 0 literals; links: keep.
 
 No replacements were needed.
 
@@ -134,6 +138,7 @@ Color: 17 | Font: 52 | Radius: 7 | Shadow: 5 | Spacing: 30 | Motion: 9 | Layers:
 ## Not captured / limits
 
 - 4 iframes found: their contents are not captured (the boxes are kept)
-- 154 non-GET request(s) were blocked while interacting (the page tried to write data); popups that need them may be incomplete
+- 2 element(s) a script had added to the <head> (tracking pixels, for instance) were left out: the original never shows them, and in the replica they would sit in the page and push it down
+- 185 non-GET request(s) were blocked while interacting (the page tried to write data); popups that need them may be incomplete
 - Page scripts are not kept: behaviour other than the recorded popup states (sorting, typing, validation, data loading) is not reproduced.
 - Popup contents are static snapshots: a calendar shows the month that was open, a menu the items it had.

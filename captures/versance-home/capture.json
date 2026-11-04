@@ -1,7 +1,7 @@
 {
  "tool": "page-capture 0.1.0",
  "url": "https://www.versance.ai/",
- "capturedAt": "2026-11-04T03:48:22.174Z",
+ "capturedAt": "2026-11-04T05:09:12.870Z",
  "title": "(redacted-checked)",
  "widths": [
   1440,
@@ -11,10 +11,11 @@
  ],
  "viewportHeight": 900,
  "browser": "148.0.7778.96",
- "durationSec": 212,
- "elements": 1300,
+ "durationSec": 211,
+ "elements": 1299,
  "warnings": [
   "4 iframes found: their contents are not captured (the boxes are kept)",
-  "154 non-GET request(s) were blocked while interacting (the page tried to write data); popups that need them may be incomplete"
+  "2 element(s) a script had added to the <head> (tracking pixels, for instance) were left out: the original never shows them, and in the replica they would sit in the page and push it down",
+  "185 non-GET request(s) were blocked while interacting (the page tried to write data); popups that need them may be incomplete"
  ]
 }
