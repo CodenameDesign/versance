@@ -112,6 +112,21 @@ for sdir in STYLES:
                            ("Styling", ["Loads screens.css (this style's overrides) on top of the style's tokens.css and components.css (scoped to .vc-ext)",
                                         ("Style v1's tokens.css is generated from the Versance token set" if n == 1 else "This style's tokens are its own and may differ from the Versance token set; see the linked tokens page")]), style_spec], group=sid))
 
+# page-capture: begin captures (added by page-capture: one page and one folder served in place for each capture)
+GROUPS["captures"] = dict(title="Captures", sub="Replicas made by page-capture", open=False)
+PAGES += [
+    # page-capture: begin pages
+    # page-capture: cap-index
+    P("Index (capture)", "cap-index", "captures/cap-index/replica.html", "Captured replica of https://www.versance.ai/ on 2026-11-04: 1300 elements, with menus, dropdowns, dialogs and other recorded states.", [], ["Created by page-capture; see captures/cap-index/report.md","Made-up data only: the redaction rules were applied before saving"], group="captures"),
+    # page-capture: end pages
+]
+MOUNTS += [
+    # page-capture: begin mounts
+    ("cap-index", "captures/cap-index", {"": "replica.html"}),
+    # page-capture: end mounts
+]
+# page-capture: end captures
+
 COMMON = dict(
     tokens=[("tokens.css", "/design-tokens/tokens.css"), ("fonts.css", "/design-tokens/fonts.css"), ("tokens.json", "/design-tokens/tokens.json"), ("DESIGN-TOKENS.md", "/design-tokens/DESIGN-TOKENS.md"), ("Token reference", "/admin/system/tokens/")],
     ai=[("AGENTS.md", "/admin/system/ai/AGENTS.md"), ("components.md", "/admin/system/ai/components.md"), ("design-tokens.md", "/admin/system/ai/design-tokens.md"), ("All AI files (.zip)", "/admin/system/ai/Versance-AI-Files.zip"), ("AI files page", "/admin/system/ai/")],
