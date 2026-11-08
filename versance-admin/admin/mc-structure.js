@@ -29,11 +29,12 @@
     var shown=0;
     d.sections.forEach(function(s){
       var sec=el("div","mcsec"),any=false;
+      sec.id="sec-"+String(s.label).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,""); /* the left nav links to it */
       sec.appendChild(el("h2",null,String(s.label)));
       var top=grid(s.pages||[]);if(top){sec.appendChild(top);any=true;}
       (s.projects||[]).forEach(function(p){var g=grid(p.pages||[]);if(g){sec.appendChild(el("h3",null,String(p.name)));sec.appendChild(g);any=true;}});
       if(any){box.appendChild(sec);shown++;}
     });
-    if(shown)box.hidden=false;
+    if(shown){box.hidden=false;if(location.hash.length>1){var t=document.getElementById(location.hash.slice(1));if(t)t.scrollIntoView();}}
   }).catch(function(){});
 })();

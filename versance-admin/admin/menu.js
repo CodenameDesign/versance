@@ -9,6 +9,7 @@ document.addEventListener("click",function(e){
 /* who is signed in: on a host behind Mission Control's gate, /admin/whoami.json carries the person's email; elsewhere it is empty and nothing is added.
    On a gated host the links that are asked about stay invisible (class "gating") until the answers are in, so a link that is about to be hidden never flashes. */
 (function(){
+  var LAUNCHER="https://missioncontrol.futurebits.io/api/launcher/versance";
   var side=document.querySelector(".side");
   if(!side||!window.fetch)return;
   var root=document.documentElement,hostGated=/-mc\./.test(location.hostname),gated=hostGated;
@@ -25,8 +26,48 @@ document.addEventListener("click",function(e){
     var e=document.createElement("div");e.className="who-email";e.textContent=d.email;e.title=d.email;
     var a=document.createElement("a");a.href="https://missioncontrol.futurebits.io/logout";a.textContent="Log out";
     w.appendChild(e);w.appendChild(a);side.appendChild(w);
-    return hideWhatIsRefused().then(done);
+    return sectionsNav().then(hideWhatIsRefused).then(done);
   }).catch(signedOut);
+
+  /* the left nav lists the account's sections, as set in Mission Control (Master Control > Pages), in place of the fixed links: a section made only of design-system
+     pages goes to that guide, any other to its place on the Public page. It is Mission Control's own answer for the signed-in person, so a section shows only with
+     pages that person may open, and its number counts those. If the list cannot be loaded the fixed links stay. */
+  function sectionsNav(){
+    var nav=document.getElementById("admin-nav");
+    if(!nav)return Promise.resolve();
+    return fetch(LAUNCHER,{credentials:"include",cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(d){
+      if(!d||!Array.isArray(d.sections))return;
+      var rows={};
+      [].forEach.call(nav.querySelectorAll(".navrow"),function(r){var a=r.querySelector("a:not(.navout)");if(a)rows[a.getAttribute("href")]=r;});
+      var here=location.pathname.replace(/[/]+$/,""),list=[];
+      d.sections.forEach(function(s){
+        var pages=[].concat(s.pages||[]);
+        (s.projects||[]).forEach(function(p){pages=pages.concat(p.pages||[]);});
+        if(!pages.length||typeof s.label!=="string")return;
+        var guide,same=true;
+        pages.forEach(function(p){
+          var g=null;
+          try{var m=/^[/]admin[/](system|identity)(?:[/]|$)/.exec(new URL(p.href,location.href).pathname);if(m)g="/admin/"+m[1];}catch(e){}
+          if(guide===undefined)guide=g;else if(g!==guide)same=false;
+        });
+        if(!same)guide=null;
+        var id="sec-"+s.label.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"");
+        var target=guide||"/admin/public#"+id;
+        var current=guide?(here===guide||here.indexOf(guide+"/")===0):(here==="/admin/public"&&location.hash==="#"+id);
+        var row=guide&&rows[guide]?rows[guide].cloneNode(true):null,a;
+        if(row){a=row.querySelector("a:not(.navout)");while(a.firstChild)a.removeChild(a.firstChild);}
+        else{a=document.createElement("a");a.href=target;}
+        a.setAttribute("data-mc","");
+        if(current)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
+        var t=document.createElement("span");t.textContent=s.label;a.appendChild(t);
+        var n=document.createElement("span");n.className="count";n.textContent=String(pages.length);a.appendChild(n);
+        list.push(row||a);
+      });
+      if(!list.length)return;
+      while(nav.firstChild)nav.removeChild(nav.firstChild);
+      list.forEach(function(x){nav.appendChild(x);});
+    }).catch(function(){});
+  }
 
   /* a link the person cannot open is not shown: each nav link, card and page row is asked for with a HEAD request, and the ones the gate refuses (403) are hidden */
   function hideWhatIsRefused(){
@@ -36,7 +77,7 @@ document.addEventListener("click",function(e){
       var p=fetch(href,{method:"HEAD",credentials:"same-origin",cache:"no-store"}).then(function(r){if(r.status===403||r.status===401)hide();}).catch(function(){});
       asked.push(p);return p;
     }
-    [].forEach.call(document.querySelectorAll(".side nav a:not(.navout)"),function(a){
+    [].forEach.call(document.querySelectorAll(".side nav a:not(.navout):not([data-mc])"),function(a){
       probe(a.getAttribute("href"),function(){(a.closest(".navrow")||a).hidden=true;});
     });
     [].forEach.call(document.querySelectorAll("tr.pg"),function(tr){
