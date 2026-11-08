@@ -149,6 +149,9 @@ table.list>thead th:nth-child(1){width:96px}
 tr.pg[data-group]>td:first-child,tr.dev[data-group]>td:first-child{padding-left:calc(var(--space-2) + 24px)}
 tr.pg[data-parent]>td:first-child,tr.dev[data-parent]>td:first-child{padding-left:calc(var(--space-2) + 48px)}
 /* the pages by section and project (admin/mc-structure.js) */
+.mcfiltered{display:none!important}
+.mcall[hidden]{display:none}
+.mcall{display:inline-block;margin:0 0 var(--space-4);color:var(--color-text-muted);font-size:var(--font-size-caption)}
 .mcsec{margin:0 0 var(--space-8)}
 .mcsec h2,.devhead{margin:0 0 var(--space-3);font-size:var(--font-size-lg);line-height:var(--line-height-lg);font-weight:var(--font-weight-bold)}
 .devhead{margin-top:var(--space-6)}
