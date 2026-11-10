@@ -15,13 +15,16 @@ document.addEventListener("click",function(e){
   var root=document.documentElement,hostGated=/-mc\./.test(location.hostname),gated=hostGated;
   try{if(sessionStorage.getItem("mc-gated"))gated=true;}catch(e){}
   if(gated)root.classList.add("gating");
+  /* the developer details are for people who are signed in: on a gated host they stay hidden until /admin/whoami.json names a person, and are not shown if it cannot be reached */
+  if(hostGated)root.classList.add("nodev");
   var done=function(){root.classList.remove("gating");};
   setTimeout(done,3000); /* never leave the page blank if a request hangs */
   /* signed out on a gated host, the pages the gate would refuse are left out too (401), so a closed page is not offered */
-  var signedOut=function(){try{sessionStorage.removeItem("mc-gated");}catch(e){}return gated?hideWhatIsRefused().then(done):done();};
+  var signedOut=function(){try{sessionStorage.removeItem("mc-gated");}catch(e){}return gated?sectionsNav().then(hideWhatIsRefused).then(done):done();};
   fetch("/admin/whoami.json",{credentials:"same-origin",cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(d){
     if(!d||!d.email)return signedOut();
     try{sessionStorage.setItem("mc-gated","1");}catch(e){}
+    root.classList.remove("nodev");
     var w=document.createElement("div");w.className="who";
     var e=document.createElement("div");e.className="who-email";e.textContent=d.email;e.title=d.email;
     var a=document.createElement("a");a.href="https://missioncontrol.futurebits.io/logout";a.textContent="Log out";
@@ -30,7 +33,7 @@ document.addEventListener("click",function(e){
   }).catch(signedOut);
 
   /* the left nav lists the account's sections, as set in Mission Control (Master Control > Pages), in place of the fixed links: a section made only of design-system
-     pages goes to that guide, any other to its place on the Public page. It is Mission Control's own answer for the signed-in person, so a section shows only with
+     pages goes to that guide, any other to its place on the Public page. It is Mission Control's own answer for the person (signed out, only the pages set to Anyone), so a section shows only with
      pages that person may open, and its number counts those. If the list cannot be loaded the fixed links stay. */
   function sectionsNav(){
     var nav=document.getElementById("admin-nav");

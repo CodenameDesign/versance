@@ -150,6 +150,7 @@ tr.pg[data-group]>td:first-child,tr.dev[data-group]>td:first-child{padding-left:
 tr.pg[data-parent]>td:first-child,tr.dev[data-parent]>td:first-child{padding-left:calc(var(--space-2) + 48px)}
 /* the pages by section and project (admin/mc-structure.js) */
 .mcfiltered{display:none!important}
+.nodev .devhead,.nodev .devhead+.card{display:none!important}
 .mcall[hidden]{display:none}
 .mcall{display:inline-block;margin:0 0 var(--space-4);color:var(--color-text-muted);font-size:var(--font-size-caption)}
 .mcsec{margin:0 0 var(--space-8)}

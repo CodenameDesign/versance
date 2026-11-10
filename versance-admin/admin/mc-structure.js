@@ -1,5 +1,5 @@
 /* The pages by section and project, as Mission Control (Master Control) has them for this account. The list is Mission Control's
-   own answer for the signed-in person, so it shows only what they may open. If it cannot be loaded (not signed in, a host with no
+   own answer for the person: signed in, what they may open; signed out, only the pages set to Anyone. If it cannot be loaded (not signed in, a host with no
    gate, Mission Control down) the block stays hidden and the developer list below is all there is. Links are drawn only when they
    point at this same site, and are built with DOM calls, never from HTML strings. */
 (function(){
