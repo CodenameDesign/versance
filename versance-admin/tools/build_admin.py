@@ -229,9 +229,9 @@ HEAD = '''<!doctype html>
 </aside>
 <main>
 <h1>Public</h1>
-<p class="lead">The pages by section and project as set in Mission Control. Below them, the developer details: the Versance web app and the browser-extension designs (styles v1 to v13). Open the twisty for a page's route and source files, or open its developer spec: one shareable page with everything a developer needs. Add a page in <code>versance-admin/tools/build_admin.py</code>.</p>
 <section id="mc-structure" data-src="'''+MC_STRUCTURE+'''" aria-label="Pages by section" hidden></section>
 <h2 class="devhead">Developer details</h2>
+<p class="devnote">Open the twisty for a page's route and source files, or open its developer spec: one shareable page with everything a developer needs.</p>
 <div class="card"><table class="list"><thead><tr><th class="tw"></th><th>Page</th><th>Description</th><th>File</th><th>Link</th></tr></thead><tbody>
 '''
 TAIL = '''</tbody></table></div>

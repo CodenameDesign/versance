@@ -38,8 +38,7 @@
       var n=tr.nextElementSibling;if(n&&n.classList.contains("dev"))n.classList.toggle("mcfiltered",!show);
       if(show)any=true;
     });
-    var head=document.querySelector(".devhead"),card=head&&head.nextElementSibling;
-    [head,card].forEach(function(e){if(e)e.classList.toggle("mcfiltered",!!sel&&!any);});
+    [].forEach.call(document.querySelectorAll(".devhead,.devnote,.devhead~.card"),function(e){e.classList.toggle("mcfiltered",!!sel&&!any);});
     if(h1)h1.textContent=sel?sel.label:h1text;
     if(sel&&!back){back=el("a","mcall","Show every section");back.href="/admin/public/";if(h1&&h1.parentNode)h1.parentNode.insertBefore(back,h1.nextSibling);}
     if(back)back.hidden=!sel;
