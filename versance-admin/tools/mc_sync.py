@@ -104,7 +104,7 @@ def files_of(repo, rel, own_urls):
 # ---------- reading the site ----------
 
 def read_build_admin(repo):
-    """The PAGES and MOUNTS lists of tools/build_admin.py, read as data without running the file.
+    """The PAGES and MOUNTS lists of tools/build_admin.py, read as data without running the file, and the pages kept as JSON files in pages/.
     Returns (pages, mounts): pages as dicts with name, url, file and files; mounts as (mount, folder)."""
     path = os.path.join(repo, "tools", "build_admin.py")
     if not os.path.exists(path):
@@ -163,6 +163,22 @@ def read_build_admin(repo):
                         mounts.append((literal(el.elts[0]), literal(el.elts[1])))
                     except (ValueError, SyntaxError):
                         pass
+    # a site whose pages are one JSON file each in pages/ (name, slug, file, optional files), in the order of their "order" number
+    pdir = os.path.join(repo, "pages")
+    if os.path.isdir(pdir):
+        found = []
+        for fn in sorted(os.listdir(pdir)):
+            if not fn.endswith(".json"):
+                continue
+            try:
+                with open(os.path.join(pdir, fn), encoding="utf-8") as f:
+                    r = json.load(f)
+            except (OSError, ValueError):
+                continue
+            if isinstance(r, dict) and r.get("name") and r.get("slug") and r.get("file"):
+                found.append((r.get("order", 0), {"name": r["name"], "url": "/public/" + r["slug"], "file": r["file"], "files": list(r.get("files", []))}))
+        # the JSON pages come first, as in a build file that starts from them (PAGES = load_pages(), then the captures)
+        pages = [e for _, e in sorted(found, key=lambda x: x[0])] + pages
     return pages, mounts
 
 

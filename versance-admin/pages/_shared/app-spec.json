@@ -1,0 +1,17 @@
+[
+  {
+    "label": "About this page",
+    "bullets": [
+      "The Versance web app mock-up (\"Talk to Edgar\"): a white 230px sidebar with a New button and pill nav items, a main area with the hero, the composer and cards",
+      "Single self-contained file: one <style> block, inline SVG logo and favicon, one script; Figtree and Roboto Mono load from Google Fonts",
+      "The :root block holds the light palette (white, #D9DDE5 lines, green #5AC47E accent, amber #E2B43D); a second :root holds the dark theme"
+    ]
+  },
+  {
+    "label": "Tokens",
+    "bullets": [
+      "Part of the Versance token set: the :root blocks of this file (light, dark media query, data-theme dark and light) are generated from design-tokens/tokens.css through design-tokens/map.json (python3 tools/build_tokens.py); edit values in tokens.css, not here",
+      "Source type colours: filing #2B40C5, news #E2B43D, transcript #334EFE, web #65728E, ask/compare #5AC47E, create #E2B43D"
+    ]
+  }
+]

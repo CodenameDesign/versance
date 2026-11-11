@@ -26,7 +26,7 @@ python3 tools/audit.py          # drift check; fix every FAIL
 
 `build_admin.py` reads `versance.html`, `edgar/versance.html`, `medicus-01.html` and every `browser-extension/style-vN/` (its `design-system/` pages and `screens/VBE-*.html`), so a new style or screen appears after re-running it. Pages are served under `/public/` without changing the URL: `browser-extension/` is mounted in place at `/public/extension/` (so each page's relative CSS keeps working), single files are served by an internal rewrite (their root URLs return 404). `/` and `/public/` show only the logo.
 
-To add a page that is not in those folders, add a `P(...)` entry in `tools/build_admin.py` and a `COPY` line in the Dockerfile.
+To add a page that is not in those folders, add a JSON file for it in `pages/` (see `pages/README.md`) and a `COPY` line in the Dockerfile.
 
 ## Docker
 

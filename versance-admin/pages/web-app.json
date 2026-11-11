@@ -1,0 +1,41 @@
+{
+  "order": 10,
+  "name": "Web app: Talk to Edgar",
+  "slug": "web-app",
+  "file": "versance.html",
+  "description": "The Versance web app mock-up: sidebar, hero, composer, answer pages and source cards.",
+  "parts": [
+    [
+      "Typography",
+      "/admin/system/typography/"
+    ],
+    [
+      "Colour",
+      "/admin/system/colour/"
+    ],
+    [
+      "Web app sidebar",
+      "/admin/system/components/#app-nav"
+    ],
+    [
+      "Web app composer",
+      "/admin/system/components/#composer"
+    ],
+    [
+      "Pills and tabs",
+      "/admin/system/components/#pills"
+    ],
+    [
+      "Source tags and severity",
+      "/admin/system/components/#tags"
+    ]
+  ],
+  "notes": [
+    "Part of the Versance token set (with style-v1): its :root blocks are generated from design-tokens/tokens.css",
+    "Served from the repo as is"
+  ],
+  "group": "web",
+  "spec_include": [
+    "app"
+  ]
+}

@@ -3,10 +3,10 @@
 
     python3 tools/build_admin.py
 
-Add a page by adding an entry to PAGES (and its file to the Dockerfile COPY if it is new), then run this, commit and deploy.
+Add a page by adding a JSON file for it in pages/ (and its file to the Dockerfile COPY if it is new), then run this, commit and deploy.
 """
 from pathlib import Path
-import html, re
+import html, json, re
 
 ROOT = Path(__file__).resolve().parent.parent          # versance-admin/
 REPO = ROOT.parent                                      # the versance repo (page files live here)
@@ -55,24 +55,24 @@ PAGES = []
 GROUPS["web"] = dict(title="Web App", sub="versance.html (Talk to Edgar) and its copy in edgar/", open=False)
 GROUPS["medicus"] = dict(title="Medicus", sub="Design example: the saved Medicus Pharma home page", open=False)
 GROUPS["ext"] = dict(title="Browser Extension v1 – v13", sub="v1 is the baseline (part of the token set); v2 to v13 are design examples", open=False)
-APP_SPEC = [
-    ("About this page", [
-        "The Versance web app mock-up (\"Talk to Edgar\"): a white 230px sidebar with a New button and pill nav items, a main area with the hero, the composer and cards",
-        "Single self-contained file: one <style> block, inline SVG logo and favicon, one script; Figtree and Roboto Mono load from Google Fonts",
-        "The :root block holds the light palette (white, #D9DDE5 lines, green #5AC47E accent, amber #E2B43D); a second :root holds the dark theme"]),
-    ("Tokens", [
-        "Part of the Versance token set: the :root blocks of this file (light, dark media query, data-theme dark and light) are generated from design-tokens/tokens.css through design-tokens/map.json (python3 tools/build_tokens.py); edit values in tokens.css, not here",
-        "Source type colours: filing #2B40C5, news #E2B43D, transcript #334EFE, web #65728E, ask/compare #5AC47E, create #E2B43D"]),
-]
-PAGES += [
-    P("Web app: Talk to Edgar", "web-app", "versance.html", "The Versance web app mock-up: sidebar, hero, composer, answer pages and source cards.", [TYPE, COLOUR, APPNAV, COMP, PILLS, TAGS],
-      ["Part of the Versance token set (with style-v1): its :root blocks are generated from design-tokens/tokens.css", "Served from the repo as is"], spec=APP_SPEC, group="web"),
-    P("Web app (copy in edgar/)", "edgar-web-app", "edgar/versance.html", "Byte-identical copy of versance.html kept in the edgar/ folder.", [TYPE, COLOUR, APPNAV, COMP],
-      ["Identical to versance.html (verified); listed so every file in the repo has an entry"], spec=APP_SPEC, group="web"),
-    P("Medicus Pharma home page (design example)", "medicus", "medicus-01.html", "A saved copy of the Medicus Pharma home page (WordPress), kept as a design example.", [],
-      ["A design example: its CSS is only for this page and is not part of the Versance token set", "Third-party scripts and assets are referenced as saved"],
-      spec=[("About this page", ["A saved WordPress page (Medicus Pharma) kept as a design example", "Its fonts, colours and scripts are the site's own; it is not styled by, and not part of, the Versance token set"])], group="medicus"),
-]
+PAGES_DIR = ROOT / "pages"
+
+def load_pages():
+    """The hand-written pages: one JSON file each in pages/ (see pages/README.md), in the order of their "order" number. spec_include names
+    shared spec rows in pages/_shared/<name>-spec.json that go before the page's own rows. The extension styles below are found by
+    scanning browser-extension/, so they need no file."""
+    found = []
+    for f in sorted(PAGES_DIR.glob("*.json")):
+        r = json.loads(f.read_text())
+        spec = []
+        for inc in r.get("spec_include", []):
+            spec += [(row["label"], row["bullets"]) for row in json.loads((PAGES_DIR / "_shared" / (inc + "-spec.json")).read_text())]
+        spec += [(row["label"], row["bullets"]) for row in r.get("spec", [])]
+        found.append((r["order"], P(r["name"], r["slug"], r["file"], r["description"], [tuple(t) for t in r.get("parts", [])], r.get("notes", []),
+                                    target=r.get("target"), files=r.get("files", ()), spec=spec, group=r.get("group", ""))))
+    return [p for _, p in sorted(found, key=lambda x: x[0])]
+
+PAGES += load_pages()
 
 # ---- the extension styles
 def style_no(path):

@@ -1,0 +1,32 @@
+{
+  "order": 20,
+  "name": "Web app (copy in edgar/)",
+  "slug": "edgar-web-app",
+  "file": "edgar/versance.html",
+  "description": "Byte-identical copy of versance.html kept in the edgar/ folder.",
+  "parts": [
+    [
+      "Typography",
+      "/admin/system/typography/"
+    ],
+    [
+      "Colour",
+      "/admin/system/colour/"
+    ],
+    [
+      "Web app sidebar",
+      "/admin/system/components/#app-nav"
+    ],
+    [
+      "Web app composer",
+      "/admin/system/components/#composer"
+    ]
+  ],
+  "notes": [
+    "Identical to versance.html (verified); listed so every file in the repo has an entry"
+  ],
+  "group": "web",
+  "spec_include": [
+    "app"
+  ]
+}

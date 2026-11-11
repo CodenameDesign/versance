@@ -1,0 +1,22 @@
+{
+  "order": 30,
+  "name": "Medicus Pharma home page (design example)",
+  "slug": "medicus",
+  "file": "medicus-01.html",
+  "description": "A saved copy of the Medicus Pharma home page (WordPress), kept as a design example.",
+  "parts": [],
+  "notes": [
+    "A design example: its CSS is only for this page and is not part of the Versance token set",
+    "Third-party scripts and assets are referenced as saved"
+  ],
+  "group": "medicus",
+  "spec": [
+    {
+      "label": "About this page",
+      "bullets": [
+        "A saved WordPress page (Medicus Pharma) kept as a design example",
+        "Its fonts, colours and scripts are the site's own; it is not styled by, and not part of, the Versance token set"
+      ]
+    }
+  ]
+}
