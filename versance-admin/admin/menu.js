@@ -20,7 +20,7 @@ document.addEventListener("click",function(e){
   var done=function(){root.classList.remove("gating");};
   setTimeout(done,3000); /* never leave the page blank if a request hangs */
   /* signed out on a gated host, the pages the gate would refuse are left out too (401), so a closed page is not offered */
-  var signedOut=function(){try{sessionStorage.removeItem("mc-gated");}catch(e){}return gated?sectionsNav().then(hideWhatIsRefused).then(done):done();};
+  var signedOut=function(){try{sessionStorage.removeItem("mc-gated");}catch(e){}return gated?sectionsNav().then(hideWhatIsRefused).then(showSharedSpecs).then(done):done();};
   fetch("/admin/whoami.json",{credentials:"same-origin",cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(d){
     if(!d||!d.email)return signedOut();
     try{sessionStorage.setItem("mc-gated","1");}catch(e){}
@@ -70,6 +70,25 @@ document.addEventListener("click",function(e){
       while(nav.firstChild)nav.removeChild(nav.firstChild);
       list.forEach(function(x){nav.appendChild(x);});
     }).catch(function(){});
+  }
+
+  /* signed out, the developer details stay hidden except for a page whose developer spec the Master has shared (it opens without signing in): that page's row is
+     shown, with its group's heading and the page heading. Each spec is asked for with a HEAD request; only a 200 shows the row. */
+  function showSharedSpecs(){
+    var asked=[];
+    [].forEach.call(document.querySelectorAll("tr.pg"),function(tr){
+      var d=tr.nextElementSibling,a=d&&d.querySelector("a.ilink");
+      if(!a)return;
+      asked.push(fetch(a.getAttribute("href"),{method:"HEAD",credentials:"same-origin",cache:"no-store"}).then(function(r){
+        if(!r.ok)return;
+        tr.classList.add("specok");root.classList.add("anyspec");
+        [].forEach.call(document.querySelectorAll("tr.grp"),function(h){
+          var b=h.querySelector(".gtoggle"),g=b&&b.getAttribute("data-g");
+          if(g&&(g===tr.getAttribute("data-group")||g===tr.getAttribute("data-parent")))h.classList.add("specgrp");
+        });
+      }).catch(function(){}));
+    });
+    return Promise.all(asked);
   }
 
   /* a link the person cannot open is not shown: each nav link, card and page row is asked for with a HEAD request, and the ones the gate refuses (403) are hidden */
