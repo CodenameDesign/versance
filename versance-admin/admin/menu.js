@@ -20,7 +20,7 @@ document.addEventListener("click",function(e){
   var done=function(){root.classList.remove("gating");};
   setTimeout(done,3000); /* never leave the page blank if a request hangs */
   /* signed out on a gated host, the pages the gate would refuse are left out too (401), so a closed page is not offered */
-  var signedOut=function(){try{sessionStorage.removeItem("mc-gated");}catch(e){}return gated?sectionsNav().then(hideWhatIsRefused).then(showSharedSpecs).then(done):done();};
+  var signedOut=function(){try{sessionStorage.removeItem("mc-gated");}catch(e){}return gated?sectionsNav().then(hideWhatIsRefused).then(showSharedSpecs).then(function(){document.dispatchEvent(new Event("mc-specs"));}).then(done):done();};
   fetch("/admin/whoami.json",{credentials:"same-origin",cache:"no-store"}).then(function(r){return r.ok?r.json():null;}).then(function(d){
     if(!d||!d.email)return signedOut();
     try{sessionStorage.setItem("mc-gated","1");}catch(e){}

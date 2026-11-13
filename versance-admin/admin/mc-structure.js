@@ -30,13 +30,14 @@
   var h1=document.querySelector("main h1"),h1text=h1?h1.textContent:"",back=null;
   function apply(secs){
     var id=location.hash.slice(1),sel=secs[id]||null;
+    var nodev=document.documentElement.classList.contains("nodev");
     [].forEach.call(box.children,function(c){c.classList.toggle("mcfiltered",!!sel&&c.id!==id);});
     var any=false;
     [].forEach.call(document.querySelectorAll("tr.pg"),function(tr){
       var a=tr.querySelector("a.ext"),show=!sel||!!(a&&sel.paths[norm(a.getAttribute("href").split("#")[0])]);
       tr.classList.toggle("mcfiltered",!show);
       var n=tr.nextElementSibling;if(n&&n.classList.contains("dev"))n.classList.toggle("mcfiltered",!show);
-      if(show)any=true;
+      if(show&&(!nodev||tr.classList.contains("specok")))any=true; /* signed out, only a row whose developer spec is shared is there to be seen */
     });
     [].forEach.call(document.querySelectorAll(".devhead,.devnote,.devhead~.card"),function(e){e.classList.toggle("mcfiltered",!!sel&&!any);});
     if(h1)h1.textContent=sel?sel.label:h1text;
@@ -61,6 +62,6 @@
       (s.projects||[]).forEach(function(p){var g=grid(p.pages||[]);if(g){sec.appendChild(el("h3",null,String(p.name)));sec.appendChild(g);any=true;}});
       if(any){box.appendChild(sec);shown++;}
     });
-    if(shown){box.hidden=false;apply(secs);window.addEventListener("hashchange",function(){apply(secs);});}
+    if(shown){box.hidden=false;apply(secs);window.addEventListener("hashchange",function(){apply(secs);});document.addEventListener("mc-specs",function(){apply(secs);});}
   }).catch(function(){});
 })();
